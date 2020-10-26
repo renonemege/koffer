@@ -1,6 +1,6 @@
 class Survey < ApplicationRecord
-  belongs_to :City
-  belongs_to :User
-  has_many :responses,
+  belongs_to :city
+  belongs_to :user
+  has_many :responses
   validates :question, presence: true
 end
