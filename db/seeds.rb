@@ -41,10 +41,6 @@ cities.each do |seed_city|
       score_details = open(get_detailed_score_url).read
       city_score_detailed = JSON.parse(score_details)
 
-        # city_score_detailed['categories']['data'][3].each do |data|
-        #   puts data['label']
-        #   puts data['id']
-        # end
 
       # get country details url
       get_country_url = the_city_general['_links']['ua:identifying-city']['href']
