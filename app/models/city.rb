@@ -6,4 +6,22 @@ class City < ApplicationRecord
 
   geocoded_by :title
   after_validation :geocode, if: :will_save_change_to_title?
+  include PgSearch::Model
+
+  pg_search_scope :search_by_title_and_country,
+    against: [ :title,:country ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
+
+
+ # pg_search_scope :search_by_title_and_country, lambda { |title_and_country_part, query|
+ #    {
+ #      against: :title_and_country_part,
+ #      query: query,
+ #      using: {
+ #        tsearch: { prefix: true } # <-- now `superman batm` will return something!
+ #      }
+ #    }
+ #  }
