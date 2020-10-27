@@ -1,0 +1,11 @@
+<div class="card col-4">
+  <% @cities.each do |city| %>
+    <h1><%= city.title %></h1>
+    <p><%= city.description %></p>
+    <p><%= city.country %></p>
+    <p><%= city.score %></p>
+  <% end %>
+</div>
+
+
+<ul id="results"></ul>
