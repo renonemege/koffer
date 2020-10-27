@@ -1,0 +1,4 @@
+<%= simple_form_for [ @city, @survey ] do |f| %>
+  <%= f.input :question %>
+  <%= f.submit "Submit survey", class: "btn btn-primary" %>
+<% end %>
