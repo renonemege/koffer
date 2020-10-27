@@ -8,7 +8,7 @@
 
 City.destroy_all
 
-cities = ['Istanbul', 'San Fransisco', 'Berlin', 'Frankfurt', 'Amsterdam']
+cities = ['Istanbul', 'San Fransisco', 'Berlin', 'Frankfurt', 'Amsterdam', 'Stockholm', 'Paris', 'Madrid']
 
 # Gets all cities
 teleport_api_cities = open('https://api.teleport.org/api/urban_areas/').read
