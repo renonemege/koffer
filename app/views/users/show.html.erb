@@ -14,3 +14,8 @@
 <% end %>
 
 
+<% @chatrooms.each do |room| %>
+  <% room.messages.where(user_id: current_user).each do |message| %>
+    <% message.content %>
+  <%end  %>
+<% end %>
