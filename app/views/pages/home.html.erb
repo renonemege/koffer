@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= content_for(:navbar_class, "navbar-home") %>
+
+<div class="banner-home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1513604341524-7c6b9bb0b13c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1936&q=80);">
+  <div class="container">
+    <h1>Koffer</h1>
+    <p>Pack your Koffer, fly the nest. Join the community!</p>
+    <%= link_to 'Go to Website', cities_path, class: "btn btn-warning" %>
+  </div>
+</div>
+
+              
+              
