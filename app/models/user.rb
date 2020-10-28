@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :surveys
   has_many :user_cities
   has_many :responsess
+  has_one_attached :photo
 
   # validates :email, :first_name, :last_name, :username, :password, :occupation,
   # :description, :image_url, :score, presence: true
