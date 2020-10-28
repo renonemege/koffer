@@ -31,7 +31,7 @@
             <h2><%= city.title %></h2>
             <h4><%= city.country%></h4>
           </article>
-          <%= cl_image_tag city.photo.key, crop: :fill %>
+          <%= cl_image_tag city.photo.key, crop: :fit %>
         <%end %>
       </div>
     <% end %>

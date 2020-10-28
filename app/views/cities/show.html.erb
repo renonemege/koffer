@@ -1,3 +1,12 @@
+<ul>
+  <%= cl_image_tag @city.photo.key, crop: :fit %>
+  <li>About: <%= @city.description %></li>
+  <li>Country: <%= @city.country %></li>
+  <li>Living Cost: <%= @city.living_cost %></li>
+  <li>Currency: <%= @city.currency %></li>
+</ul>
+
+
 <!-- map -->
 <div id="map"
      style="width: 100%; height: 600px;"
