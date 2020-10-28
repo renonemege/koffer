@@ -19,19 +19,19 @@
 <!-- search bar end -->
 
 <!-- first card group -->
-  <div class="container ">
-    <div class="row">
+<div class="container ">
+  <div class="row">
     <% @cities.each do |city| %>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto ">
         <%= link_to city do %>
-         <div class="ver_mas text-center">
+          <div class="ver_mas text-center">
             <span  class="lnr lnr-eye"></span>
-         </div>
-         <article class="text-left">
+          </div>
+          <article class="text-left">
             <h2><%= city.title %></h2>
             <h4><%= city.country%></h4>
-         </article>
-         <img src="https://images.unsplash.com/photo-1468436385273-8abca6dfd8d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2588&q=80" alt="">
+          </article>
+          <%= cl_image_tag city.photo.key, crop: :fill %>
         <%end %>
       </div>
     <% end %>
@@ -74,7 +74,6 @@
 <!-- map -->
 
 <!-- raw city cards -->
-
 <div class="row">
   <% @cities.each do |city| %>
     <div class="card col-4">
