@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     if Review.create
       redirect_to city_path(@city)
     else
-      render city/show
+      render 'cities/show'
     end
   end
 

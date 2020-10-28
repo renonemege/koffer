@@ -3,6 +3,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1532299033990-5bcda4141d25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=968&q=80);">
 </div>
 
+
 <div class="container">
     <!-- search bar -->
   <form novalidate="novalidate" class="simple_form search mt-5 mb-5 p-3" action="<%= cities_path %>" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
@@ -39,6 +40,7 @@
         </div>
       <% end %>
     </div>
+
   </div>
   <!-- first card group end -->
 
@@ -76,6 +78,7 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <!-- map -->
 
+
   <!-- raw city cards -->
 
   <div class="row">
@@ -93,5 +96,5 @@
   <!-- do not delete it is for later js usage -->
   <ul id="results"></ul>
   <!-- do not delete end -->
-</div>
+
 
