@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 Survey.destroy_all
-
 City.destroy_all
 
 cities = ['Istanbul', 'San Fransisco', 'Berlin', 'Frankfurt', 'Amsterdam', 'Stockholm', 'Paris', 'Madrid']
@@ -15,12 +15,14 @@ cities = ['Istanbul', 'San Fransisco', 'Berlin', 'Frankfurt', 'Amsterdam', 'Stoc
 teleport_api_cities = open('https://api.teleport.org/api/urban_areas/').read
 the_city = JSON.parse(teleport_api_cities)
 
+
+# ------------ create cities ---------------
 cities.each do |seed_city|
   # Iterate through each city and find the ones provided in cities#array
 
   the_city['_links']['ua:item'].each do |city|
     if city['name'] == seed_city
-      puts seed_city
+      puts "Creating #{seed_city}"
 
       city_score_url = city['href'] # get the url for the city
       get_general = open(city_score_url).read
@@ -59,6 +61,7 @@ cities.each do |seed_city|
       # puts city_score_url
       # puts score_url
       # puts get_detailed_score_url
+
       seed_city = City.create!(
         title: @title,
         description: @description,
@@ -74,7 +77,58 @@ cities.each do |seed_city|
         weather: 'sunny',
         score: 3
       )
+
     end
   end
 end
 
+# --------------- photos ----------------
+
+puts 'adding photo to Istanbul'
+City.find_by(title: 'Istanbul').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1599581425921-726fd0056137?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'),
+  filename: 'istanbul.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Berlin'
+City.find_by(title: 'Berlin').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1560969184-10fe8719e047?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'berlin.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Frankfurt'
+City.find_by(title: 'Frankfurt').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1577185816322-21f2a92b1342?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'frankfurt.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Amsterdam'
+City.find_by(title: 'Amsterdam').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1468436385273-8abca6dfd8d3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1294&q=80'),
+  filename: 'amsterdam.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Stockholm'
+City.find_by(title: 'Stockholm').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1497217968520-7d8d60b7bc25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'stockholm.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Paris'
+City.find_by(title: 'Paris').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1454386608169-1c3b4edc1df8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'),
+  filename: 'paris.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Madrid'
+City.find_by(title: 'Madrid').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1547636780-e41778614c28?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80'),
+  filename: 'madrid.jpg',
+  content_type: 'image/jpg'
+)

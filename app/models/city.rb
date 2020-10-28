@@ -1,4 +1,5 @@
 class City < ApplicationRecord
+  has_one_attached :photo
   has_many :reviews, as: :reviewable
   has_many :users, through: :user_cities
   validates :title, :description, :country, :latitude, :longitude, :quality_of_life,

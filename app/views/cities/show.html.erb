@@ -1,9 +1,31 @@
-<!-- map -->
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-<!-- map -->
+<%= content_for(:navbar_class, "navbar-home") %>
+<!-- city banner -->
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
+</div>
+<!-- city banner -->
+
+<div class="show-border">
+  <h4>City Description:</h4><p><%= @city.description %></p>
+</div>
+
+<div class="display">
+
+  <!-- map -->
+  <div id="map"
+      style="width: 50%; height: 700px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  <!-- map -->
+
+  <div class="info-border">
+    <li>About: <%= @city.description %></li>
+    <li>Country: <%= @city.country %></li>
+    <li>Living Cost: <%= @city.living_cost %></li>
+    <li>Currency: <%= @city.currency %></li>
+  </div>
+
+</div>
 
 
 <!-- review -->
@@ -24,3 +46,17 @@
     <%= f.submit %>
 <% end %>
 <!-- review end -->
+
+<div class="card">
+  <div class="container">
+    <h4><b>Country</b></h4>
+    <p><%= @city.country %></p>
+  </div>
+</div>
+
+<div class="cardd">
+  <div class="containerr">
+    <h4><b>Living cost</b></h4>
+    <p><%= @city.living_cost %></p>
+  </div>
+</div>
