@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :cities, only: [:index, :show] do
-    resources :surveys , only: [:create, :new]
+    resources :surveys, only: [:create, :new]
     resources :reviews, only: [:create]
+    resources :responses, only: [:create, :new]
   end
 
   resources :users, only: [:index, :show]

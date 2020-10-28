@@ -1,6 +1,5 @@
 class SurveysController < ApplicationController
   def new
-    # we need @restaurant in our `simple_form_for`
     @city = City.find(params[:city_id])
     @survey = Survey.new
   end
