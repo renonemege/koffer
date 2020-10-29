@@ -10,20 +10,25 @@
 <div class="container">
 
   <!-- first card group -->
-    <div class="container ">
-      <div class="row">
+    <div class="container mt-4">
+      <div class="row justify-content-between">
         <% @cities.each do |city| %>
-          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 container_foto ">
-            <%= link_to city do %>
-            <div class="ver_mas text-center">
-                <span  class="lnr lnr-eye"></span>
+          <div class=" col-sm-4 col-xs-12 ">
+            <div class="container_foto mb-4">
+              <%= link_to city do %>
+              <div class="ver_mas text-center">
+                  <span  class="lnr lnr-eye"></span>
+              </div>
+              <article class="text-left">
+                  <h2><%= city.title %></h2>
+                  <h4><%= city.country%></h4>
+                  <% 5.times do  %>
+                    <span class="fa fa-star"></span>
+                  <% end %>
+              </article>
+              <%= cl_image_tag city.photo.key, crop: :fit %>
+              <%end %>
             </div>
-            <article class="text-left">
-                <h2><%= city.title %></h2>
-                <h4><%= city.country%></h4>
-            </article>
-            <%= cl_image_tag city.photo.key, crop: :fit %>
-            <%end %>
           </div>
         <% end %>
       </div>

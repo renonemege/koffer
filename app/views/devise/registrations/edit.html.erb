@@ -11,10 +11,12 @@
     <% end %>
     <%= f.input :first_name,
                 required: true,
-                input_html: { autocomplete: "first-name" } %>
+                input_html: { autocomplete: "first-name" },
+                label: false %>
     <%= f.input :last_name,
                 required: true,
-                input_html: { autocomplete: "last-name" } %>
+                input_html: { autocomplete: "last-name" },
+                label: false %>
     <%= f.input :username,
                 required: true,
                 input_html: { autocomplete: "username" } %>
