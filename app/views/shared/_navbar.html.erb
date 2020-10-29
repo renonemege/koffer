@@ -1,12 +1,27 @@
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%= yield(:navbar_class) %>">
   <%= link_to cities_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+    <%= image_tag ("eeee.png") %>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
+   <!-- search bar -->
+  <form novalidate="novalidate" class="simple_form search col-6" action="<%= cities_path %>" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+    <div class="search-form-control form-group col-6">
+      <input class="form-control string required " type="text" name="query" id="search_query" placeholder= 'Search for a city...' />
+      <button name="button" type="submit" class="btn btn-flat">
+        <div class="search-icon">
+          <%= link_to cities_path, :class => 'fas fa-search ' do %>
+            <span class="icon-home"></span>
+          <% end %>
+        </div>
+      </button>
+    </div>
+  </form>
+  <!-- search bar end -->
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
