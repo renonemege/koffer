@@ -14,6 +14,7 @@ Message.destroy_all
 Chatroom.destroy_all
 Review.destroy_all
 City.destroy_all
+User.destroy_all
 
 # --------interests-------
 Interest.create!(
