@@ -14,8 +14,49 @@
 <% end %>
 
 
-<% @chatrooms.each do |room| %>
-  <% room.messages.where(user_id: current_user).each do |message| %>
-    <% message.content %>
-  <%end  %>
-<% end %>
+<!-- user review -->
+<div class="rating-form mt-15 p-2">
+  <span>What do you think about <%= @user.first_name %>  ?</span>
+  <%= simple_form_for [@user, @review] do |f| %>
+  <div class="form-inputs">
+    <%= f.input :content,
+                as: :text,
+                label: false %>
+    <fieldset class="rating">
+      <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+      <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+      <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+      <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+      <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+    </fieldset>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+<!-- user review end -->
+
+
+<div class="reviews">
+  <ul class="list-group">
+    <% if @user.reviews.nil? %>
+      <% 5.times do  %>
+          <span class="far fa-star"></span>
+      <% end %>
+    <% else %>
+      <% @user.reviews.reverse.each do |review| %>
+        <div class="review mb-5 mt-3">
+          <li class="list-group-item">
+            <% review.stars.times do  %>
+              <span class="fas fa-star"></span>
+            <% end %>
+            <% (5 - review.stars).times do  %>
+              <span class="far fa-star"></span>
+            <% end %>
+            <p><%= review.content%></p>
+          </li>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
