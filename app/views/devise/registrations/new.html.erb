@@ -28,6 +28,11 @@
                 as: :file,
                 required: false,
                 input_html: { autocomplete: "avatar" } %>
+    <%= f.input :occupation,
+                :collection => %w[Software\ Engineer Doctor Architect Artist],
+                required: false,
+                input_html: { autocomplete: "occupation" } %>
+
   </div>
 
   <div class="form-actions">

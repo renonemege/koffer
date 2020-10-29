@@ -66,3 +66,37 @@
   </ul>
 </div>
 
+<%= simple_form_for [@user_city] do |f| %>
+  <%= f.input :title, :collection => %w[Asterdam Istanbul Berlin Paris] %>
+  <%= f.submit %>
+<% end %>
+
+<div class="cities d-flex">
+  <h1>My Cities</h1>
+  <% current_user.user_cities.each do |city| %>
+
+      <div class="card">
+        <%= city.title %>
+      </div>
+
+  <% end %>
+</div>
+
+
+<%= simple_form_for [@user_interest] do |f| %>
+  <%= f.association :interest %>
+  <%= f.submit %>
+<% end %>
+
+<% if current_user.user_interests.present? %>
+  <div class="interests d-flex">
+    <h1>My Interest</h1>
+    <% current_user.user_interests.each do |interest| %>
+
+        <div class="card">
+          <%= interest.title %>
+        </div>
+
+    <% end %>
+  </div>
+<% end %>

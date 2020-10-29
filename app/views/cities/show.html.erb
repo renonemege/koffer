@@ -15,11 +15,16 @@
 
 <h2>Recommended for you: </h2>
 <% @users.each do |user| %>
-  <%= link_to user do %>
-    <div class="info-border">
-      <p> <%= user.username %> </p>
-      <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-    </div>
+  <% if user.occupation == current_user.occupation %>
+    <%= link_to user do %>
+      <div class="info-border">
+        <p> <%= user.username %> </p>
+        <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
+        <% if current_user.avatar.attached? %>
+          <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
 <!-- friends end -->

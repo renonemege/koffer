@@ -1,5 +1,5 @@
 class UserInterest < ApplicationRecord
-  belongs_to :Interest
-  belongs_to :User
+  belongs_to :interest
+  belongs_to :user
   validates :title, presence: true
 end

@@ -7,5 +7,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @chatroom = Chatroom.new
     @review = Review.new
+    @user_city = UserCity.new
+    @user_interest = UserInterest.new
   end
 end

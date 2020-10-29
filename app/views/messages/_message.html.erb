@@ -1,0 +1,25 @@
+<div class="chat-message-container">
+  <div class="row no-gutters">
+    <div class="col-auto text-center">
+      <%= cl_image_tag message.user.avatar.key, crop: :fit, class: "avatar dropdown-toggle ml-2 mt-1" %>
+    </div>
+    <div class="col">
+      <div class="message-container" id="message-<%= message.id %>">
+        <p class="mb-1 ml-2">
+          <i class="author">
+            <span> <strong><%= message.user.username %></strong> </span>
+            <p class = "ml-2"><%= message.content %></p>
+          </i>
+        </p>
+
+        <div class="text-right">
+          <small>
+
+            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
