@@ -7,8 +7,33 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 Survey.destroy_all
+Interest.destroy_all
+UserInterest.destroy_all
+UserCity.destroy_all
+Message.destroy_all
+Chatroom.destroy_all
+Review.destroy_all
 City.destroy_all
 
+# --------interests-------
+Interest.create!(
+  title: 'Volunteering'
+)
+Interest.create!(
+  title: 'Traveling'
+)
+Interest.create!(
+  title: 'Art & Design'
+)
+Interest.create!(
+  title: 'Music'
+)
+Interest.create!(
+  title: 'Reading'
+)
+
+
+# --------cities--------------
 cities = ['Istanbul', 'San Fransisco', 'Berlin', 'Frankfurt', 'Amsterdam', 'Stockholm', 'Paris', 'Madrid']
 
 # Gets all cities
