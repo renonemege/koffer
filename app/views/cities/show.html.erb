@@ -1,6 +1,7 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 <!-- city banner -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
+  <p><%= @city.title %></p>
 </div>
 <!-- city banner -->
 
