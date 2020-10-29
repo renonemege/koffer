@@ -18,6 +18,7 @@ class CitiesController < ApplicationController
     @city = City.find(params[:id])
     @review = Review.new
     @user = current_user
+    @users = User.all
 
     city = @city.geocode
     @markers =

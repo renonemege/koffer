@@ -1,0 +1,19 @@
+<h1 class= "mt-10 col-6">Your messages</h1>
+
+<div class="row">
+  <div class="col-12 col-md-3">
+  <%= link_to 'Back', user_path(current_user), class: "btn btn-dark ml-3" %>
+
+    <% if @chatrooms.present? %>
+      <nav class="nav flex-column">
+        <% @chatrooms.each do |room| %>
+          <%= link_to room.title, chatroom_path(room), class: "nav-link room-nav-link" %>
+        <% end %>
+      </nav>
+    <% else %>
+      <div class="text-muted ml-5 mt-5">
+        You have no messages
+      </div>
+    <% end %>
+  </div>
+</div>

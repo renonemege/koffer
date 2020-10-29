@@ -1,22 +1,59 @@
-<h1>#<%= @chatroom.title %></h1>
-<div id="messages" data-chatroom-id="<%= @chatroom.id %>">
-  <% @chatroom.messages.each do |message| %>
-    <div class="message-container" id="message-<%= message.id %>">
-      <i class="author">
-        <span><%= message.user.username %></span>
-        <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-      </i>
-      <p><%= message.content %></p>
+<h1>
+  <%= cl_image_tag current_user.avatar.key, crop: :fit, class: "avatar dropdown-toggle ml-5" %>
+</h1>
+<%= link_to 'Back', chatrooms_path, class: "btn btn-dark ml-3" %>
+<div class="row">
+  <div class="col">
+    <div class="chat">
+
+      <% @chatroom.messages.each do |message| %>
+        <div class="chat-message-container">
+          <div class="row no-gutters">
+            <div class="col-auto text-center">
+              <%= cl_image_tag @user.first.avatar.key, crop: :fit, class: "avatar dropdown-toggle ml-2 mt-1" %>
+            </div>
+            <div class="col">
+              <div class="message-container" id="message-<%= message.id %>">
+                <p class="mb-1 ml-2">
+                  <i class="author">
+                    <span> <strong><%= message.user.username %></strong> </span>
+                    <p class = "ml-2"><%= message.content %></p>
+                  </i>
+                </p>
+
+                <div class="text-right">
+                  <small>
+
+                    <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+
+    <%= simple_form_for [@chatroom, @message] do |form| %>
+      <div class="input-group mb-3">
+        <%= form.input :content, as: :string,
+                                 wrapper: false,
+                                 label: false,
+                                 input_html: {
+                                   class: 'chat-input'
+                                 } %>
+        <div class="input-group-append">
+          <%= form.submit "Send", class: 'btn btn-dark chat-input' %>
+        </div>
+      </div>
+
+      <%= form.input :chatroom_id, as: :hidden %>
+    <% end %>
+  </div>
 </div>
 
 
 
-<%= simple_form_for [ @chatroom, @message ] do |f| %>
-  <%= f.input :content, placeholder: "Message ##{@chatroom.title}" %>
-  <%= f.button :submit, "message!", class:"btn btn-dark" %>
-<% end %>
 
 
 

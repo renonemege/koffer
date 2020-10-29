@@ -1,7 +1,16 @@
 class ChatroomsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  def index
+    @chatrooms = Chatroom.all
+  end
+
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @find_message = Message.where(chatroom_id: @chatroom)
+    if @find_message.present?
+      @user = User.where(id: @find_message.last.user_id)
+    end
   end
 
   def create

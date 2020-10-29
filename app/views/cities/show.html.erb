@@ -4,12 +4,27 @@
 </div>
 <!-- city banner -->
 
+<%= link_to 'Back', cities_path, class: "btn btn-dark" %>
+
 <div class="show-border">
   <h4>City Description:</h4><p><%= @city.description %></p>
 </div>
 
-<div class="display">
+<!-- friends -->
 
+<h2>Recommended for you: </h2>
+<% @users.each do |user| %>
+  <%= link_to user do %>
+    <div class="info-border">
+      <p> <%= user.username %> </p>
+      <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+    </div>
+  <% end %>
+<% end %>
+<!-- friends end -->
+
+
+<div class="display">
   <!-- map -->
   <div id="map"
       style="width: 50%; height: 700px;"
@@ -37,14 +52,16 @@
                 as: :text,
                 label: false %>
     <fieldset class="rating">
-    <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
-    <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
-    <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
-    <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
-    <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+      <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+      <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+      <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+      <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+      <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
     </fieldset>
-    <%= f.submit %>
-<% end %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
 <!-- review end -->
 
 <div class="card">
@@ -60,3 +77,7 @@
     <p><%= @city.living_cost %></p>
   </div>
 </div>
+
+
+
+
