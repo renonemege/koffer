@@ -1,6 +1,7 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 <!-- city banner -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
+  <p><%= @city.title %></p>
 </div>
 <!-- city banner -->
 
@@ -34,10 +35,60 @@
   <!-- map -->
 
   <div class="info-border">
-    <li>About: <%= @city.description %></li>
-    <li>Country: <%= @city.country %></li>
-    <li>Living Cost: <%= @city.living_cost %></li>
-    <li>Currency: <%= @city.currency %></li>
+    <div class="card">
+      <div class="containerr">
+        <h4><b> Country </b></h4>
+        <p><%= @city.country %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>City currency</b></h4>
+        <p><%= @city.currency %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>Living cost</b></h4>
+        <p><%= @city.living_cost %><%= @city.currency %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>Income</b></h4>
+        <p><%= @city.income %>€</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>Population</b></h4>
+        <p><%= @city.population %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>Weather</b></h4>
+        <p><%= @city.weather %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>Traffic</b></h4>
+        <p><%= @city.traffic %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>Quality of Life</b></h4>
+        <p><%= @city.quality_of_life %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="containerr">
+        <h4><b>Score</b></h4>
+        <p><%= @city.score %></p>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -64,19 +115,6 @@
 </div>
 <!-- review end -->
 
-<div class="card">
-  <div class="container">
-    <h4><b>Country</b></h4>
-    <p><%= @city.country %></p>
-  </div>
-</div>
-
-<div class="cardd">
-  <div class="containerr">
-    <h4><b>Living cost</b></h4>
-    <p><%= @city.living_cost %></p>
-  </div>
-</div>
 
 
 

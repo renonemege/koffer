@@ -1,0 +1,33 @@
+.user-banner {
+    background-size: cover;
+    background-position: center;
+    padding: 250px 0;
+    .center {
+      position: absolute;
+      display: flex
+      
+    }
+    p {
+      color: white;
+      font-size: 25px;
+      font-weight: lighter;
+      margin: auto;
+      margin-left: 10px;
+    }
+}
+
+.avatar-large {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.message {
+  .simple_form {
+    display: block;
+  }
+}
+
+.info {
+  display: flex;
+}
