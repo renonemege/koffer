@@ -164,84 +164,141 @@ City.find_by(title: 'Madrid').photo.attach(
 
 # ---------users----------
 
-# puts 'finding users living in Istanbul'
+puts 'finding users living in Istanbul'
 
 
-# 5.times do
-#   User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email ,
-#     password: Faker::Internet.password(min_length: 8),
-#     username: Faker::Internet.username,
-#     occupation: Faker::Job.position,
-#     description: Faker::JapaneseMedia::StudioGhibli.quote,
-#     current_city: 'Istanbul',
-#   )
-# end
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Faker::Job.position,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Istanbul'
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+end
 
-# 5.times do
-#   User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email ,
-#     password: Faker::Internet.password(min_length: 8),
-#     username: Faker::Internet.username,
-#     occupation: Faker::Job.position,
-#     description: Faker::JapaneseMedia::StudioGhibli.quote,
-#     current_city: 'Berlin',
-#     user_cities: City.limit(2).order("RANDOM()"),
-#     user_interests: Interest.limit(2).order("RANDOM()")
-#   )
-# end
+puts 'finding users living in Berlin'
 
-# puts 'finding users living in Amsterdam'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Faker::Job.position,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Berlin',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+end
 
-# 5.times do
-#   User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email ,
-#     password: Faker::Internet.password(min_length: 8),
-#     username: Faker::Internet.username,
-#     occupation: Faker::Job.position,
-#     description: Faker::JapaneseMedia::StudioGhibli.quote,
-#     current_city: 'Amsterdam',
-#     user_cities: City.limit(2).order("RANDOM()"),
-#     user_interests: Interest.limit(2).order("RANDOM()")
-#   )
-# end
+puts 'finding users living in Amsterdam'
 
-# puts 'finding users living in Stockholm'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Faker::Job.position,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Amsterdam',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+end
 
-# 5.times do
-#   User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email ,
-#     password: Faker::Internet.password(min_length: 8),
-#     username: Faker::Internet.username,
-#     occupation: Faker::Job.position,
-#     description: Faker::JapaneseMedia::StudioGhibli.quote,
-#     current_city: 'Stockholm',
-#     user_cities: UserCity.limit(2).order("RANDOM()"),
-#     user_interests: UserInterest.limit(2).order("RANDOM()")
-#   )
-# end
+puts 'finding users living in Stockholm'
 
-# puts 'finding users living in Frankfurt'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Faker::Job.position,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Stockholm',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+end
 
-# 5.times do
-#   User.create!(
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     email: Faker::Internet.email ,
-#     password: Faker::Internet.password(min_length: 8),
-#     username: Faker::Internet.username,
-#     occupation: Faker::Job.position,
-#     description: Faker::JapaneseMedia::StudioGhibli.quote,
-#     current_city: 'Frankfurt',
-#     user_cities: City.limit(2).order("RANDOM()"),
-#     user_interests: Interest.limit(2).order("RANDOM()")
-#   )
-# end
+puts 'finding users living in Frankfurt'
+
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Faker::Job.position,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Frankfurt',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+end
+
+puts 'finding users living in Paris'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Faker::Job.position,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Paris',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+end
+
+puts 'finding users living in Madrid'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Faker::Job.position,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Madrid',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+end
