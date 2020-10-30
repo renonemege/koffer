@@ -1,9 +1,10 @@
 <%= simple_form_for [@user_city] do |f| %>
-  <%= f.input :title, :collection => %w[Asterdam Istanbul Berlin Paris] %>
+  <%= f.input :title , :collection => %w[Amsterdam Istanbul Berlin Paris] %>
   <%= f.simple_fields_for [@user_interest] do |c| %>
-    <%= c.association :interest %>
+    <%= c.association :interest, input_html: { multiple: true } %>
   <% end %>
-  <%= f.submit 'Create and Add Another', name: 'create_and_add'%>
+  <%= f.submit 'Add', name: 'create_and_add'%>
 
 <% end %>
 
+<%= link_to "back", request.referer.present? ? request.referer : default_path, class: "btn btn-dark" %>

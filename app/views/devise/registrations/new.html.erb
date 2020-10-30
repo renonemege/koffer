@@ -29,10 +29,15 @@
                 required: false,
                 input_html: { autocomplete: "avatar" } %>
     <%= f.input :occupation,
-                :collection => %w[Software\ Engineer Doctor Architect Artist],
+                :collection => %w[Artist Astronaut Chef Construction\ Worker Software\ Engineer Firefighter Police Teacher Doctor Architect Artist],
                 required: false,
                 input_html: { autocomplete: "occupation" } %>
-
+    <%= f.input :current_city,
+                required: true,
+                input_html: { autocomplete: "current_city" } %>
+    <%= f.input :description,
+                required: true,
+                input_html: { autocomplete: "Tell us more about yourself" } %>
   </div>
 
   <div class="form-actions">
@@ -41,3 +46,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
