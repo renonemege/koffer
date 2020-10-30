@@ -20,47 +20,61 @@
 
 <!-- friends -->
 
-<h2>Same occupation, same city. Get in touch! </h2>
-<% @users.each do |user| %>
-  <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
-    <%= link_to user do %>
-      <div class="info-border">
-        <p> <%= user.username %> </p>
-        <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
-        <% if user.avatar.attached? %>
-          <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-<h2>People who share similar interests to you</h2>
-  <div class="info-border">
-    <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
-      <%= link_to user do %>
-
-          <p> <%= user.username %> </p>
-          <p> <strong><%= user.user_interests.first %></strong> living in <strong><%= @city.title %></strong>  </p>
-          <% if user.avatar.attached? %>
-            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-          <% end %>
-
+    <h2>Same occupation, same city. Get in touch! </h2>
+    <% @users.each do |user| %>
+      <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
+        <div class="city-container city-center col-3">
+          <div class="city-card">
+            <%= link_to user do %>
+                  <p> <%= user.username %> </p>
+                  <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
+                  <% if user.avatar.attached? %>
+                    <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+                  <% end %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     <% end %>
-  </div>
 
-<h2>People who live in <%= @city.title %> </h2>
-  <% if user != current_user && user.current_city == current_user.current_city%>
-    <%= link_to user do %>
-      <div class="info-border">
-        <p> <%= user.username %> </p>
-        <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
-        <% if user.avatar.attached? %>
-          <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+<h2>People who share similar interests to you</h2>
+
+    <% @users.each do |user| %>
+      <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
+      <div class="city-container city-center col-3">
+        <div class="city-card">
+        <%= link_to user do %>
+            <p> <%= user.username %> </p>
+            <p> <strong><%= user.user_interests.first %></strong> living in <strong><%= @city.title %></strong>  </p>
+            <% if user.avatar.attached? %>
+              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+            <% end %>
         <% end %>
+        </div>
       </div>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
+
+    <h2>People who live in <%= @city.title %> </h2>
+
+
+    <% @users.each do |user| %>
+      <% if user != current_user && user.current_city == current_user.current_city%>
+        <%= link_to user do %>
+          <div class="city-container city-center col-3">
+            <div class="city-card">
+              <p> <%= user.username %> </p>
+              <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
+              <% if user.avatar.attached? %>
+                <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
 <!-- friends end -->
 
 
