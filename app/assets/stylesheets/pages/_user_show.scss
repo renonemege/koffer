@@ -32,6 +32,39 @@
   display: flex;
 }
 
+.center {
+  h2{
+    color: white;
+    font-size: 45px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  }
+  h3 {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  }
+}
+.usercontainer {
+  .simple_form {
+    display: block;
+  }
+}
+
+.cities {
+  h1 {
+    align-self: center;
+    margin-left: 25px;
+  }
+}
+
+.cities {
+  .card {
+    height: 100px;
+    width: 100px;
+    margin: 5px;
+
+  }
+}
+
 // #user-btn {
 //   height: 35px;
 // }

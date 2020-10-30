@@ -1,10 +1,20 @@
-<%= simple_form_for [@user_city] do |f| %>
-  <%= f.input :title , :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt] %>
-  <%= f.simple_fields_for [@user_interest] do |c| %>
-    <%= c.association :interest, input_html: { multiple: true } %>
-  <% end %>
-  <%= f.submit 'Add', name: 'create_and_add'%>
+<div class="signupcity">
 
-<% end %>
+  <%= simple_form_for [@user_city] do |f| %>
+    <p>City*</p><%= f.input :title ,
+                :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
+                label: false %>
+    <%= f.simple_fields_for [@user_interest] do |c| %>
+      <p>Interest</p><%= c.association :interest, 
+                        input_html: { multiple: true },
+                        label: false %>
+    <% end %>
+    <div class="signbtn">
+    
+    <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
+    </div>
+  <% end %>
+</div>
+
 
 <%= link_to "back", request.referer.present? ? request.referer : default_path, class: "btn btn-dark" %>
