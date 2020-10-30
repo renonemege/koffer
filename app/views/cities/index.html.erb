@@ -43,8 +43,9 @@
   </div>
   <!-- map -->
 
+<%= link_to "back", request.referer.present? ? request.referer : default_path, class: "btn btn-dark" %>
 
-  
+
 
   <!-- do not delete it is for later js usage -->
   <ul id="results"></ul>

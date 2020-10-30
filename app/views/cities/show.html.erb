@@ -1,15 +1,18 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 <!-- city banner -->
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
+  <div class="centered ">
+    <h1><%= @city.title %></h1>
+  </div>
 </div>
 <!-- city banner -->
 
-<%= link_to 'Back', cities_path, class: "btn btn-dark" %>
+<%= link_to "back", request.referer.present? ? request.referer : default_path, class: "btn btn-dark" %>
 
 <div class="containerr centerr">
   <div class="cardd">
-    <h2><%= @city.title %></h2>
-    <hr/>
+    <h2>About</h2>
+
     <p><%= @city.description %></p>
     </p>
   </div>
@@ -19,12 +22,36 @@
 
 <h2>Recommended for you: </h2>
 <% @users.each do |user| %>
-  <% if user.occupation == current_user.occupation %>
+  <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
     <%= link_to user do %>
       <div class="info-border">
         <p> <%= user.username %> </p>
         <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
-        <% if current_user.avatar.attached? %>
+        <% if user.avatar.attached? %>
+          <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if user.user_interests == current_user.user_interests && user != current_user && user.current_city == current_user.current_city%>
+    <%= link_to user do %>
+      <div class="info-border">
+        <p> <%= user.username %> </p>
+        <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
+        <% if user.avatar.attached? %>
+          <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <% if user != current_user && user.current_city == current_user.current_city%>
+    <%= link_to user do %>
+      <div class="info-border">
+        <p> <%= user.username %> </p>
+        <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
+        <% if user.avatar.attached? %>
           <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
         <% end %>
       </div>
