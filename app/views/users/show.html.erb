@@ -35,99 +35,94 @@
   </div>
 </div>
 
-<div class="usercontainer">
-  <% if @user != current_user %>
-  <!-- user review -->
-    <div class="rating-form mt-15 p-2">
-      <span>What do you think about <%= @user.first_name %>  ?</span>
-      <%= simple_form_for [@user, @review] do |f| %>
-      <div class="form-inputs">
-        <%= f.input :content,
-                    as: :text,
-                    label: false %>
-        <fieldset class="rating">
-          <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
-          <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
-          <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
-          <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
-          <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
-        </fieldset>
-          <%= f.submit %>
+<% if @user != current_user %>
+<!-- user review -->
+  <div class="rating-form mt-15 p-2">
+    <span>What do you think about <%= @user.first_name %>  ?</span>
+    <%= simple_form_for [@user, @review] do |f| %>
+    <div class="form-inputs">
+      <%= f.input :content,
+                  as: :text,
+                  label: false %>
+      <fieldset class="rating">
+        <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+        <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+        <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+        <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+        <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+      </fieldset>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+<!-- user review end -->
+<% end %>
+
+  <div class="reviews">
+    <ul class="list-group">
+      <% if @user.reviews.nil? %>
+        <% 5.times do  %>
+            <span class="far fa-star"></span>
         <% end %>
+      <% else %>
+        <% @user.reviews.reverse.each do |review| %>
+          <div class="review mb-5 mt-3">
+            <li class="list-group-item">
+              <% review.stars.times do  %>
+                <span class="fas fa-star"></span>
+              <% end %>
+              <% (5 - review.stars).times do  %>
+                <span class="far fa-star"></span>
+              <% end %>
+              <p><%= review.content%></p>
+            </li>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+
+<% if @user == current_user %>
+  <div class="cardd">
+    <%= simple_form_for [@user_city] do |f| %>
+      <%= f.input :title, label: "City", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
+      <div class="row-6 col-6">
+        <%= f.submit 'Add', class: 'btn btn-dark'%>
       </div>
+    <% end %>
+<% end %>
+    <div class="cities d-flex">
+      <h1>My Cities</h1>
+      <% current_user.user_cities.each do |city| %>
+          <div class="card">
+            <%= city.title %>
+          </div>
+      <% end %>
     </div>
-  <!-- user review end -->
-  <% end %>
+  </div>
 
-    <div class="reviews">
-      <ul class="list-group">
-        <% if @user.reviews.nil? %>
-          <% 5.times do  %>
-              <span class="far fa-star"></span>
-          <% end %>
-        <% else %>
-          <% @user.reviews.reverse.each do |review| %>
-            <div class="review mb-5 mt-3">
-              <li class="list-group-item">
-                <% review.stars.times do  %>
-                  <span class="fas fa-star"></span>
-                <% end %>
-                <% (5 - review.stars).times do  %>
-                  <span class="far fa-star"></span>
-                <% end %>
-                <p><%= review.content%></p>
-              </li>
-            </div>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-
-
-  <% if @user == current_user %>
-    <div class="cardd col-6">
-      <%= simple_form_for [@user_city] do |f| %>
-        <%= f.input :title, label: "City", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
+  <div class="cardd">
+    <% if @user == current_user %>
+      <%= simple_form_for [@user_interest] do |f| %>
+        <%= f.association :interest, required: false, input_html: { multiple: true } %>
         <div class="row-6 col-6">
-          <%= f.submit 'Add', class: 'btn sign'%>
+          <%= f.submit 'Add', class: 'btn btn-dark'%>
         </div>
       <% end %>
-  <% end %>
-      <div class="cities">
-        <h1>My Cities</h1>
-        <div class="d-flex">
-        
-        <% current_user.user_cities.each do |city| %>
-            <div class="card">
-              <%= city.title %>
-            </div>
-        <% end %>
+    <% end %>
+
+      <% if current_user.user_interests.present? %>
+        <div class="interests d-flex">
+          <h1>I like</h1>
+          <% current_user.user_interests.each do |interest| %>
+              <div class="card">
+                <%= interest.title %>
+              </div>
+          <% end %>
         </div>
-      </div>
-    </div>
-
-    <div class="cardd col-6">
-      <% if @user == current_user %>
-        <%= simple_form_for [@user_interest] do |f| %>
-          <%= f.association :interest, required: false, input_html: { multiple: true } %>
-          <div class="row-6 col-6">
-            <%= f.submit 'Add', class: 'btn sign'%>
-          </div>
-        <% end %>
       <% end %>
-
-        <% if current_user.user_interests.present? %>
-          <div class="interests d-flex">
-            <h1>I like</h1>
-            <% current_user.user_interests.each do |interest| %>
-                <div class="card">
-                  <%= interest.title %>
-                </div>
-            <% end %>
-          </div>
-        <% end %>
-    </div>
-</div>
+  </div>
 
 
 
