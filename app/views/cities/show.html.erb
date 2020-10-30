@@ -20,7 +20,7 @@
 
 <!-- friends -->
 
-<h2>Recommended for you: </h2>
+<h2>Same occupation, same city. Get in touch! </h2>
 <% @users.each do |user| %>
   <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
     <%= link_to user do %>
@@ -33,19 +33,22 @@
       </div>
     <% end %>
   <% end %>
+<h2>People who share similar interests to you</h2>
+  <div class="info-border">
+    <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
+      <%= link_to user do %>
 
-  <% if user.user_interests == current_user.user_interests && user != current_user && user.current_city == current_user.current_city%>
-    <%= link_to user do %>
-      <div class="info-border">
-        <p> <%= user.username %> </p>
-        <p> <strong><%= user.occupation %></strong> living in <strong><%= @city.title %></strong>  </p>
-        <% if user.avatar.attached? %>
-          <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-        <% end %>
-      </div>
+          <p> <%= user.username %> </p>
+          <p> <strong><%= user.user_interests.first %></strong> living in <strong><%= @city.title %></strong>  </p>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+          <% end %>
+
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
+<h2>People who live in <%= @city.title %> </h2>
   <% if user != current_user && user.current_city == current_user.current_city%>
     <%= link_to user do %>
       <div class="info-border">
@@ -59,6 +62,7 @@
   <% end %>
 <% end %>
 <!-- friends end -->
+
 
 
 <div class="display">
