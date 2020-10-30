@@ -19,7 +19,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.containerr{
+.city-container{
   width: 80%;
   display: -webkit-box;  
   display: -ms-flexbox;  
@@ -31,7 +31,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
   margin-right: auto;
 }
 
-.centerr{
+.city-center{
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -40,7 +40,7 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
           justify-content: center;
 }
 
-.cardd{
+.city-card{
   background-color: $card-bgcolor;
   width: $card_width;
   display: -webkit-box;
