@@ -21,7 +21,6 @@
 
 <!-- friends -->
 
-    <h2>Same occupation, same city. Get in touch! </h2>
     <% @users.each do |user| %>
       <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
         <div class="city-container city-center col-3">
@@ -38,7 +37,6 @@
       <% end %>
     <% end %>
 
-<h2>People who share similar interests to you</h2>
 
     <% @users.each do |user| %>
       <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
@@ -56,7 +54,7 @@
       <% end %>
     <% end %>
 
-    <h2>People who live in <%= @city.title %> </h2>
+
 
 
     <% @users.each do |user| %>
