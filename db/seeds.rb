@@ -183,6 +183,12 @@ puts 'finding users living in Istanbul'
     filename: 'user.jpg',
     content_type: 'image/jpg'
   )
+
+  UserCity.create!(
+    title: 'Istanbul',
+    user: User.last,
+    city: City.find_by(title: 'Istanbul')
+  )
 end
 
 puts 'finding users living in Berlin'
@@ -202,6 +208,11 @@ puts 'finding users living in Berlin'
     io: URI.open('https://source.unsplash.com/random'),
     filename: 'user.jpg',
     content_type: 'image/jpg'
+  )
+  UserCity.create!(
+    title: 'Berlin',
+    user: User.last,
+    city: City.find_by(title: 'Berlin')
   )
 end
 
@@ -223,6 +234,12 @@ puts 'finding users living in Amsterdam'
     filename: 'user.jpg',
     content_type: 'image/jpg'
   )
+
+  UserCity.create!(
+    title: 'Amsterdam',
+    user: User.last,
+    city: City.find_by(title: 'Amsterdam')
+  )
 end
 
 puts 'finding users living in Stockholm'
@@ -242,6 +259,11 @@ puts 'finding users living in Stockholm'
     io: URI.open('https://source.unsplash.com/random'),
     filename: 'user.jpg',
     content_type: 'image/jpg'
+  )
+  UserCity.create!(
+    title: 'Stockholm',
+    user: User.last,
+    city: City.find_by(title: 'Stockholm')
   )
 end
 
@@ -263,6 +285,11 @@ puts 'finding users living in Frankfurt'
     filename: 'user.jpg',
     content_type: 'image/jpg'
   )
+  UserCity.create!(
+    title: 'Frankfurt',
+    user: User.last,
+    city: City.find_by(title: 'Frankfurt')
+  )
 end
 
 puts 'finding users living in Paris'
@@ -282,6 +309,11 @@ puts 'finding users living in Paris'
     filename: 'user.jpg',
     content_type: 'image/jpg'
   )
+  UserCity.create!(
+    title: 'Paris',
+    user: User.last,
+    city: City.find_by(title: 'Paris')
+  )
 end
 
 puts 'finding users living in Madrid'
@@ -300,5 +332,11 @@ puts 'finding users living in Madrid'
     io: URI.open('https://source.unsplash.com/random'),
     filename: 'user.jpg',
     content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Madrid',
+    user: User.last,
+    city: City.find_by(title: 'Madrid')
   )
 end

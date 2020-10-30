@@ -1,11 +1,11 @@
 <div class="signupcity">
 
   <%= simple_form_for [@user_city] do |f| %>
-    <p>City:</p><%= f.input :title ,
-                :collection => %w[Amsterdam Istanbul Berlin Paris],
+    <p>City*</p><%= f.input :title ,
+                :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
                 label: false %>
     <%= f.simple_fields_for [@user_interest] do |c| %>
-      <p>Interest:</p><%= c.association :interest, 
+      <p>Interest</p><%= c.association :interest, 
                         input_html: { multiple: true },
                         label: false %>
     <% end %>
