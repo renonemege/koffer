@@ -1,5 +1,5 @@
 <%= simple_form_for [@user_city] do |f| %>
-  <%= f.input :title , :collection => %w[Amsterdam Istanbul Berlin Paris] %>
+  <%= f.input :title , :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt] %>
   <%= f.simple_fields_for [@user_interest] do |c| %>
     <%= c.association :interest, input_html: { multiple: true } %>
   <% end %>
