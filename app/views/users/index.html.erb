@@ -1,4 +1,74 @@
-<% @users.each do |user| %>
-  <%= user.first_name %>
-  <%= user.last_name %>
-<% end %>
+  <h1>Users Similar To You</h1>
+
+
+    <% @users.each do |user| %>
+      <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
+        <div class="city-container city-center col-3">
+          <div class="city-card">
+            <%= link_to user do %>
+                  <p> <%= user.username %> </p>
+                  <p> <strong><%= user.occupation %></strong> living in <strong><%= user.current_city %></strong>  </p>
+                  <% if user.avatar.attached? %>
+                    <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+                  <% end %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+
+    <% @users.each do |user| %>
+      <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
+      <div class="city-container city-center col-3">
+        <div class="city-card">
+        <%= link_to user do %>
+            <p> <%= user.username %> </p>
+            <p> <strong><%= user.user_interests.first %></strong> living in <strong><%= user.current_city %></strong>  </p>
+            <% if user.avatar.attached? %>
+              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+            <% end %>
+        <% end %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+
+<%= link_to "back", request.referer.present? ? request.referer : default_path, class: "btn btn-dark" %>
+
+
+    <% @users.each do |user| %>
+      <% if user != current_user && user.current_city == current_user.current_city%>
+        <%= link_to user do %>
+          <div class="city-container city-center col-3">
+            <div class="city-card">
+              <p> <%= user.username %> </p>
+              <p> <strong><%= user.occupation %></strong> living in <strong><%= user.current_city %></strong>  </p>
+              <% if user.avatar.attached? %>
+                <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+
+<h1>More</h1>
+
+    <% @users.first(10).each do |user| %>
+      <% if user != current_user %>
+        <%= link_to user do %>
+          <div class="city-container city-center col-3">
+            <div class="city-card">
+              <p> <%= user.username %> </p>
+              <p> <strong><%= user.occupation %></strong> living in <strong><%= user.current_city %></strong>  </p>
+              <% if user.avatar.attached? %>
+                <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
