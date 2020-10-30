@@ -152,6 +152,28 @@
 <!-- review end -->
 
 
-
+<div class="reviews">
+    <ul class="list-group">
+      <% if @city.reviews.nil? %>
+        <% 5.times do  %>
+            <span class="far fa-star"></span>
+        <% end %>
+      <% else %>
+        <% @city.reviews.reverse.each do |review| %>
+          <div class="review mb-5 mt-3">
+            <li class="list-group-item">
+              <% review.stars.times do  %>
+                <span class="fas fa-star"></span>
+              <% end %>
+              <% (5 - review.stars).times do  %>
+                <span class="far fa-star"></span>
+              <% end %>
+              <p><%= review.content%></p>
+            </li>
+          </div>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 
 
