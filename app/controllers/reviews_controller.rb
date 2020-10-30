@@ -1,16 +1,21 @@
 class ReviewsController < ApplicationController
+  def reviewable
+    if params[:city_id]
+      @reviewable = City.find(params[:city_id])
+    else params[:user_id]
+      @reviewable = User.find(params[:user_id])
+    end
+  end
+
   def create
+    reviewable
     @chatroom = Chatroom.new
-    @review = Review.new
     @user_city = UserCity.new
-    # @review = Review.new(review_params)
-    @review = @reviewable.reviews.build(params[:review])
-    @review.user = current_user
-    @review = current_user.reviews.new(params[:review])
-    @review.reviewable = @reviewable
+    @review = @reviewable.reviews.new(review_params)
+
     if params[:city_id].present?
       @city = City.find(params[:city_id])
-      @review.city = @city
+
       if @review.save
         redirect_to city_path(@city)
       else
