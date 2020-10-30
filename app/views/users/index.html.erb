@@ -1,5 +1,6 @@
-
   <h1>Users Similar To You</h1>
+
+
     <% @users.each do |user| %>
       <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
         <div class="city-container city-center col-3">
@@ -15,7 +16,6 @@
         </div>
       <% end %>
     <% end %>
-
 
 
     <% @users.each do |user| %>
@@ -34,9 +34,7 @@
       <% end %>
     <% end %>
 
-
 <%= link_to "back", request.referer.present? ? request.referer : default_path, class: "btn btn-dark" %>
-
 
 
     <% @users.each do |user| %>
@@ -57,7 +55,6 @@
 
 
 
-
 <h1>More</h1>
 
     <% @users.first(10).each do |user| %>
@@ -75,5 +72,3 @@
         <% end %>
       <% end %>
     <% end %>
-=======
-
