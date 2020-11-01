@@ -1,38 +1,30 @@
+
 <%= content_for(:navbar_class, "navbar-home") %>
 
-<div class="user-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1540224485413-4c7939106f3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1138&q=80);">
-  <div class="container">
-      <div class="center d-inline-block">
-        <% if @user.avatar.attached? %>
-          <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
-        <% end %>
-        <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-        <h3>Packing for <strong><%= @user.user_cities.last[:title] %></strong> in <strong><%= @user.current_city %></strong>  </h3>
-      <div class="row-6">
-        <% if @user == current_user %>
-            <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-warning", id: "user-btn" %>
-        <% end %>
-        <% if @user != current_user %>
-            <div class="message">
-              <%= simple_form_for [@chatroom] do |f| %>
-                  <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
-                  <%= f.button :submit, "message!", class:"btn btn-dark" %>
-              <% end %>
-            </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="containerr centerr">
-  <div class="cardd">
-    <h2>About</h2>
+<% if @user.avatar.attached? %>
+  <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
+<% end %>
+<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+<%= @user.user_cities.first[:title] %><%= @user.current_city %>
 
-    <p><%= @user.description %></p>
-    </p>
-  </div>
-</div>
+<% if @user == current_user %>
+    <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-warning", id: "user-btn" %>
+<% end %>
+
+<% if @user != current_user %>
+  <%= simple_form_for [@chatroom] do |f| %>
+      <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
+      <%= f.button :submit, "message!", class:"btn btn-dark" %>
+  <% end %>
+<% end %>
+
+
+
+
+<p><%= @user.description %></p>
+
+
 
 <% if @user != current_user %>
 <!-- user review -->
@@ -83,45 +75,35 @@
 
 
 <% if @user == current_user %>
-  <div class="cardd">
-    <%= simple_form_for [@user_city] do |f| %>
-      <%= f.input :title, label: "City", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
-      <div class="row-6 col-6">
-        <%= f.submit 'Add', class: 'btn btn-dark'%>
-      </div>
-    <% end %>
+  <%= simple_form_for [@user_city] do |f| %>
+    <%= f.input :title, label: "City", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
+    <%= f.submit 'Add', class: 'btn btn-dark'%>
+  <% end %>
 <% end %>
-    <div class="cities d-flex">
-      <h1>My Cities</h1>
-      <% current_user.user_cities.each do |city| %>
-          <div class="card">
-            <%= city.title %>
-          </div>
-      <% end %>
-    </div>
-  </div>
 
-  <div class="cardd">
-    <% if @user == current_user %>
-      <%= simple_form_for [@user_interest] do |f| %>
-        <%= f.association :interest, required: false, input_html: { multiple: true } %>
-        <div class="row-6 col-6">
-          <%= f.submit 'Add', class: 'btn btn-dark'%>
-        </div>
-      <% end %>
-    <% end %>
 
-      <% if current_user.user_interests.present? %>
-        <div class="interests d-flex">
-          <h1>I like</h1>
-          <% current_user.user_interests.each do |interest| %>
-              <div class="card">
-                <%= interest.title %>
-              </div>
-          <% end %>
-        </div>
-      <% end %>
-  </div>
+<% current_user.user_cities.each do |city| %>
+  <%= city.title %>
+<% end %>
+
+
+
+
+
+<% if @user == current_user %>
+  <%= simple_form_for [@user_interest] do |f| %>
+    <%= f.association :interest, required: false, input_html: { multiple: true } %>
+    <%= f.submit 'Add', class: 'btn btn-dark'%>
+  <% end %>
+<% end %>
+
+
+
+<% if current_user.user_interests.present? %>
+  <% current_user.user_interests.each do |interest| %>
+    <%= interest.title %>
+  <% end %>
+<% end %>
 
 
 

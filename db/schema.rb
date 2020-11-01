@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_210626) do
+ActiveRecord::Schema.define(version: 2020_11_01_182218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,24 @@ ActiveRecord::Schema.define(version: 2020_10_29_210626) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "city_details", force: :cascade do |t|
+    t.string "title"
+    t.float "value"
+    t.bigint "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_city_details_on_city_id"
+  end
+
+  create_table "cost_of_livings", force: :cascade do |t|
+    t.string "title"
+    t.float "price"
+    t.bigint "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_cost_of_livings_on_city_id"
+  end
+
   create_table "interests", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
@@ -74,6 +92,15 @@ ActiveRecord::Schema.define(version: 2020_10_29_210626) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "occupations", force: :cascade do |t|
+    t.string "title"
+    t.integer "salary"
+    t.bigint "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_occupations_on_city_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -138,18 +165,22 @@ ActiveRecord::Schema.define(version: 2020_10_29_210626) do
     t.string "last_name"
     t.string "username"
     t.string "password"
-    t.string "occupation"
     t.text "description"
     t.string "image_url"
     t.integer "score"
     t.string "current_city"
+    t.bigint "occupation_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["occupation_id"], name: "index_users_on_occupation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "city_details", "cities"
+  add_foreign_key "cost_of_livings", "cities"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "occupations", "cities"
   add_foreign_key "responses", "surveys"
   add_foreign_key "responses", "users"
   add_foreign_key "surveys", "cities"
@@ -158,4 +189,5 @@ ActiveRecord::Schema.define(version: 2020_10_29_210626) do
   add_foreign_key "user_cities", "users"
   add_foreign_key "user_interests", "interests"
   add_foreign_key "user_interests", "users"
+  add_foreign_key "users", "occupations"
 end

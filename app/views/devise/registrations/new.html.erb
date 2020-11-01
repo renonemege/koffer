@@ -19,7 +19,7 @@
     <p>Email:</p><%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }, 
+                input_html: { autocomplete: "email" },
                 label: false %>
     <p>Password:</p><%= f.input :password,
                 required: true,
@@ -35,8 +35,7 @@
                 required: false,
                 input_html: { autocomplete: "avatar" },
                 label: false %>
-    <p>Occupation:</p><%= f.input :occupation,
-                :collection => %w[Artist Astronaut Chef Construction\ Worker Software\ Engineer Firefighter Police Teacher Doctor Architect Artist],
+    <p>Occupation:</p><%= f.association :occupation,
                 required: false,
                 input_html: { autocomplete: "occupation" },
                 label: false %>
