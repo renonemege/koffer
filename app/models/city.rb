@@ -2,6 +2,9 @@ class City < ApplicationRecord
   has_one_attached :photo
   has_many :reviews, as: :reviewable
   has_many :users, through: :user_cities
+  has_many :occupations
+  has_many :cost_of_livings
+  has_many :city_details
   validates :title, :description, :country, :latitude, :longitude, :quality_of_life,
             :income, :living_cost, :traffic, :population, :currency, :weather, :score, presence: true
 

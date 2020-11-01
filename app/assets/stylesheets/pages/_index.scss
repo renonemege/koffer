@@ -4,6 +4,7 @@
 @import "show";
 @import "user_show";
 @import "after_signup";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
 .centered {
   position: absolute;
@@ -14,7 +15,8 @@
   h1 {
     color: white;
     font-weight: bold;
-    font-size: 45px;
+    font-size: 100px;
+    font-family: 'Inter', sans-serif;
   }
   p {
     color: white;
@@ -22,5 +24,30 @@
     font-size: 25px;
     font-weight: lighter;
     margin-bottom: 30px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #try {
+  opacity: 0.5;
+  height: 200px;
+  position: relative;
+  }
+
+  #trytwo {
+  opacity: 0.5;
+  height: 500px;
+  position: relative;
   }
 }
+
+.description {
+  color:white;
+  background-color: black;
+
+}
+
+
+
+
+
+

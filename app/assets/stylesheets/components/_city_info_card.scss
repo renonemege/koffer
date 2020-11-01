@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+
 $black: #282828;
 $point: #F2C94C;
 $point-light: lighten($point, 5%);
@@ -21,12 +24,12 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
 
 .city-container{
   width: 80%;
-  display: -webkit-box;  
-  display: -ms-flexbox;  
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  
+
   margin-left: auto;
   margin-right: auto;
 }
@@ -52,37 +55,37 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
           flex-direction: column;
   padding: $card_padding;
   margin: $card_margin;
-  
+
   -webkit-box-shadow: $card-shadow;
-  
+
           box-shadow: $card-shadow;
   border-radius: $card_round;
-  
+
   -webkit-animation-name: shadow-show; /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
   animation-name: shadow-show;
   animation-duration: 1.5s;
-  
+
   -webkit-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
   -o-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
   transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
 
-  
+
   h1,h2,h3,h4,h5{
     margin: 0px;
     padding: $card_head_padding;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 30px;
     color: $black;
   }
-  
+
   hr{
     display: block;
     border: none;
     height: 3px;
     background-color: $point;
     margin: 0px;
-    
+
     -webkit-animation-name: line-show; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 0.3s; /* Safari 4.0 - 8.0 */
     animation-name: line-show;
@@ -91,10 +94,10 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
     -o-transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000);
     transition-timing-function: cubic-bezier(0.795, 0.000, 0.165, 1.000); /* custom */
   }
-  
+
   p{
     margin: $card-padding-basis 0px 0px 0px;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 100;
     letter-spacing: -0.25px;
     line-height: 1.25;
@@ -102,12 +105,12 @@ $card_head_padding: 0px 0px $card-padding-basis 0px;
     word-break: break-all;
     word-wrap: pre-wrap;
     color: $black;
-    
+
     -webkit-animation-name: p-show; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 1.5s; /* Safari 4.0 - 8.0 */
     animation-name: p-show;
     animation-duration: 1.5s;
   }
-  
+
 }
 

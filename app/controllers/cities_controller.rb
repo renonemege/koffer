@@ -16,6 +16,9 @@ class CitiesController < ApplicationController
 
   def show
     @city = City.find(params[:id])
+    @occupations = Occupation.where(city: City.find_by(title: @city[:title]))
+    @cost_of_livings = CostOfLiving.where(city: City.find_by(title: @city[:title]))
+    @city_details = CityDetail.where(city: City.find_by(title: @city[:title]))
     @review = Review.new
     @user = current_user
     @users = User.all

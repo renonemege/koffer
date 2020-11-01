@@ -8,15 +8,24 @@
 require "open-uri"
 require "faker"
 
-Survey.destroy_all
-UserInterest.destroy_all
-Interest.destroy_all
 UserCity.destroy_all
-Message.destroy_all
-Chatroom.destroy_all
-Review.destroy_all
 User.destroy_all
+Occupation.destroy_all
+CostOfLiving.destroy_all
+CityDetail.destroy_all
 City.destroy_all
+
+Survey.destroy_all
+
+Interest.destroy_all
+UserInterest.destroy_all
+
+Chatroom.destroy_all
+Message.destroy_all
+Review.destroy_all
+
+
+
 
 # --------interests-------
 Interest.create!(
@@ -34,10 +43,9 @@ Interest.create!(
 Interest.create!(
   title: 'Reading'
 )
-
-
+# San\ Fransisco Berlin Frankfurt Amsterdam Stockholm Paris Madrid
 # --------cities--------------
-cities = ['Istanbul', 'San Fransisco', 'Berlin', 'Frankfurt', 'Amsterdam', 'Stockholm', 'Paris', 'Madrid']
+cities = %w[Istanbul Berlin Frankfurt Amsterdam Stockholm Paris Madrid]
 
 # Gets all cities
 teleport_api_cities = open('https://api.teleport.org/api/urban_areas/').read
@@ -48,13 +56,15 @@ the_city = JSON.parse(teleport_api_cities)
 cities.each do |seed_city|
   # Iterate through each city and find the ones provided in cities#array
 
-  the_city['_links']['ua:item'].each do |city|
-    if city['name'] == seed_city
-      puts "Creating #{seed_city}"
+  the_city['_links']['ua:item'].each do |cityy|
+    if cityy['name'] == seed_city
+      puts "Creating #{cityy['name']}"
 
-      city_score_url = city['href'] # get the url for the city
+      city_score_url = cityy['href'] # get the url for the city
+      puts city_score_url
       get_general = open(city_score_url).read
       the_city_general = JSON.parse(get_general)
+
 
       @title = the_city_general['name']
       @country = the_city_general['_links']['ua:countries'][0]['name']
@@ -86,11 +96,12 @@ cities.each do |seed_city|
       country_currency = open(country_currency_url).read
       currency_of = JSON.parse(country_currency)
       @currency = currency_of['currency_code']
+
       # puts city_score_url
       # puts score_url
       # puts get_detailed_score_url
 
-      seed_city = City.create!(
+      City.create!(
         title: @title,
         description: @description,
         country: @country,
@@ -105,7 +116,54 @@ cities.each do |seed_city|
         weather: 'sunny',
         score: 3
       )
+      puts City.last
 
+      # salaries
+      salary_url = the_city_general['_links']['ua:salaries']['href']
+      salary_general = open(salary_url).read
+      salaries = JSON.parse(salary_general)
+      # puts salaries
+      salaries['salaries'].each do |s|
+
+        Occupation.create!(
+          title: s['job']['title'],
+          salary: (s['salary_percentiles']['percentile_50'] / 12).round(),
+          city: City.last
+        )
+      end
+
+
+      city_score_detailed['categories'][3]['data'][1..-1].each do |cost|
+        CostOfLiving.create!(
+          title: cost['label'],
+          price: cost['currency_dollar_value'],
+          city: City.last
+        )
+      end
+      # housing
+      city_score_detailed['categories'][8]['data'][0...-1].each do |cost|
+        CostOfLiving.create!(
+          title: cost['label'],
+          price: cost['currency_dollar_value'],
+          city: City.last
+        )
+      end
+      # pollution
+      city_score_detailed['categories'][15]['data'].each do |detail|
+        CityDetail.create!(
+          title: detail['label'],
+          value: detail['float_value'],
+          city: City.last
+        )
+      end
+      # network
+      city_score_detailed['categories'][13]['data'].each do |detail|
+        CityDetail.create!(
+          title: detail['label'],
+          value: detail['float_value'],
+          city: City.last
+        )
+      end
     end
   end
 end
@@ -174,10 +232,11 @@ puts 'finding users living in Istanbul'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Faker::Job.position,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Istanbul'
   )
+
   User.last.avatar.attach(
     io: URI.open('https://source.unsplash.com/random'),
     filename: 'user.jpg',
@@ -200,7 +259,7 @@ puts 'finding users living in Berlin'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Faker::Job.position,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Berlin',
   )
@@ -225,7 +284,7 @@ puts 'finding users living in Amsterdam'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Faker::Job.position,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Amsterdam',
   )
@@ -251,7 +310,7 @@ puts 'finding users living in Stockholm'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Faker::Job.position,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Stockholm',
   )
@@ -276,7 +335,7 @@ puts 'finding users living in Frankfurt'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Faker::Job.position,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Frankfurt',
   )
@@ -300,7 +359,7 @@ puts 'finding users living in Paris'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Faker::Job.position,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Paris',
   )
@@ -324,7 +383,7 @@ puts 'finding users living in Madrid'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Faker::Job.position,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Madrid',
   )
