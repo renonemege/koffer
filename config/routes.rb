@@ -18,11 +18,10 @@ Rails.application.routes.draw do
 
   resources :user_cities, only: [:create]
   resources :user_interests, only: [:create]
+  resources :user_occupations, only: [:create]
   resource :after_signup, only: [:show]
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   if Rails.env.development?
     get 'kitchensink', to: 'pages#kitchensink'
   end
-
 end

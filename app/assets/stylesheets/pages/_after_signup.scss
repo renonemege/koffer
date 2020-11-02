@@ -1,8 +1,39 @@
 .signupcity{
   .simple_form {
-      margin-top: 100px;
-      justify-content: center;
+      margin-top: 500px;
+      // justify-content: center;
       text-align: center;
-      display: contents;
+      // display: contents;
+      display: block;
+  }
+}
+
+
+#user-cities {
+  height: 100vh;
+}
+
+#user-cities {
+  .simple_form {
+  display: block;
+  justify-content: center;
+  margin-top: 100px;
+  }
+}
+
+
+
+
+#interest {
+  height: 100vh;
+  display: center;
+  margin-top: 100px;
+}
+
+#interest {
+  .simple_form {
+  display: block;
+  justify-content: center;
+  margin-top: 300px;
   }
 }

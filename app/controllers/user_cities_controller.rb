@@ -9,8 +9,9 @@ class UserCitiesController < ApplicationController
 
     if @user_city.save
       if params[:create_and_add]
-      # Redirect to new form, for example.
         redirect_to city_path(@user_city.city_id)
+        # redirect_to form_page_two_path(session[:passed_variable] = params[:user_city][:title])
+        # render 'after_signups/show'
       else
         redirect_to user_path(@user)
       end
@@ -26,3 +27,5 @@ class UserCitiesController < ApplicationController
     params.require(:user_city).permit(:title)
   end
 end
+
+
