@@ -1,8 +1,7 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
-<%# new card %>
+<%# new profile %>
 
-<div class="container">
    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
         <div class="centered row">
           <h1><%= @city.title %></h1>
@@ -33,24 +32,27 @@
   <div class="main-bd">
     <div class="left-side">
       <div class="profile-side">
-        <div class="user-bio">
-          <h3>Bio</h3>
-          <p class="bio">
-            Lorem ipsum dolor sit amet, hello how consectetur adipisicing elit. Sint consectetur provident magni yohoho consequuntur, voluptatibus ghdfff exercitationem at quis similique. Optio, amet!
-          </p>
-        </div>
+      <p>Relocation to <%= @user.user_cities.first[:title] %> from <%= @user.current_city %></p>
         <div class="profile-btn">
-          <button class="chatbtn" id="chatBtn"><i class="fa fa-comment"></i> Chat</button>
-          <% if @user == current_user %>
-            <%= link_to "Edit", edit_user_registration_path(current_user), class: "createbtn", id: "Create-post", <i class="fa fa-plus"></i> %>
-        <% end %>
+
+            <% if @user == current_user %>
+                <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-warning", id: "user-btn" %>
+            <% end %>
+
+            <% if @user != current_user %>
+              <%= simple_form_for [@chatroom] do |f| %>
+                  <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
+                  <%= f.button :submit, "message!", class: "btn btn-warning", id: "user-btn" %>
+              <% end %>
+            <% end %>
+          
+
         </div>
         <div class="user-rating">
-          <h3 class="rating">4.5</h3>
+          <h3 class="rating">4.1</h3>
           <div class="rate">
             <div class="star-outer">
               <div class="star-inner">
-                <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -62,106 +64,59 @@
 
         </div>
       </div>
-
     </div>
-    <div class="right-side">
 
-      <div class="nav">
-        <ul>
-          <li onclick="tabs(0)" class="user-post active">Posts</li>
-          <li onclick="tabs(1)" class="user-review">Reviews</li>
-          <li onclick="tabs(2)" class="user-setting"> Settings</li>
-        </ul>
-      </div>
+    <div class="right-side">
       <div class="profile-body">
-        <div class="profile-posts tab">
-          <h1>Your Post</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa quia sunt itaque ut libero cupiditate ullam qui velit laborum placeat doloribus, non tempore nisi ratione error rem minima ducimus. Accusamus adipisci quasi at itaque repellat sed
-            magni eius magnam repellendus. Quidem inventore repudiandae sunt odit. Aliquid facilis fugiat earum ex officia eveniet, nisi, similique ad ullam repudiandae molestias aspernatur qui autem, nam? Cupiditate ut quasi iste, eos perspiciatis maiores
-            molestiae.</p>
+        <div class="user-bio">
+          <h3>Bio</h3>
+          <p class="bio">
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ducimus, aspernatur ipsam, in fuga dolorem deserunt officiis rem eveniet tempora veniam sunt fugiat libero est quis amet facilis exercitationem molestiae.</p>            
+          </p>
         </div>
-        <div class="profile-reviews tab">
-          <h1>User reviews</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam pariatur officia, aperiam quidem quasi, tenetur molestiae. Architecto mollitia laborum possimus iste esse. Perferendis tempora consectetur, quae qui nihil voluptas. Maiores debitis
-            repellendus excepturi quisquam temporibus quam nobis voluptatem, reiciendis distinctio deserunt vitae! Maxime provident, distinctio animi commodi nemo, eveniet fugit porro quos nesciunt quidem a, corporis nisi dolorum minus sit eaque error
-            sequi ullam. Quidem ut fugiat, praesentium velit aliquam!</p>
+      </div>
+
+    <form>
+      <div class="form-group row">
+        <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-6">
+          <% if @user == current_user %>
+            <%= simple_form_for [@user_interest] do |f| %>
+              <%= f.association :interest, label: "User Interest:", required: false, input_html: { multiple: true } %>
+              <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
+            <% end %>
+          <% end %>
         </div>
-        <div class="profile-settings tab">
-          <div class="account-setting">
-            <h1>Acount Setting</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit omnis eaque, expedita nostrum, facere libero provident laudantium. Quis, hic doloribus! Laboriosam nemo tempora praesentium. Culpa quo velit omnis, debitis maxime, sequi
-              animi dolores commodi odio placeat, magnam, cupiditate facilis impedit veniam? Soluta aliquam excepturi illum natus adipisci ipsum quo, voluptatem, nemo, commodi, molestiae doloribus magni et. Cum, saepe enim quam voluptatum vel debitis
-              nihil, recusandae, omnis officiis tenetur, ullam rerum.</p>
+      </div>
+      <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-6">
+          <% if @user == current_user %>
+            <%= simple_form_for [@user_city] do |f| %>
+              <%= f.input :title, label: "User City:", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
+              <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </form>
+
+    <div class="col-md-6 mx-auto">
+        <div class="py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h5 class="mb-0">City photos</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 mb-2 pr-lg-1"><img src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
+            <div class="col-lg-6 mb-2 pl-lg-1"><img src="https://images.unsplash.com/photo-1493571716545-b559a19edd14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
+            <div class="col-lg-6 pr-lg-1 mb-2"><img src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
+            <div class="col-lg-6 pl-lg-1"><img src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-
-<%# old card %>
-
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
-        <div class="centered row">
-          <h1><%= @city.title %></h1>
-        </div>
-    </div>  
-    <div class="center">
-    <% if @user.avatar.attached? %>
-      <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
-    <% end %>
-    <h2><%= @user.first_name %> <%= @user.last_name %><%= @user.first_name %> <%= @user.last_name %></h2>
-    <p>Relocation to <%= @user.user_cities.first[:title] %> from <%= @user.current_city %></p>
-
-    <% if @user == current_user %>
-        <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-warning", id: "user-btn" %>
-    <% end %>
 
     <% if @user != current_user %>
-      <%= simple_form_for [@chatroom] do |f| %>
-          <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
-          <%= f.button :submit, "message!", class:"btn btn-dark" %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
-
-
-      <h2>About</h2>
-      <p><%= @user.description %></p>
- 
-
-
-  <form>
-    <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-6">
-        <% if @user == current_user %>
-          <%= simple_form_for [@user_interest] do |f| %>
-            <%= f.association :interest, label: "User Interest:", required: false, input_html: { multiple: true } %>
-            <%= f.submit 'Add', class: 'btn btn-dark'%>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-6">
-        <% if @user == current_user %>
-          <%= simple_form_for [@user_city] do |f| %>
-            <%= f.input :title, label: "User City:", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
-            <%= f.submit 'Add', class: 'btn btn-dark'%>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </form>
-</div>
-
-
-
-<% if @user != current_user %>
 <!-- user review -->
   <div class="rating-form mt-15 p-2">
     <span>What do you think about <%= @user.first_name %>  ?</span>
@@ -208,33 +163,5 @@
     </ul>
   </div>
 
-
-
-<% current_user.user_cities.each do |city| %>
-  <%= city.title %>
-<% end %>
-
-
-<% if current_user.user_interests.present? %>
-  <% current_user.user_interests.each do |interest| %>
-    <%= interest.title %>
-  <% end %>
-<% end %>
-
-<div class="row py-5 px-4">
-  <div class="col-md-5 mx-auto">
-
-    <div class="py-4 px-4">
-      <div class="d-flex align-items-center justify-content-between mb-3">
-        <h5 class="mb-0">City photos</h5><a href="#" class="btn btn-link text-muted">Show all</a>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6 mb-2 pr-lg-1"><img src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-        <div class="col-lg-6 mb-2 pl-lg-1"><img src="https://images.unsplash.com/photo-1493571716545-b559a19edd14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-        <div class="col-lg-6 pr-lg-1 mb-2"><img src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-        <div class="col-lg-6 pl-lg-1"><img src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-      </div>
     </div>
   </div>
-</div>

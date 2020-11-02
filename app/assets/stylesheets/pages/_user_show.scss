@@ -89,11 +89,9 @@
 }
 
 body {
-  background: #e9e9e9;
+  background: white;
   overflow-x: hidden;
-  padding-top: 90px;
   font-family: "Poppins", sans-serif;
-  margin: 0 100px;
 }
 
 .profile-header {
@@ -163,19 +161,19 @@ body {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   outline: none;
-  background: #e40046;
+  background: #F2C94C;
 }
 
 .profile-option:hover {
   background: #fff;
-  border: 1px solid #e40046;
+  border: 1px solid #F2C94C;
 }
 .profile-option:hover .notification i {
-  color: #e40046;
+  color: #F2C94C;
 }
 
 .profile-option:hover span {
-  background: #e40046;
+  background: #F2C94C;
 }
 
 .profile-option .notification i {
@@ -189,8 +187,8 @@ body {
   top: -5px;
   right: -5px;
   background: #fff;
-  color: #e40046;
-  border: 1px solid #e40046;
+  color: #F2C94C;
+  border: 1px solid #F2C94C;
   padding: 5px;
   border-radius: 50%;
   height: 20px;
@@ -225,13 +223,13 @@ body {
 }
 
 .profile-side p i {
-  color: #e40046;
+  color: #F2C94C;
   margin-right: 10px;
 }
 
 .mobile-no i {
   transform: rotateY(180deg);
-  color: #e40046;
+  color: #F2C94C;
 }
 
 .profile-btn {
@@ -244,7 +242,7 @@ button.createbtn {
   padding: 10px;
   width: 100%;
   border-radius: 3px;
-  background: #e40046;
+  background: #F2C94C;
   color: #fff;
   font-family: "Bree Serif";
   font-size: 1rem;
@@ -288,7 +286,7 @@ button.createbtn i {
 
 .rate i {
   font-size: 0.9rem;
-  color: rgba(228, 0, 70, 1);
+  color: #F2C94C;
 }
 
 .nav {
@@ -315,7 +313,7 @@ button.createbtn i {
 
 .nav ul li:hover,
 .nav ul li.active {
-  box-shadow: 0px -3px 0px rgba(288, 0, 70, 0.9) inset;
+  box-shadow: 0px -3px 0px rgba(	242, 201, 76, 0.9) inset;
 }
 
 .profile-body {
@@ -404,6 +402,10 @@ button.createbtn i {
   }
 }
 
+.user-bio {
+  padding: 15px;
+}
+
 @media (max-width: 400px) {
   body {
     margin: auto;
@@ -449,4 +451,8 @@ button.createbtn i {
   display: flex;
   justify-content: center;
   margin: 20px auto;
+}
+
+.rating-form {
+  text-align: center;
 }
