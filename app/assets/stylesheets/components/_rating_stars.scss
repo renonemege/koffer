@@ -65,16 +65,9 @@ $box-size: $spacing-xxlarge;
 
 $color-text: #404646;
 
-html {
-  font-size: 14.5px;
-}
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  line-height: 1.45em;
-  background-color: #f0f0f0;
-  color: $color-text;
-}
+
+
 
 * {
   box-sizing: border-box;
