@@ -80,7 +80,7 @@
           <div class="city-container city-center col-3">
             <div class="city-card">
               <p> <%= user.username %> </p>
-              <p> <strong><%= user.occupation %></strong> living in <strong><%= user.current_city %></strong>  </p>
+              <p> <strong><%= user.occupation.title %></strong> living in <strong><%= user.current_city %></strong>  </p>
               <% if user.avatar.attached? %>
                 <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
               <% end %>

@@ -14,4 +14,9 @@ class User < ApplicationRecord
   validates :current_city, presence: true
   # validates :email, :first_name, :last_name, :username, :password,
   # :description, :image_url, :score, presence: true
+
+
+  # def current_city
+  #   City.where(user_city: 'active')
+  # end
 end
