@@ -9,5 +9,6 @@ class UsersController < ApplicationController
     @review = Review.new
     @user_city = UserCity.new
     @user_interest = UserInterest.new
+    @city = City.find_by(title: @user.user_cities.first[:title])
   end
 end
