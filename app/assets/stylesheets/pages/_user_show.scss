@@ -4,8 +4,6 @@
     padding: 250px 0;
     .center {
       position: absolute;
-      display: flex
-
     }
     p {
       color: white;
@@ -68,3 +66,13 @@
 // #user-btn {
 //   height: 35px;
 // }
+
+.col-sm-2 {
+  align-self: center;
+}
+
+.form-group {
+  .simple_form {
+    display: block;
+  }
+}
