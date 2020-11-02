@@ -35,18 +35,7 @@
                 required: false,
                 input_html: { autocomplete: "avatar" },
                 label: false %>
-    <p>Occupation:</p><%= f.association :occupation,
-                required: false,
-                input_html: { autocomplete: "occupation" },
-                label: false %>
-    <p>Current city:</p><%= f.input :current_city,
-                required: true,
-                input_html: { autocomplete: "current_city" },
-                label: false %>
-    <p>Description:</p><%= f.input :description,
-                required: true,
-                input_html: { autocomplete: "Tell us more about yourself" },
-                label: false %>
+
 
     <div class="form-actions col-12 btn btn-warning">
       <%= f.button :submit, "Sign up" %>

@@ -9,6 +9,7 @@ require "open-uri"
 require "faker"
 
 UserCity.destroy_all
+Message.destroy_all
 User.destroy_all
 Occupation.destroy_all
 CostOfLiving.destroy_all
@@ -21,7 +22,7 @@ Interest.destroy_all
 UserInterest.destroy_all
 
 Chatroom.destroy_all
-Message.destroy_all
+
 Review.destroy_all
 
 
