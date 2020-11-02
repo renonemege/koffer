@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_01_182218) do
+ActiveRecord::Schema.define(version: 2020_11_02_064431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_182218) do
   create_table "occupations", force: :cascade do |t|
     t.string "title"
     t.integer "salary"
-    t.bigint "city_id", null: true
+    t.bigint "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_occupations_on_city_id"
@@ -169,7 +169,7 @@ ActiveRecord::Schema.define(version: 2020_11_01_182218) do
     t.string "image_url"
     t.integer "score"
     t.string "current_city"
-    t.bigint "occupation_id", null: false
+    t.bigint "occupation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["occupation_id"], name: "index_users_on_occupation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
