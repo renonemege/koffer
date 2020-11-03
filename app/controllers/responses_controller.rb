@@ -17,6 +17,10 @@ class ResponsesController < ApplicationController
     end
   end
 
+  def show
+    @response = Response.find(params[:id])
+  end
+
   private
 
   def response_params

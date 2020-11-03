@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @chatroom = Chatroom.new
+    
   end
 
   def show

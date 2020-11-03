@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:show, :create, :index] do
     resources :messages, only: :create
   end
+ 
+  resources :surveys, only: :show do
+    resources :responses, only: :create
+  end
 
   resources :user_cities, only: [:create]
   resources :user_interests, only: [:create]
