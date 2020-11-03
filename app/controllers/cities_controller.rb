@@ -22,6 +22,8 @@ class CitiesController < ApplicationController
     @review = Review.new
     @user = current_user
     @users = User.all
+    @survey = Survey.new
+    @surveys = @city.surveys
 
     city = @city.geocode
     @markers =

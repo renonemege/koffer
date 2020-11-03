@@ -6,6 +6,7 @@ class City < ApplicationRecord
   has_many :cost_of_livings
   has_many :city_details
   has_many :user_occupations
+  has_many :surveys
   validates :title, :description, :country, :latitude, :longitude, :quality_of_life,
             :income, :living_cost, :traffic, :population, :currency, :weather, :score, presence: true
 
