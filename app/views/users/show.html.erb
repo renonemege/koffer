@@ -35,7 +35,7 @@
                   <%= f.button :submit, "message!", class: "btn btn-warning", id: "user-btn" %>
               <% end %>
             <% end %>
-          
+
 
         </div>
         <div class="user-rating">
@@ -59,9 +59,9 @@
     <div class="right-side">
       <div class="profile-body">
         <div class="user-bio">
-          <h3>Bio</h3>
+          <h3>About</h3>
           <p class="bio">
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ducimus, aspernatur ipsam, in fuga dolorem deserunt officiis rem eveniet tempora veniam sunt fugiat libero est quis amet facilis exercitationem molestiae.</p>            
+             <p> <%= @user.description %> </p>
           </p>
         </div>
       </div>
@@ -91,7 +91,7 @@
           <% end %>
         </div>
       </div>
-    
+
 
     <div class="col-md-6 mx-auto">
         <div class="py-4 px-4">

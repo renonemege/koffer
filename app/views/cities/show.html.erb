@@ -11,152 +11,258 @@
 
 
   <div class="card" id="sticky-card">
-    <div class="description">
-      <h2>About</h2>
-      <p><%= @city.description.html_safe %></p>
-    </div>
-    <div class="container">
-      <div>
-          <h1 id = "city"> <%= @city.title %> </h1>
+    <div class="row">
+      <div id="map"
+          style="width: 50%; height: 700px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
-      <div>
-        <h2 id = "date">date</h2>
-      </div>
-      <div>
-        <p id="condition">condition</p>
-      </div>
-      <div>
-        <i class="fas fa-bolt"></i>
-        <h2 id="celcius">celcius</h2>
+      <div class="col-6 ">
+        <div class="row mt-5 ml-1">
+          <div class="card " id="weather">
+            <div>
+                <h1 id = "city"> <%= @city.title %> </h1>
+            </div>
+            <div>
+              <h2 id = "date">date</h2>
+            </div>
+            <div>
+              <p id="condition">condition</p>
+            </div>
+            <div>
+              <i class="fas fa-bolt"></i>
+              <h2 id="celcius">celcius</h2>
+            </div>
+          </div>
+
+          <div class="card col-3 text-center" id="city-main">
+            <p>Country </p>
+            <p><%= @city.country %></p>
+          </div>
+          <div class="card col-3 text-center" id="city-main">
+            <p>Currency </p>
+            <p><%= @city.currency %></p>
+          </div>
+        </div>
+        <div class="row " id='city-description'>
+          <p><%= @city.description.split('   ')[0...-1].join.html_safe %></p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="card" id="sticky-card">
-    <% @users.each do |user| %>
-      <% if user.occupation.title == current_user.occupation.title && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title%>
-        <%= link_to user do %>
-          <p><%= user.first_name %> <%= user.last_name %></p>
-           <p><%= user.occupation.title %> in <%= @city.title %></p>
-          <% if user.avatar.attached? %>
-            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% @users.each do |user| %>
-        <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title%>
-          <%= link_to user do %>
-            <p><%= user.first_name %> <%= user.last_name %></p>
-            <p><%= user.user_interests.first %><%= @city.title %></p>
-            <% if user.avatar.attached? %>
-              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+<!-- friends -->
+    <div class="card" id="sticky-card">
+
+      <div class="scroller">
+          <% @users.each do |user| %>
+            <% if user.occupation.title == current_user.occupation.title && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title && user.current_city == @city.title%>
+              <div class="container mt-5 mr-5 d-flex justify-content-center">
+                <div class="card-profile p-3 col-4">
+                  <div class="d-flex align-items-center">
+                    <% if user.avatar.attached? %>
+                      <div class="image"> <%= cl_image_tag user.avatar.key, class: "round", width: "155", height: "155" %> </div>
+                    <% end %>
+                    <div class="ml-3 w-100">
+                      <h4 class="mb-0 mt-0"><%= user.first_name %> <%= user.last_name %></h4>
+                      <span><%= user.occupation.title %> living in <%= user.current_city %></span>
+                      <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                        <div class="d-flex flex-column"> <span class="ratings d-inline-block">Rating</span> <span class="number3">4.9</span> </div>
+                      </div>
+                      <div class="button mt-2 d-flex flex-row align-items-center">
+                        <%= simple_form_for @chatroom do |f| %>
+                          <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
+                          <%= f.button :submit, "Message", class: "btn btn-warning w-100 " %>
+                        <% end %>
+                        <%= link_to user do %>
+                          <button class="btn btn-warning w-100 ml-2 mt-2">Profile</button>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% end %>
           <% end %>
-        <% end %>
-    <% end %>
-
-    <% @users.each do |user| %>
-        <% if user != current_user && user.current_city == current_user.current_city%>
-          <%= link_to user do %>
-            <p><%= user.first_name %> <%= user.last_name %></p>
-            <p><%= user.occupation %><%= @city.title %></p>
-            <% if user.avatar.attached? %>
-              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-            <% end %>
-          <% end %>
-        <% end %>
-    <% end %>
-  </div>
-  <div class="card" id="sticky-card">
-    <h2><span>Project #1</span>Title of the Project</h2>
-    <div class="wrappers">
-      <span class="cloud-1"></span>
-      <span class="cloud-2"></span>
-      <span class="cloud-3"></span>
-      <span class="cloud-4"></span>
-      <span class="cloud-5"></span>
-      <span class="cloud-6"></span>
-      <span class="cloud-7"></span>
-      <span class="cloud-8"></span>
-      <span class="cloud-9"></span>
-      <span class="cloud-10"></span>
-      <span class="cloud-11"></span>
-      <span class="cloud-12"></span>
-      <span class="car"></span>
-      <span class="sun"></span>
-      <span class="car car-2"></span>
-      <span class="car car-3"></span>
-      <span class="car car-4"></span>
-    </div>
-  </div>
-
-  <div class="card" id="sticky-card">
-    <h2><span>Project #1</span>Title of the Project</h2>
-    <!-- map -->
-    <div id="map"
-        style="width: 50%; height: 700px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
-    <!-- map -->
-  </div>
 
 
 
-  <div class="card" id="sticky-card">
-    <h2><span>Project #1</span>Title of the Project</h2>
-    <!-- review -->
-    <div class="rating-form mt-15 p-2">
-      <span>What do you think about <%= @city.title %>  ?</span>
-      <%= simple_form_for [@city, @review] do |f| %>
-      <div class="form-inputs">
-        <%= f.input :content,
-                    as: :text,
-                    label: false %>
-        <fieldset class="rating">
-          <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
-          <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
-          <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
-          <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
-          <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
-        </fieldset>
-          <%= f.submit %>
-        <% end %>
-      </div>
-    </div>
-    <!-- review end -->
 
 
-    <div class="reviews">
-      <ul class="list-group">
-        <% if @city.reviews.nil? %>
-          <% 5.times do  %>
-              <span class="far fa-star"></span>
-          <% end %>
-        <% else %>
-          <% @city.reviews.reverse.each do |review| %>
-            <div class="review mb-5 mt-3">
-              <li class="list-group-item">
-                <% review.stars.times do  %>
-                  <span class="fas fa-star"></span>
-                <% end %>
-                <% (5 - review.stars).times do  %>
-                  <span class="far fa-star"></span>
-                <% end %>
-                <p><%= review.content%></p>
-              </li>
+
+
+
+        <% @users.each do |user| %>
+          <% if user != current_user && user.current_city == current_user.user_cities.last.title && user.current_city == @city.title%>
+            <div class="container mt-5 mr-5 d-flex justify-content-center" >
+              <div class="card-profile p-3 col-4">
+                <div class="d-flex align-items-center">
+                  <% if user.avatar.attached? %>
+                    <div class="image"> <%= cl_image_tag user.avatar.key, class: "round", width: "155", height: "155" %> </div>
+                  <% end %>
+                  <div class="ml-3 w-100">
+                    <h4 class="mb-0 mt-0"><%= user.first_name %> <%= user.last_name %></h4>
+                    <span><%= user.occupation.title %> living in <%= user.current_city %></span>
+                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="ratings d-inline-block">Rating</span> <span class="number3">4.9</span> </div>
+                    </div>
+                    <div class="button mt-2 d-flex flex-row align-items-center">
+                      <%= simple_form_for @chatroom do |f| %>
+                        <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
+                        <%= f.button :submit, "Message", class: "btn btn-warning w-100 " %>
+                      <% end %>
+                      <%= link_to user do %>
+                        <button class="btn btn-warning w-100 ml-2 mt-2">Profile</button>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           <% end %>
         <% end %>
-      </ul>
+
+
+
+
+        <% @users.each do |user| %>
+          <% if user.occupation.title == current_user.occupation.title && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title  && user.current_city == @city.title%>
+            <div class="container mt-5 d-flex justify-content-center">
+              <div class="card-profile p-3 col-4">
+                <div class="d-flex align-items-center">
+                  <% if user.avatar.attached? %>
+                    <div class="image"> <%= cl_image_tag user.avatar.key, class: "round", width: "155", height: "155" %> </div>
+                  <% end %>
+                  <div class="ml-3 w-100">
+                    <h4 class="mb-0 mt-0"><%= user.first_name %> <%= user.last_name %></h4>
+                    <span><p><%= user.user_interests.first %><%= @city.title %></p></span>
+                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="ratings d-inline-block">Rating</span> <span class="number3">4.9</span> </div>
+                    </div>
+                    <div class="button mt-2 d-flex flex-row align-items-center">
+                      <%= simple_form_for @chatroom do |f| %>
+                        <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
+                        <%= f.button :submit, "Message", class: "btn btn-warning w-100 " %>
+                      <% end %>
+                      <%= link_to user do %>
+                        <button class="btn btn-warning w-100 ml-2 mt-2">Profile</button>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+<!-- friends end -->
+  <div class="card" id="sticky-card">
+    <div class="row">
+      <div class="col-4">
+        <% @city.cost_of_livings.first(10).each do |t|%>
+          <p><i class="fas fa-coffee"></i><%= t.title %>---<%= t.price %>$</p>
+        <% end %>
+      </div>
+      <div class="col-4">
+        <% @city.cost_of_livings.last(3).each do |t|%>
+          <p><i class="fas fa-coffee"></i><%= t.title %>---<%= t.price %>$</p>
+        <% end %>
+      </div>
+      <div class="col-4">
+        <% @city_details.each do |detail| %>
+          <p><%= detail.title.split('[').first %> <%= detail.value %></p>
+
+        <% end %>
+      </div>
+
     </div>
   </div>
 
-<%# City survey viewer (with links to the survey page) / create new survey on the city %>
+
+<!-- animation -->
+  <div class="card" id="sticky-card">
+
+    <div class="wrappers">
+        <span class="cloud-1"></span>
+        <span class="cloud-2"></span>
+        <span class="cloud-3"></span>
+        <span class="cloud-4"></span>
+        <span class="cloud-5"></span>
+        <span class="cloud-6"></span>
+        <span class="cloud-7"></span>
+        <span class="cloud-8"></span>
+        <span class="cloud-9"></span>
+        <span class="cloud-10"></span>
+        <span class="cloud-11"></span>
+        <span class="cloud-12"></span>
+        <span class="car"></span>
+        <span class="sun"></span>
+        <span class="car car-2"></span>
+        <span class="car car-3"></span>
+        <span class="car car-4"></span>
+      </div>
+    <!-- review -->
+    <div class="row">
+
+      <div class="rating-form col-6 mt-15 p-2">
+        <span>What do you think about <%= @city.title %>  ?</span>
+        <%= simple_form_for [@city, @review] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :content,
+                      as: :text,
+                      label: false %>
+          <fieldset class="rating">
+            <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+            <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+            <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+            <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+            <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+          </fieldset>
+            <%= f.submit %>
+          <% end %>
+        </div>
+      </div>
+      <!-- review end -->
+
+
+      <div class="reviews col-6">
+        <ul class="list-group">
+          <% if @city.reviews.nil? %>
+            <% 5.times do  %>
+                <span class="far fa-star"></span>
+            <% end %>
+          <% else %>
+            <% @city.reviews.reverse.each do |review| %>
+              <div class="review mb-5 mt-3">
+                <li class="list-group-item">
+                  <% review.stars.times do  %>
+                    <span class="fas fa-star"></span>
+                  <% end %>
+                  <% (5 - review.stars).times do  %>
+                    <span class="far fa-star"></span>
+                  <% end %>
+                  <p><%= review.content%></p>
+                </li>
+              </div>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+<!-- animation end -->
+
+
+
+
+
+<!-- City survey viewer (with links to the survey page) / create new survey on the city %> -->
 
   <div class="card" id="sticky-card">
-    <h2><span>Project #1</span>Title of the Project</h2>
+
     <ul class="list-group">
       <% @city.surveys.each do |survey| %>
         <div class="survey mb-5 mt-3">
@@ -179,118 +285,55 @@
       </div>
     </div>
 
-  </div>  
+  </div>
 
 <%# end of survey %>
 
 
 
   <div class="card" id="sticky-card">
-    <h2><span>Project #1</span>Title of the Project</h2>
-    <p>country <%= @city.country %></p>
-    <p>currency <%= @city.currency %></p>
-    <p>population <%= @city.population %></p>
-    <p>score <%= @city.score %></p>
-
-    <% @city.cost_of_livings.each do |t|%>
-      <p><i class="fas fa-coffee"></i><%= t.title %>---<%= t.price %>$</p>
-    <% end %>
-  </div>
-
-
-  <div class="card" id="sticky-card">
-    <% @city_details.each do |detail| %>
-      <%= detail.title %>
-      <%= detail.value %>
-    <% end %>
-  </div>
-
-
-  <div class="card" id="sticky-card">
     <div class='main-container'>
       <div class='grid-container'>
         <div class='card card--2x'>
-          <div class='card__content big-script padding-large'>
-            <p>Travel and see the world</p>
+          <div class='card__image big-script '>
+            <%= image_tag("https://source.unsplash.com/collection/#{@city.title}/1600x900") %>
+
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <img src='https://images.pexels.com/photos/443416/pexels-photo-443416.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260'>
+            <%= image_tag("https://loremflickr.com/g/320/240/#{@city.title}") %>
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <img src='https://images.pexels.com/photos/542411/pexels-photo-542411.png?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260'>
-          </div>
-        </div>
-        <div class='card'>
-          <div class='card__content'>
-            <p><em>Travel is fatal to prejudice, bigotry, and narrow-mindedness.</em></p>
-            <p>— Mark Twain</p>
-          </div>
-        </div>
-        <div class='card'>
-          <div class='card__content'>
-            <p><em>Travel is fatal to prejudice, bigotry, and narrow-mindedness.</em></p>
-            <p>— Mark Twain</p>
-          </div>
-        </div>
-        <div class='card'>
-          <div class='card__content'>
-            <p><em>Travel is fatal to prejudice, bigotry, and narrow-mindedness.</em></p>
-            <p>— Mark Twain</p>
+            <%= image_tag("https://picsum.photos/200/300?random=1") %>
+
           </div>
         </div>
 
         <div class='card'>
           <div class='card__image'>
-            <img src='https://images.pexels.com/photos/386009/pexels-photo-386009.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260'>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="card" id="sticky-card">
-    <div class='main-container'>
-      <div class='grid-container'>
-        <div class='card card--horizontal'>
-          <div class='card__side-by-side'>
-            <div class='card__image'>
-              <img src='https://images.pexels.com/photos/885880/pexels-photo-885880.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260'>
-            </div>
-
-            <div class='card__content'>
-              <h3>Lorem ipsum</h3>
-              <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra</p>
-            </div>
-          </div>
-        </div>
-        <div class='card card--vertical'>
-          <div class='card__image'>
-            <img src='https://images.pexels.com/photos/450597/pexels-photo-450597.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260'>
+            <%= image_tag("https://picsum.photos/200/300?random=2") %>
           </div>
         </div>
         <div class='card'>
-          <div class='card__content'>
-            <p><em>We wander for distraction, but we travel for fulfilment.</em></p>
-            <p>— Hilaire Belloc</p>
+          <div class='card__image'>
+            <%= image_tag("https://picsum.photos/200/300?random=3") %>
           </div>
         </div>
 
         <div class='card'>
-          <div class='card__content'>
-            <p><em>A good traveller has no fixed plans and is not intent on arriving.</em></p>
-            <p>— Lao Tzu</p>
+          <div class='card__image'>
+            <%= image_tag("https://picsum.photos/200/300?random=4") %>
+
           </div>
         </div>
 
-        <div class='card card--horizontal'>
+
+        <div class='card'>
           <div class='card__image'>
-            <img src='https://images.pexels.com/photos/358319/pexels-photo-358319.jpeg?auto=compress&amp;cs=tinysrgb&amp;h=750&amp;w=1260'>
+            <%= image_tag("https://picsum.photos/200/300?random=5") %>
           </div>
         </div>
       </div>
@@ -301,8 +344,6 @@
 
 
 
-
-  </div>
 </div>
 
 

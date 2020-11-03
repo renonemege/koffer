@@ -7,8 +7,9 @@
                 :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
                 label: false %>
 
-        <%= simple_fields_for @user_interest do |f| %>
+        <%= simple_fields_for @user_interest, class: "ks-cboxtags", id: "user-btn" do |f| %>
           <p>Interest</p><%= f.association :interest,
+                            as: :check_boxes,
                             input_html: { multiple: true },
                             label: false %>
 
