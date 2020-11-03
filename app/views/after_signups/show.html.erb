@@ -1,6 +1,7 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
 
+
 <%= simple_form_for @user_city do |f| %>
     <p>Relocate To ...*</p><%= f.input :title ,
                 :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
@@ -20,6 +21,7 @@
     <% end %>
     <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
   <% end %>
+
 
 
 

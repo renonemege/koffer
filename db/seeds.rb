@@ -10,10 +10,10 @@ require "faker"
 
 UserCity.destroy_all
 Message.destroy_all
-UserOccupation.destroy_all
-UserInterest.destroy_all
 User.destroy_all
+UserOccupation.destroy_all
 Occupation.destroy_all
+UserInterest.destroy_all
 Interest.destroy_all
 CostOfLiving.destroy_all
 CityDetail.destroy_all
@@ -25,6 +25,7 @@ Survey.destroy_all
 Chatroom.destroy_all
 
 Review.destroy_all
+
 
 
 

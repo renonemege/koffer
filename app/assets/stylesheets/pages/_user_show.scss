@@ -72,6 +72,7 @@
 }
 
 .form-group {
+  text-align: -webkit-center;
   .simple_form {
     display: block;
   }
@@ -94,11 +95,13 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.profile-header {
+.profile-banner {
   background: #fff;
   width: 100%;
   display: flex;
-  height: 190px;
+  padding: 150px 0;
+  background-size: cover;
+  background-position: center;
   position: relative;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
 }
@@ -116,8 +119,8 @@ body {
   border: 5px solid #fff;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
   position: absolute;
-  left: 50px;
-  top: 20px;
+  left: 20px;
+  top: 340px;
   z-index: 5;
   background: #fff;
 }
@@ -128,13 +131,17 @@ body {
   flex-direction: column;
   justify-content: center;
   padding-top: 60px;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 350px;
 }
 
 .profile-nav-info h3 {
   font-variant: small-caps;
-  font-size: 2rem;
+  font-size: 4rem;
   font-family: sans-serif;
   font-weight: bold;
+  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.7);
 }
 
 .profile-nav-info .address {
@@ -153,6 +160,7 @@ body {
   position: absolute;
   right: 50px;
   top: 50%;
+  margin-top: 250px;
   transform: translateY(-50%);
   border-radius: 50%;
   display: flex;
@@ -262,6 +270,12 @@ button.createbtn:hover {
 button.chatbtn i,
 button.createbtn i {
   margin-right: 5px;
+}
+
+.user-name {
+ 
+    color: white;
+ 
 }
 
 .user-rating {
@@ -455,4 +469,98 @@ button.createbtn i {
 
 .rating-form {
   text-align: center;
+}
+
+// User interest
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+.profile-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  .simple_form {
+    display: block;
+  }
+}
+
+
+
+.ks-cboxtags {
+  list-style: none;
+  padding: 20px;
+}
+.ks-cboxtags {
+display: inline;
+}
+.ks-cboxtags label{
+  display: inline-block;
+  background-color: rgba(255, 255, 255, .9);
+  border: 2px solid rgba(139, 139, 139, .3);
+  color: #adadad;
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
+}
+
+.ks-cboxtags label {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.ks-cboxtags label::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  padding: 2px 6px 2px 2px;
+  content: "\f067";
+  transition: transform .3s ease-in-out;
+}
+
+.ks-cboxtags input[type="checkbox"]:checked + label::before {
+  content: "\f00c";
+  transform: rotate(-360deg);
+  transition: transform .3s ease-in-out;
+}
+
+.ks-cboxtags input[type="checkbox"]:checked + label {
+  border: 2px solid #F2C94C;
+  background-color: #4F4F4F;
+  color: #fff;
+  transition: all .2s;
+}
+
+.ks-cboxtags input[type="checkbox"] {
+display: absolute;
+}
+.ks-cboxtags input[type="checkbox"] {
+position: absolute;
+opacity: 0;
+}
+.ks-cboxtags input[type="checkbox"]:focus + label {
+border: 2px solid #F2C94C;
+}
+
+.profile-container {
+
+
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+}
 }

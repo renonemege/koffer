@@ -2,12 +2,9 @@
 
 <%# new profile %>
 
-   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
-        <div class="centered row">
-          <h1><%= @city.title %></h1>
-        </div>
-    </div>
-  <div class="profile-header">
+
+  <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">>
+
     <div class="profile-img">
       <% if @user.avatar.attached? %>
        <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
@@ -15,11 +12,6 @@
     </div>
     <div class="profile-nav-info">
       <h3 class="user-name"><%= @user.first_name %> <%= @user.last_name %></h3>
-      <div class="address">
-        <p id="state" class="state"><%= @user.current_city %></p>
-        <span id="country" class="country"><%= @user.current_city %></span>
-      </div>
-
     </div>
     <div class="profile-option">
       <div class="notification">
@@ -77,20 +69,19 @@
       </div>
 
 
-      <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-6">
+      <div class="profile-container">
+        <div class="ks-cboxtags">
           <% if @user == current_user %>
             <%= simple_form_for @user_interest, url: user_interests_path do |f| %>
               <%= f.association :interest, label: "User Interest:", required: false, input_html: { multiple: true } %>
               <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
             <% end %>
-          <% end %>
+          <% end %>   
 
-          <%= current_user.user_interests.last[:title] %>
         </div>
       </div>
-      <div class="form-group row">
+  
+      <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-6">
           <% if @user == current_user %>
@@ -169,3 +160,4 @@
 
     </div>
   </div>
+
