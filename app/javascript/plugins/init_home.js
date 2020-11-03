@@ -39,9 +39,12 @@ const initHome = () => {
 
   // Since all of our blobs are using the same animation, we only
   // need to listen to one of them
-  blobs[0].addEventListener("animationiteration", nextIteration);
-
-  colorBlobs();
+  const blob = blobs[0];
+  if (blob) {
+    blob.addEventListener("animationiteration", nextIteration);
+    colorBlobs();
+    };
   };
+
 
 export { initHome };

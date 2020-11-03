@@ -1,23 +1,29 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
 
-<%= simple_form_for [@user_city] do |f| %>
+<%= simple_form_for @user_city do |f| %>
     <p>Relocate To ...*</p><%= f.input :title ,
                 :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
                 label: false %>
-      <div class="wrapper">
-        <%= f.simple_fields_for [@user_interest] do |c| %>
-          <p>Interest</p><%= c.association :interest,
+
+        <%= simple_fields_for @user_interest do |f| %>
+          <p>Interest</p><%= f.association :interest,
                             input_html: { multiple: true },
                             label: false %>
-      </div>
-      <div class="wrapper">
-        <%= c.simple_fields_for [@user_occupation] do |e| %>
-          <p>Occupation</p><%= e.association :occupation,
+
+        <%= simple_fields_for @user_occupation do |f| %>
+          <p>Occupation</p><%= f.association :occupation,
                             input_html: { multiple: false },
                             label: false %>
         <% end %>
-      </div>
+
     <% end %>
     <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
   <% end %>
+
+
+
+
+
+
+

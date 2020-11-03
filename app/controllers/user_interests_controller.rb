@@ -4,10 +4,8 @@ class UserInterestsController < ApplicationController
     @chatroom = Chatroom.new
     @review = Review.new
     @user_city = UserCity.new
+    @user_occupation = UserOccupation.new
     @interest = Interest.find(params[:user_interest][:interest_id][1..-1])
-
-    @get_city = session[:passed_variable_city]
-    @get_occupation = session[:passed_variable_occ]
 
     @interest.each do |interest|
       @user_interest = UserInterest.new(user_interest_params)
@@ -17,13 +15,12 @@ class UserInterestsController < ApplicationController
     end
     if @user_interest.save
       if params[:create_and_add]
-      # Redirect to new form, for example.
-        @go_to_city = City.find_by(title: @get_city)
-        redirect_to city_path(@go_to_city)
+        render 'after_signups/show'
       else
         redirect_to user_path(@user)
       end
     else
+
       render 'users/show'
     end
   end
@@ -34,5 +31,3 @@ class UserInterestsController < ApplicationController
     params.require(:user_interest).permit(:title)
   end
 end
-
-
