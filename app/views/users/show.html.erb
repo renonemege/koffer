@@ -2,7 +2,9 @@
 
 <%# new profile %>
 
+
   <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">>
+
     <div class="profile-img">
       <% if @user.avatar.attached? %>
        <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
@@ -35,7 +37,7 @@
                   <%= f.button :submit, "message!", class: "btn btn-warning", id: "user-btn" %>
               <% end %>
             <% end %>
-          
+
 
         </div>
         <div class="user-rating">
@@ -61,19 +63,21 @@
         <div class="user-bio">
           <h3>Bio</h3>
           <p class="bio">
-             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ducimus, aspernatur ipsam, in fuga dolorem deserunt officiis rem eveniet tempora veniam sunt fugiat libero est quis amet facilis exercitationem molestiae.</p>            
+             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ducimus, aspernatur ipsam, in fuga dolorem deserunt officiis rem eveniet tempora veniam sunt fugiat libero est quis amet facilis exercitationem molestiae.</p>
           </p>
         </div>
       </div>
 
+
       <div class="profile-container">
         <div class="ks-cboxtags">
           <% if @user == current_user %>
-            <%= simple_form_for [@user_interest] do |f| %>
-              <%= f.association :interest, label: "User Interests:", as: :check_boxes, class: "grid", required: false, input_html: { multiple: true } %>
-              <%= f.submit 'Next', class: 'btn btn-warning', id: "user-btn"%>
+            <%= simple_form_for @user_interest, url: user_interests_path do |f| %>
+              <%= f.association :interest, label: "User Interest:", required: false, input_html: { multiple: true } %>
+              <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
             <% end %>
           <% end %>   
+
         </div>
       </div>
   
@@ -81,14 +85,16 @@
         <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-6">
           <% if @user == current_user %>
-            <%= simple_form_for [@user_city] do |f| %>
+            <%= simple_form_for @user_city do |f| %>
               <%= f.input :title, label: "User City:", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
               <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
             <% end %>
           <% end %>
+
+          <%= current_user.user_cities.last[:title] %>
         </div>
       </div>
-    
+
 
     <div class="col-md-6 mx-auto">
         <div class="py-4 px-4">

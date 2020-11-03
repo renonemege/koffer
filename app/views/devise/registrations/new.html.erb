@@ -35,6 +35,11 @@
                 required: false,
                 input_html: { autocomplete: "avatar" },
                 label: false %>
+    <p>Tell us more about yourself:</p><%= f.input :description,
+                as: :text,
+                required: false,
+                input_html: { autocomplete: "description" },
+                label: false %>
 
 
     <div class="form-actions col-12 btn btn-warning">
