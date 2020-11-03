@@ -19,50 +19,40 @@
 
   <div class="card" id="sticky-card">
     <% @users.each do |user| %>
-      <div class="col-6">
-        <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
-          <%= link_to user do %>
-            <p><%= user.username %></p>
-             <p><%= user.occupation %><%= @city.title %></p>
-            <% if user.avatar.attached? %>
-              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-            <% end %>
+      <% if user.occupation.title == current_user.occupation.title && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title%>
+        <%= link_to user do %>
+          <p><%= user.first_name %> <%= user.last_name %></p>
+           <p><%= user.occupation.title %> in <%= @city.title %></p>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
           <% end %>
         <% end %>
-      </div>
+      <% end %>
     <% end %>
-
-    <!-- friends -->
-    <% @users.each do |user| %>
-      <div class="col-6">
-        <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
-          <%= link_to user do %>
-            <%= user.username %>
-            <%= user.user_interests.first %><%= @city.title %>
-            <% if user.avatar.attached? %>
-              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% @users.each do |user| %>
-      <div class="col-6">
-        <% if user != current_user && user.current_city == current_user.current_city%>
-          <%= link_to user do %>
-            <%= user.username %>
-            <%= user.occupation %><%= @city.title %>
-            <% if user.avatar.attached? %>
-              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-    <!-- friends end -->
   </div>
+  <% @users.each do |user| %>
+      <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title%>
+        <%= link_to user do %>
+          <p><%= user.first_name %> <%= user.last_name %></p>
+          <p><%= user.user_interests.first %><%= @city.title %></p>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
 
+  <% @users.each do |user| %>
+      <% if user != current_user && user.current_city == current_user.current_city%>
+        <%= link_to user do %>
+          <p><%= user.first_name %> <%= user.last_name %></p>
+          <p><%= user.occupation %><%= @city.title %></p>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
 
   <div class="card" id="sticky-card">
     <h2><span>Project #1</span>Title of the Project</h2>

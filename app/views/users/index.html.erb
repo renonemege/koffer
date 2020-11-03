@@ -19,58 +19,45 @@
       <span class="car car-4"></span>
     </div>
 
-    <% @users.each do |user| %>
-      <% if user.occupation == current_user.occupation && user != current_user && user.current_city == current_user.current_city%>
-        <div class="city-container city-center col-3">
-          <div class="city-card">
-            <%= link_to user do %>
-                  <p> <%= user.username %> </p>
-                  <p> <strong><%= user.occupation %></strong> living in <strong><%= user.current_city %></strong>  </p>
-                  <% if user.avatar.attached? %>
-                    <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-                  <% end %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+
+
 
 
     <% @users.each do |user| %>
-      <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
-      <div class="city-container city-center col-3">
-        <div class="city-card">
+      <% if user.occupation.title == current_user.occupation.title && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title%>
         <%= link_to user do %>
-            <p> <%= user.username %> </p>
-            <p> <strong><%= user.user_interests.first %></strong> living in <strong><%= user.current_city %></strong>  </p>
-            <% if user.avatar.attached? %>
-              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-            <% end %>
+          <p><%= user.first_name %> <%= user.last_name %></p>
+           <p><%= user.occupation.title %> in <%= user.user_cities.last.title %></p>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+          <% end %>
         <% end %>
-        </div>
-      </div>
       <% end %>
     <% end %>
+  </div>
+  <% @users.each do |user| %>
+      <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title%>
+        <%= link_to user do %>
+          <p><%= user.first_name %> <%= user.last_name %></p>
+          <%= user.user_interests.first %><%= user.user_cities.last.title %>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+          <% end %>
+        <% end %>
+      <% end %>
+  <% end %>
 
-
-
-    <% @users.each do |user| %>
+  <% @users.each do |user| %>
       <% if user != current_user && user.current_city == current_user.current_city%>
         <%= link_to user do %>
-          <div class="city-container city-center col-3">
-            <div class="city-card">
-              <p> <%= user.username %> </p>
-              <p> <strong><%= user.occupation %></strong> living in <strong><%= user.current_city %></strong>  </p>
-              <% if user.avatar.attached? %>
-                <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
-              <% end %>
-            </div>
-          </div>
+          <p><%= user.first_name %> <%= user.last_name %></p>
+          <%= user.occupation %><%= user.user_cities.last.title %>
+          <% if user.avatar.attached? %>
+            <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-
-
+  <% end %>
 
 <h1>More</h1>
 
@@ -79,7 +66,7 @@
         <%= link_to user do %>
           <div class="city-container city-center col-3">
             <div class="city-card">
-              <p> <%= user.username %> </p>
+              <p><%= user.first_name %> <%= user.last_name %></p>
               <p> <strong><%= user.occupation.title %></strong> living in <strong><%= user.current_city %></strong>  </p>
               <% if user.avatar.attached? %>
                 <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
