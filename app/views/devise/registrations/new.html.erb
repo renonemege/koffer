@@ -40,7 +40,11 @@
                 required: false,
                 input_html: { autocomplete: "description" },
                 label: false %>
-
+    <p>Where do you live?:</p><%= f.input :current_city,
+                :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
+                required: true,
+                input_html: { autocomplete: "current-city" },
+                label: false %>
 
     <div class="form-actions col-12 btn btn-warning">
       <%= f.button :submit, "Sign up" %>

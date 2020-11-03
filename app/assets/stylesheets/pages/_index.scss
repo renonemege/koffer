@@ -8,6 +8,39 @@
 @import "form_two";
 @import "user_index";
 
+
+// SLICK SCROLLER
+.scroller {
+  div {
+    text-align: center;
+
+  }
+}
+
+.slick-prev::before, .slick-next::before {
+  color: #000;
+}
+
+.slick-next {
+  right: -5px;
+}
+
+.slick-prev {
+  left: -5px;
+}
+// SLICK SCROLLER END
+
+#description{
+  font-size: 24px;
+  margin-top: 150px;
+}
+.container #description {
+  text-align: center;
+}
+
+
+
+
 .centered {
   position: absolute;
   top: 50%;

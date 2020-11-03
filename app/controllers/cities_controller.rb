@@ -15,6 +15,7 @@ class CitiesController < ApplicationController
   end
 
   def show
+    @chatroom = Chatroom.new
     @city = City.find(params[:id])
     @occupations = Occupation.where(city: City.find_by(title: @city[:title]))
     @cost_of_livings = CostOfLiving.where(city: City.find_by(title: @city[:title]))
