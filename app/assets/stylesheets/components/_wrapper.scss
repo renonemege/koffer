@@ -9,8 +9,6 @@ body {
   background: linear-gradient(#e8e8e8, #e0e0e0);
 }
 
-
-
 #sticky {
   margin-top: 100px;
 
@@ -37,12 +35,12 @@ body {
   span {
     display: block;
     font-size: 14px;
-    color: #0c4eb9;
+
   }
 }
 
-@for $i from 1 through 8 {
-  #sticky:nth-child(#{$i}n) {
-    top: $i * 70px;
+@for $i from 1 through 12 {
+  #sticky-card:nth-child(#{$i}n) {
+    top: $i * 20px;
   }
 }
