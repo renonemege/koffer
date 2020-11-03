@@ -1,8 +1,8 @@
 const initWizard = () => {
   const wizardEl = document.querySelector('.js-wizard');
-    // if (!wizardEl) {
-    //   return;
-    // }
+    if (!wizardEl) {
+      return;
+    }
 
 
   const wizardHeight = wizardEl.offsetHeight;
