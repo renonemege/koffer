@@ -1,7 +1,12 @@
 // const baseUrl = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}";
 const initWeather = () => {
+
   const getCityByName = () => {
+
     const city = document.querySelector("#city").innerHTML;
+    if (!city) {
+      return;
+    }
     const date = document.querySelector("#date");
     const condition = document.querySelector("#condition");
     const celcius = document.querySelector("#celcius");

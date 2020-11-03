@@ -155,8 +155,13 @@
     <p>currency <%= @city.currency %></p>
     <p>population <%= @city.population %></p>
     <p>score <%= @city.score %></p>
-    <p>your occupation<%= @current_user.occupation.title %> </p>
-    <p>Avarage salary for your occupation <%= @current_user.occupation.salary %>$ </p>
+    <% if @current_user.occupation.present? %>
+      <p>your occupation<%= @current_user.occupation.title %> </p>
+      <p>Avarage salary for your occupation <%= @current_user.occupation.salary %>$ </p>
+    <% else %>
+      <p>Random occupation <%= User.first.occupation.title %> </p>
+      <p>Avarage salaries <%= User.first.occupation.salary %>$</p>
+    <% end %>
     <% @city.cost_of_livings.each do |t|%>
       <p><i class="fas fa-coffee"></i><%= t.title %>---<%= t.price %>$</p>
     <% end %>

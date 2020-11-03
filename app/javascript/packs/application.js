@@ -22,7 +22,7 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
-import {} from 'jquery-ujs'
+
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initChatroomCable } from '../channels/chatroom_channel';

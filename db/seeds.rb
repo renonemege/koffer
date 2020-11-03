@@ -10,16 +10,17 @@ require "faker"
 
 UserCity.destroy_all
 Message.destroy_all
-User.destroy_all
 Occupation.destroy_all
+UserOccupation.destroy_all
+UserInterest.destroy_all
+User.destroy_all
+Interest.destroy_all
 CostOfLiving.destroy_all
 CityDetail.destroy_all
 City.destroy_all
 
 Survey.destroy_all
 
-Interest.destroy_all
-UserInterest.destroy_all
 
 Chatroom.destroy_all
 
@@ -249,6 +250,13 @@ puts 'finding users living in Istanbul'
     user: User.last,
     city: City.find_by(title: 'Istanbul')
   )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Istanbul'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first
+  )
+
 end
 
 puts 'finding users living in Berlin'
@@ -260,7 +268,6 @@ puts 'finding users living in Berlin'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Berlin',
   )
@@ -273,6 +280,12 @@ puts 'finding users living in Berlin'
     title: 'Berlin',
     user: User.last,
     city: City.find_by(title: 'Berlin')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Berlin'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin')).order("RANDOM()").first
   )
 end
 
@@ -300,6 +313,12 @@ puts 'finding users living in Amsterdam'
     user: User.last,
     city: City.find_by(title: 'Amsterdam')
   )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Amsterdam'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Amsterdam')).order("RANDOM()").first
+  )
 end
 
 puts 'finding users living in Stockholm'
@@ -324,6 +343,12 @@ puts 'finding users living in Stockholm'
     title: 'Stockholm',
     user: User.last,
     city: City.find_by(title: 'Stockholm')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Stockholm'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Stockholm')).order("RANDOM()").first
   )
 end
 
@@ -350,6 +375,12 @@ puts 'finding users living in Frankfurt'
     user: User.last,
     city: City.find_by(title: 'Frankfurt')
   )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Frankfurt'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Frankfurt')).order("RANDOM()").first
+  )
 end
 
 puts 'finding users living in Paris'
@@ -373,6 +404,12 @@ puts 'finding users living in Paris'
     title: 'Paris',
     user: User.last,
     city: City.find_by(title: 'Paris')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Paris'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Paris')).order("RANDOM()").first
   )
 end
 
@@ -398,5 +435,11 @@ puts 'finding users living in Madrid'
     title: 'Madrid',
     user: User.last,
     city: City.find_by(title: 'Madrid')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Madrid'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Madrid')).order("RANDOM()").first
   )
 end

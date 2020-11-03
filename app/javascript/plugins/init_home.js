@@ -1,8 +1,12 @@
+
 const initHome = () => {
   const colors = ['#151514','#151514','#F2C94C'];
   const numLines = 3;
   var currCount = numLines;
   const texts = document.querySelectorAll("#textClip text");
+  if (!texts) {
+      return;
+    }
   const blobs = document.querySelectorAll("#background path");
 
   function colorBlobs() {
