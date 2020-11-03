@@ -1,90 +1,27 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 
 
-<%= simple_form_for @user_city, remote: true, html: { class: "wizard js-wizard"} do |f| %>
-
-  <div class="wizard-steps-container js-wizard-steps is--step-0">
-    <img src="<%= asset_path "bus.png" %>" alt="background" class="wizard-background-img"/>
-    <div class="wizard-steps-step wizard-steps-step-0 js-intro-step">
-      <div class="d-flex align-items-center justify-content-between">
-        <div class="onboard-left">
-          <p class="onboard-title">Tell us where you would like to go</p>
-          <p class="onboard-subtitle">Find your city, meet people who are similar to you</p>
-
-          <div class="onboard-btn">
-            <button class="js-wizard-next btn-main-yellow large" type="button">Find people to help you out.</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
 
 
-
-   <div class="wizard-steps-step wizard-steps-step-1">
-      <div>
-        <p class="wizard-title">1 / 3</p>
-        <p class="wizard-title">Where would you like to go?</p>
-      </div>
-      <div class="sentence-checkboxes">
-      <%= f.input :title, :input_html => { :class => 'sentence-checkboxes-input' },
-                  :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
-                  label: false, :input_html => {:class => 'sentence-checkboxes-label' }%>
-      </div>
-      <div class="wizard-actions">
-        <button class="js-wizard-previous btn-main-yellow small text-size" type="button">Previous</button>
-        <button class="js-wizard-next btn-main-yellow small text-size" type="button">Next</button>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="wizard-steps-step wizard-steps-step-2">
-    <p class="wizard-title">2 / 3</p>
-    <p class="wizard-title">What do you like doing?</p>
-    <div class="month-checkboxes">
-        <%= f.simple_fields_for @user_interest, remote: true, html: {class: "month-checkboxes-input"} do |c| %>
+<%= simple_form_for [@user_city] do |f| %>
+    <p>Relocate To ...*</p><%= f.input :title ,
+                :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
+                label: false %>
+      <div class="wrapper">
+        <%= f.simple_fields_for [@user_interest] do |c| %>
           <p>Interest</p><%= c.association :interest,
                             input_html: { multiple: true },
-                            label: false, :input_html => {:class => 'month-checkboxes-label'} %>
-    </div>
-
-    <div class="wizard-actions">
-        <!-- <button class="js-wizard-previous" type="button">Previous</button> -->
-      <button class="js-wizard-previous btn-main-yellow small text-size" type="button">Previous</button>
-      <button class="js-wizard-next btn-main-yellow small text-size" type="button">Next</button>
-    </div>
-  </div>
-
-
-      <div class="wizard-steps-step wizard-steps-step-3">
-        <p class="wizard-title">3 / 3</p>
-        <p class="wizard-title">What do you do for a living?</p>
-        <div class="temp-checkboxes">
-          <div class="temp-checkboxes-thermometer">
-            <div class="temp-checkboxes-options">
-              <%= c.simple_fields_for @user_occupation, remote: true, html: {class: 'temp-checkboxes-input'} do |e| %>
-                <p>Occupation</p><%= e.association :occupation,
-                                  input_html: { multiple: false },
-                                  label: false, :input_html => {:class => 'temp-checkboxes-label temp-checkboxes-label-top'} %>
-              <% end %>
-              <div class="temp-checkboxes-thermometer-inner"></div>
-            </div>
-          </div>
-        </div>
-        <div class="wizard-actions wizard-actions-thermometer">
-          <button class="js-wizard-previous btn-main-yellow small" type="button">Previous</button>
-          <button class="js-wizard-next btn-main-yellow small" type="button">Next</button>
-        </div>
-        <% end %>
-        <div class="wizard-actions wizard-actions-world">
-          <button class="js-wizard-previous btn-main-yellow small" type="button">Previous</button>
-        <%= f.submit 'Add', name: 'create_and_add', class: "btn-main-yellow small"%>
-        </div>
+                            label: false %>
       </div>
-<% end %>
-
-
-
+      <div class="wrapper">
+        <%= c.simple_fields_for [@user_occupation] do |e| %>
+          <p>Occupation</p><%= e.association :occupation,
+                            input_html: { multiple: false },
+                            label: false %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
+  <% end %>
 
 
