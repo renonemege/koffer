@@ -481,7 +481,12 @@ html {
 .profile-container {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
+  .simple_form {
+    display: block;
+  }
 }
+
+
 
 .ks-cboxtags {
   list-style: none;
@@ -548,4 +553,14 @@ opacity: 0;
 }
 .ks-cboxtags input[type="checkbox"]:focus + label {
 border: 2px solid #F2C94C;
+}
+
+.profile-container {
+
+
+  .grid {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+}
 }
