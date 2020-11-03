@@ -139,19 +139,45 @@
     </div>
   </div>
 
+<%# City survey viewer (with links to the survey page) / create new survey on the city %>
+
+  <div class="card" id="sticky-card">
+    <h2><span>Project #1</span>Title of the Project</h2>
+    <ul class="list-group">
+      <% @city.surveys.each do |survey| %>
+        <div class="survey mb-5 mt-3">
+          <li class="list-group-item">
+            <%= link_to survey.question, survey_path(survey) %>
+          </li>
+        </div>
+      <% end %>
+    </ul>
+
+    <div class="survey-form mt-15 p-2">
+      <span>Create a new survey about <%= @city.title %></span>
+      <%= simple_form_for [@city, @survey] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :question,
+                    as: :text,
+                    label: false %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>  
+
+<%# end of survey %>
+
+
+
   <div class="card" id="sticky-card">
     <h2><span>Project #1</span>Title of the Project</h2>
     <p>country <%= @city.country %></p>
     <p>currency <%= @city.currency %></p>
     <p>population <%= @city.population %></p>
     <p>score <%= @city.score %></p>
-    <% if @current_user.occupation.present? %>
-      <p>your occupation<%= @current_user.occupation.title %> </p>
-      <p>Avarage salary for your occupation <%= @current_user.occupation.salary %>$ </p>
-    <% else %>
-      <p>Random occupation <%= User.first.occupation.title %> </p>
-      <p>Avarage salaries <%= User.first.occupation.salary %>$</p>
-    <% end %>
+
     <% @city.cost_of_livings.each do |t|%>
       <p><i class="fas fa-coffee"></i><%= t.title %>---<%= t.price %>$</p>
     <% end %>

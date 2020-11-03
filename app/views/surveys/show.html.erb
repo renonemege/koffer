@@ -1,0 +1,29 @@
+<div>
+  <div>
+    <h1><%= @survey.question %></h1>
+    <p>By <%= @survey.user.username %>, about <%= @survey.city.title %>, created at <%= @survey.created_at %></p>
+  </div>
+  <div>
+    <ul class="list-group">
+      <% @survey.responses.each do |response| %>
+        <div class="response mb-5 mt-3">
+          <li class="list-group-item">
+            <p><%= response.content %></p>
+            <p>By <%= response.user.username %>, at <%= response.created_at %></p>
+          </li>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+  <div class="response-form mt-15 p-2">
+    <span>Post a response</span>
+    <%= simple_form_for [@survey, @response] do |f| %>
+      <div class="form-inputs">
+        <%= f.input :content,
+                    as: :text,
+                    label: false %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+  </div>
+</div>
