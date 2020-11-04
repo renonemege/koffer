@@ -16,12 +16,12 @@
               <% end %>
             <% end %>
           </div>
-        <%= simple_fields_for @user_occupation do |f| %>
-          <p>Occupation *</p><%= f.association :occupation,
-                            input_html: { multiple: false },
-                            label: false %>
-          <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
-        <% end %>
+          <%= simple_fields_for @user_occupation do |f| %>
+            <p>Occupation *</p><%= f.association :occupation,
+                              input_html: { multiple: false },
+                              label: false %>
+            <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
+          <% end %>
         </div>
 
 <% end %>

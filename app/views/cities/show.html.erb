@@ -21,10 +21,11 @@
         <div class="row mt-5 ml-1">
           <div class="card " id="weather">
             <div>
-                <h1 id = "city"> <%= @city.title %> </h1>
+                <h2 id = "city"> <%= @city.title %> </h2>
+                <hr/>
             </div>
             <div>
-              <h2 id = "date">date</h2>
+              <h3 id = "date">date</h3>
             </div>
             <div>
               <p id="condition">condition</p>
@@ -37,10 +38,12 @@
 
           <div class="card col-3 text-center" id="city-main">
             <p>Country </p>
+            <hr/>
             <p><%= @city.country %></p>
           </div>
           <div class="card col-3 text-center" id="city-main">
             <p>Currency </p>
+            <hr/>
             <p><%= @city.currency %></p>
           </div>
         </div>
@@ -161,19 +164,26 @@
   <div class="card" id="sticky-card">
     <div class="row">
       <div class="col-4 card ">
-        <h2>Cost Of Living</h2>
+        <h2 class="align-self-center">Cost Of Living</h2>
+        <hr/>
         <% @city.cost_of_livings.first(10).each do |t|%>
-          <p> <%= t.title %>---<%= t.price %>$</p>
+         <div class="d-flex justify-content-between">
+          <p><%= t.title %></p> <p><%= t.price %>$</p>
+         </div>
         <% end %>
       </div>
       <div class="col-4 card">
-        <h2>Housing</h2>
+        <h2 class="align-self-center">Housing</h2>
+        <hr/>
         <% @city.cost_of_livings.last(3).each do |t|%>
-          <p><%= t.title %>---<%= t.price %>$</p>
+          <div class="d-flex justify-content-between">
+            <p><%= t.title %></p> <p><%= t.price %>$</p>
+          </div>
         <% end %>
       </div>
       <div class="col-4 card">
-          <h2>Other</h2>
+          <h2 class="align-self-center">Other</h2>
+          <hr/>
         <% @city_details.each do |detail| %>
           <p><%= detail.title.split('[').first %> <%= detail.value %></p>
 
