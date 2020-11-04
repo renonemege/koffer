@@ -215,18 +215,17 @@ body {
 
 .profile-side {
   width: 300px;
-  background: #fff;
+  background: rgb(240, 237, 228);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   padding: 90px 30px 20px;
   font-family: "Inter", serif;
-  margin-left: 10px;
   z-index: 99;
 }
 
 .profile-side p {
   margin-bottom: 7px;
   color: #333;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .profile-side p i {
@@ -279,6 +278,7 @@ button.createbtn i {
 
 .user-rating {
   display: flex;
+  justify-content: space-between;
 }
 
 .user-rating h3 {
@@ -298,7 +298,7 @@ button.createbtn i {
 }
 
 .rate i {
-  font-size: 0.9rem;
+  font-size: 32px;
   color: #F2C94C;
 }
 
@@ -417,6 +417,16 @@ button.createbtn i {
 
 .user-bio {
   padding: 15px;
+  h2 {
+    font-size: 39px;
+    margin-left: 35px;
+
+  }
+  p {
+    font-size: 20px;
+    margin-left: 35px;
+
+  }
 }
 
 @media (max-width: 400px) {
