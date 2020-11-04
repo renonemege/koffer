@@ -160,17 +160,20 @@
 <!-- friends end -->
   <div class="card" id="sticky-card">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 card ">
+        <h2>Cost Of Living</h2>
         <% @city.cost_of_livings.first(10).each do |t|%>
-          <p><i class="fas fa-coffee"></i><%= t.title %>---<%= t.price %>$</p>
+          <p> <%= t.title %>---<%= t.price %>$</p>
         <% end %>
       </div>
-      <div class="col-4">
+      <div class="col-4 card">
+        <h2>Housing</h2>
         <% @city.cost_of_livings.last(3).each do |t|%>
-          <p><i class="fas fa-coffee"></i><%= t.title %>---<%= t.price %>$</p>
+          <p><%= t.title %>---<%= t.price %>$</p>
         <% end %>
       </div>
-      <div class="col-4">
+      <div class="col-4 card">
+          <h2>Other</h2>
         <% @city_details.each do |detail| %>
           <p><%= detail.title.split('[').first %> <%= detail.value %></p>
 
