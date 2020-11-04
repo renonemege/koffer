@@ -7,6 +7,7 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+var $ = require( "jquery" )
 require("slick-carousel")
 
 
@@ -31,8 +32,7 @@ import { initChatroomCable } from '../channels/chatroom_channel';
 import { initHome } from '../plugins/init_home';
 import { initWeather } from '../plugins/init_weather';
 import { initWizard } from '../plugins/init_wizard';
-import "slick-carousel/slick/slick.scss"
-import "slick-carousel/slick/slick-theme.scss"
+
 // import * as typeformEmbed from '@typeform/embed'
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
