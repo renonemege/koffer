@@ -1,4 +1,12 @@
-<%= content_for(:navbar_class, "navbar-home") %>
+<% if current_user %>
+    <%= render 'shared/navbar' %>
+<% end %>
+
+    <% if current_user %>
+      <%= link_to 'Join the Community', after_signup_path, class: "homepagebtn btn btn-warning" %>
+    <% else %>
+      <%= link_to 'Join the Community', new_registration_path(:user), class: "homepagebtn btn btn-warning" %>
+    <% end %>
 
 <div class="banner-home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1513604341524-7c6b9bb0b13c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1936&q=80);">
   <div class="containersvg col-12 mt-5">
@@ -75,11 +83,6 @@
           <path d="m250.61 235.97c27.616-5.1225 37.462-46.601 20.403-76.147-17.058-29.546-62.902-27.232-75.178-20.144-12.277 7.088-23.943 56.565-17.942 66.959 6.0012 10.394 24.596 38.253 72.717 29.332z" stroke-width=".22275"/>
       </g>
     </svg>
-    <% if current_user %>
-      <%= link_to 'Go to Website', after_signup_path, class: "btn btn-warning" %>
-    <% else %>
-      <%= link_to 'Create an account', new_registration_path(:user), class: "btn btn-warning" %>
-    <% end %>
   </div>
 
 </div>
