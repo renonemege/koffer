@@ -19,7 +19,7 @@ const initWizard = () => {
     wizardStepsEl.classList.remove('is--step-1');
     wizardStepsEl.classList.remove('is--step-2');
     wizardStepsEl.classList.remove('is--step-3');
-    wizardStepsEl.classList.remove('is--step-4');
+    // wizardStepsEl.classList.remove('is--step-4');
 
     wizardStepsEl.classList.add(`is--step-${stepNumber}`);
   }

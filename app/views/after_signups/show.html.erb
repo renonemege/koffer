@@ -38,18 +38,16 @@
         <button class="js-wizard-next btn-main-yellow small text-size" type="button">Next</button>
       </div>
     </div>
-  </div>
 
 
   <div class="wizard-steps-step wizard-steps-step-2">
     <p class="wizard-title">2 / 3</p>
     <p class="wizard-title">What do you like doing?</p>
     <div class="month-checkboxes">
-        <%= simple_fields_for @user_interest, remote: true, html: {class: "month-checkboxes-input"} do |f| %>
-          <p>Interest</p><%= f.association :interest,
-                            as: :check_boxes,
+        <%= simple_fields_for @user_interest, remote: true do |f| %>
+          <%= f.association :interest,
                             input_html: { multiple: true },
-                            label: false, :input_html => {:class => 'month-checkboxes-label'} %>
+                            label: false%>
     </div>
 
     <div class="wizard-actions">
