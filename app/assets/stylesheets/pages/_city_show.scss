@@ -8,6 +8,8 @@
 
 #city {
   font-family: 'Inter', sans-serif;
+  text-align: center;
+  margin-top: 5px;
 }
 
 .p {
@@ -16,4 +18,31 @@
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif;
+}
+
+.row {
+  .rating-form {
+    margin-left: 25%;
+  }
+}
+ 
+#city-main {
+  h4 {
+    margin-top: 5px;
+  }
+  p {
+    margin-top: 40px;
+  }
+}
+
+#date {
+  margin-left: 5px;
+}
+
+#condition {
+  margin-left: 5px;
+}
+
+#celcius {
+  margin-left: 5px;
 }
