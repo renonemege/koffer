@@ -7,26 +7,21 @@
                 :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
                 label: false %>
 
-        <%= simple_fields_for @user_interest, class: "ks-cboxtags", id: "user-btn" do |f| %>
-          <p>Interest</p><%= f.association :interest,
-                            as: :check_boxes,
-                            input_html: { multiple: true },
-                            label: false %>
-
+        <div class="profile-container">
+          <div class="ks-cboxtags">
+            <% if @user == current_user %>
+              <%= simple_form_for @user_interest, url: user_interests_path do |f| %>
+                <%= f.association :interest, label: "User Interest:", as: :check_boxes, required: false, input_html: { multiple: true } %>
+                <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
+              <% end %>
+            <% end %>
+          </div>
         <%= simple_fields_for @user_occupation do |f| %>
-          <p>Occupation</p><%= f.association :occupation,
+          <p>Occupation *</p><%= f.association :occupation,
                             input_html: { multiple: false },
                             label: false %>
+          <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
         <% end %>
+        </div>
 
-    <% end %>
-    <%= f.submit 'Add', name: 'create_and_add', class: "btn sign"%>
-  <% end %>
-
-
-
-
-
-
-
-
+<% end %>
