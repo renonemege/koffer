@@ -80,7 +80,13 @@ svg {
 
 // animated text end
 
-
+.homepagebtn {
+  display: inline-block;
+  position: absolute;
+  z-index: 100;
+  margin-left: 85%;
+  margin-top: 5px;
+}
 
 
 
