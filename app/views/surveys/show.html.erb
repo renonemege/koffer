@@ -1,15 +1,20 @@
-<div>
+<div class="mt-navbar-height">
   <div>
     <h1><%= @survey.question %></h1>
-    <p>By <%= @survey.user.username %>, about <%= @survey.city.title %>, created at <%= @survey.created_at %></p>
+    <p>By <%= link_to @survey.user.username, user_path(@survey.user) %>, about <%= link_to @survey.city.title, user_path(@survey.city) %>, created at <%= @survey.created_at %></p>
   </div>
   <div>
     <ul class="list-group">
       <% @survey.responses.each do |response| %>
         <div class="response mb-5 mt-3">
-          <li class="list-group-item">
-            <p><%= response.content %></p>
-            <p>By <%= response.user.username %>, at <%= response.created_at %></p>
+          <li class="list-group-item list-group-item-nonflex">
+            <div class="response-text mb-2 mt-2">
+              <p><%= response.content %></p>
+            </div>
+            <div class="response-signature mb-2 mt-2">
+              <p>By <%= link_to response.user.username, user_path(response.user) %>, at <%= response.created_at %></p>
+              
+            </div>
           </li>
         </div>
       <% end %>
