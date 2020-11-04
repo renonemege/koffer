@@ -21,30 +21,32 @@
         <div class="row mt-5 ml-1">
           <div class="card " id="weather">
             <div>
-                <h1 id = "city"> <%= @city.title %> </h1>
+                <h3 id = "city"> <%= @city.title %> </h3>
+                <hr/>
             </div>
             <div>
-              <h2 id = "date">date</h2>
+              <h3 id = "date">date</h3>
             </div>
             <div>
               <p id="condition">condition</p>
             </div>
             <div>
-              <i class="fas fa-bolt"></i>
-              <h2 id="celcius">celcius</h2>
+              <p id="celcius">celcius <i class="fas fa-bolt"></i></p>
             </div>
           </div>
 
           <div class="card col-3 text-center" id="city-main">
-            <p>Country </p>
+            <h4>Country </h4>
+            <hr/>
             <p><%= @city.country %></p>
           </div>
           <div class="card col-3 text-center" id="city-main">
-            <p>Currency </p>
+            <h4>Currency </h4>
+            <hr/>
             <p><%= @city.currency %></p>
           </div>
         </div>
-        <div class="row " id='city-description'>
+        <div class="row p-3" id='city-description'>
           <p><%= @city.description.split('   ')[0...-1].join.html_safe %></p>
         </div>
       </div>
@@ -161,22 +163,30 @@
   <div class="card" id="sticky-card">
     <div class="row">
       <div class="col-4 card ">
-        <h2>Cost Of Living</h2>
+        <h2 class="align-self-center">Cost Of Living</h2>
+        <hr/>
         <% @city.cost_of_livings.first(10).each do |t|%>
-          <p> <%= t.title %>---<%= t.price %>$</p>
+         <div class="d-flex justify-content-between">
+          <p><%= t.title %></p> <p><%= t.price %>$</p>
+         </div>
         <% end %>
       </div>
       <div class="col-4 card">
-        <h2>Housing</h2>
+        <h2 class="align-self-center">Housing</h2>
+        <hr/>
         <% @city.cost_of_livings.last(3).each do |t|%>
-          <p><%= t.title %>---<%= t.price %>$</p>
+          <div class="d-flex justify-content-between">
+            <p><%= t.title %></p> <p><%= t.price %>$</p>
+          </div>
         <% end %>
       </div>
       <div class="col-4 card">
-          <h2>Other</h2>
+          <h2 class="align-self-center">Other</h2>
+          <hr/>
         <% @city_details.each do |detail| %>
-          <p><%= detail.title.split('[').first %> <%= detail.value %></p>
-
+          <div class="d-flex justify-content-between">
+            <p><%= detail.title.split('[').first %></p> <p><%= detail.value %></p>
+          </div>
         <% end %>
       </div>
 
@@ -210,7 +220,7 @@
     <div class="row">
 
       <div class="rating-form col-6 mt-15 p-2">
-        <span>What do you think about <%= @city.title %>  ?</span>
+        <h4>What do you think about <%= @city.title %>  ?</h4>
         <%= simple_form_for [@city, @review] do |f| %>
         <div class="form-inputs">
           <%= f.input :content,
@@ -223,7 +233,7 @@
             <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
             <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
           </fieldset>
-            <%= f.submit %>
+            <%= f.submit 'Add a review', class: 'btn btn-warning', id: "user-btn" %>
           <% end %>
         </div>
       </div>

@@ -124,7 +124,7 @@
         <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
         <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
       </fieldset>
-        <%= f.submit %>
+        <%= f.submit 'Add a review', class: 'btn btn-warning', id: "user-btn" %>
       <% end %>
     </div>
   </div>
