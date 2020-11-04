@@ -1,8 +1,8 @@
-<%= content_for(:navbar_class, "navbar-home") %>
+<%= render 'shared/navbar' %>
 
 <%# new profile %>
 
-  <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">>
+  <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.7)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">>
     <div class="profile-img">
       <% if @user.avatar.attached? %>
        <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
