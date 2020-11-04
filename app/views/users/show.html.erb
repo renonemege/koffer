@@ -1,8 +1,8 @@
-<%= content_for(:navbar_class, "navbar-home") %>
+<%= render 'shared/navbar' %>
 
 <%# new profile %>
 
-  <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">>
+  <div class="profile-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.7)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">>
     <div class="profile-img">
       <% if @user.avatar.attached? %>
        <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
@@ -23,21 +23,6 @@
     <div class="left-side">
       <div class="profile-side">
       <p>Relocation to <%= @user.user_cities.first[:title] %> from <%= @user.current_city %></p>
-        <div class="profile-btn">
-
-            <% if @user == current_user %>
-                <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-warning", id: "user-btn" %>
-            <% end %>
-
-            <% if @user != current_user %>
-              <%= simple_form_for [@chatroom] do |f| %>
-                  <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
-                  <%= f.button :submit, "message!", class: "btn btn-warning", id: "user-btn" %>
-              <% end %>
-            <% end %>
-
-
-        </div>
         <div class="user-rating">
           <h3 class="rating">4.1</h3>
           <div class="rate">
@@ -49,9 +34,19 @@
                 <i class="fa fa-star"></i>
               </div>
             </div>
-            <span class="no-of-user-rate"><span>123</span>&nbsp;&nbsp;reviews</span>
           </div>
+        </div>
+        <div class="profile-btn">
+            <% if @user == current_user %>
+                <%= link_to "Edit Profile", edit_user_registration_path(current_user), class: "btn btn-warning btn-lg btn-block", id: "user-btn" %>
+            <% end %>
 
+            <% if @user != current_user %>
+              <%= simple_form_for [@chatroom] do |f| %>
+                  <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
+                  <%= f.button :submit, "message!", class: "btn btn-warning btn-lg btn-block", id: "user-btn" %>
+              <% end %>
+            <% end %>
         </div>
       </div>
     </div>
@@ -59,7 +54,7 @@
     <div class="right-side">
       <div class="profile-body">
         <div class="user-bio">
-          <h3>About</h3>
+          <h2>About</h2>
           <p class="bio">
              <p> <%= @user.description %> </p>
           </p>
@@ -124,7 +119,7 @@
         <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
         <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
       </fieldset>
-        <%= f.submit %>
+        <%= f.submit 'Add a review', class: 'btn btn-warning btn-lg btn-block', id: "user-btn" %>
       <% end %>
     </div>
   </div>
