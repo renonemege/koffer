@@ -67,7 +67,7 @@
 
             <%= simple_form_for @user_interest, url: user_interests_path do |f| %>
               <%= f.association :interest, label: "My Interests:", as: :check_boxes, required: false, input_html: { multiple: true } %>
-              <%= f.submit 'Add', class: 'btn btn-warning btn-block', id: "user-btn"%>
+              <%= f.submit 'Add', class: 'interest-btn btn btn-warning', id: "user-btn"%>
             <% end %>
           <% end %>
 
@@ -113,53 +113,59 @@
       </div>
 
 
-<div class="allreviews">
+  <% if @user != current_user %>
+  <h2 class="d-flex mt-5 justify-content-center">Reviews</h2>
+  <% end %>
 
-    <div class="reviews">
+<div class="allreviews">
+  <% if @user != current_user %>
+    <div class="reviews col-6 mt-4">
       <ul class="list-group">
-        <% if @user.reviews.nil? %>
-          <% 5.times do  %>
-              <span class="far fa-star"></span>
-          <% end %>
-        <% else %>
-          <% @user.reviews.reverse.each do |review| %>
-            <div class="review mb-5 mt-3">
-              <li class="list-group-item">
-                <% review.stars.times do  %>
-                  <span class="fas fa-star"></span>
-                <% end %>
-                <% (5 - review.stars).times do  %>
-                  <span class="far fa-star"></span>
-                <% end %>
-                <p><%= review.content%></p>
-              </li>
+          <% if @user.reviews.nil? %>
+            <% 5.times do  %>
+                <span class="far fa-star"></span>
+            <% end %>
+          <% else %>
+            <div id="slideshow">
+            <% @user.reviews.reverse.each do |review| %>
+              <div class="review mb-5 mt-3 speech-bubble">
+                <li class="list-group-item speech">
+                  <% review.stars.times do  %>
+                    <span class="fas fa-star"></span>
+                  <% end %>
+                  <% (5 - review.stars).times do  %>
+                    <span class="far fa-star"></span>
+                  <% end %>
+                </li>
+                  <p class="ml-4 mb-2"><%= review.content%></p>
+              </div>
+            <% end %>
             </div>
           <% end %>
-        <% end %>
       </ul>
     </div>
-
-<% if @user != current_user %>
-  <!-- user review -->
-    <div class="rating-form mt-15 p-2">
-      <span>What do you think about <%= @user.first_name %>  ?</span>
-      <%= simple_form_for [@user, @review] do |f| %>
-      <div class="form-inputs">
-        <fieldset class="rating">
-          <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
-          <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
-          <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
-          <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
-          <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
-        </fieldset>
-        <%= f.input :content,
-                    as: :text,
-                    label: false %>
-          <%= f.submit 'Add a review', class: 'btn btn-warning btn-lg btn-block', id: "user-btn" %>
-        <% end %>
+  <% end %>
+  <% if @user != current_user %>
+    <!-- user review -->
+      <div class="rating-form mt-15 p-2">
+        <span>What do you think about <%= @user.first_name %>  ?</span>
+        <%= simple_form_for [@user, @review] do |f| %>
+        <div class="form-inputs">
+          <fieldset class="rating">
+            <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+            <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+            <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+            <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+            <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+          </fieldset>
+          <%= f.input :content,
+                      as: :text,
+                      label: false %>
+            <%= f.submit 'Add a review', class: 'btn btn-warning btn-lg btn-block', id: "user-btn" %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <!-- user review end -->
+    <!-- user review end -->
   <% end %>
 
 </div>

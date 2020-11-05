@@ -177,7 +177,7 @@
     </div>
     <div class="row">
       <div class="col-4 card ">
-        <h2 class="align-self-center">Cost Of Living</h2>
+        <h2 class="align-self-center mt-3">Cost Of Living</h2>
         <hr/>
         <% @city.cost_of_livings.first(10).each do |t|%>
          <div class="d-flex justify-content-between">
@@ -186,7 +186,7 @@
         <% end %>
       </div>
       <div class="col-4 card">
-        <h2 class="align-self-center">Housing</h2>
+        <h2 class="align-self-center mt-3">Housing</h2>
         <hr/>
         <% @city.cost_of_livings.last(3).each do |t|%>
           <div class="d-flex justify-content-between">
@@ -200,7 +200,7 @@
         </div>
       </div>
       <div class="col-4 card">
-          <h2 class="align-self-center">Scores</h2>
+          <h2 class="align-self-center mt-3">Scores</h2>
           <hr/>
         <% @city_details.each do |detail| %>
           <div class="d-flex justify-content-between">

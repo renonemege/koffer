@@ -3,7 +3,7 @@
     font-size: 51px;
   }
   #today{
-    font-size: 24px;
+    font-size: 34px;
     opacity: 0.8;
   }
 
@@ -30,6 +30,7 @@
 
 .todaydate {
   display: flex;
+  margin-bottom: 10px;
   h4 {
     font-size: 24px;
     opacity: 0.8;
@@ -48,24 +49,27 @@
   display: flex;
   justify-content: space-between;
   h3{
-    font-size: 28px;
+    font-size: 20px;
     opacity: 0.8;
   }
 }
 
 .row {
   p {
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 32px;
   }
 }
+
 
 #slideshow {
   margin: 10px auto;
   position: relative;
   width: 400px;
-  height: 150px;
+  height: 180px;
   padding: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
 }
 
 #slideshow > div {
