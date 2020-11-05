@@ -60,6 +60,6 @@ body {
 
 @for $i from 1 through 12 {
   #sticky-card:nth-child(#{$i}n) {
-    top: $i * 20px;
+    top: $i * 30px;
   }
 }

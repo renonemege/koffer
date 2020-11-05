@@ -25,6 +25,7 @@ class UserCitiesController < ApplicationController
         @user_occupation.city = City.find_by(title: params[:user_city][:title])
         @user_occupation.save
         # session[:passed_variable] = params[:user_city][:title]
+
         redirect_to city_path(@user_city.city_id)
         # render 'after_signups/show'
       else

@@ -1,34 +1,49 @@
-<div class="mt-navbar-height">
+<%= render 'shared/navbar' %>
+
+<div class="mt-navbar-height ml-3 mr-3">
   <div>
-    <h1><%= @survey.question %></h1>
-    <p>By <%= link_to @survey.user.username, user_path(@survey.user) %>, about <%= link_to @survey.city.title, user_path(@survey.city) %>, created at <%= @survey.created_at %></p>
-  </div>
-  <div>
-    <ul class="list-group">
-      <% @survey.responses.each do |response| %>
-        <div class="response mb-5 mt-3">
-          <li class="list-group-item list-group-item-nonflex">
-            <div class="response-text mb-2 mt-2">
-              <p><%= response.content %></p>
-            </div>
-            <div class="response-signature mb-2 mt-2">
-              <p>By <%= link_to response.user.username, user_path(response.user) %>, at <%= response.created_at %></p>
-              
-            </div>
-          </li>
-        </div>
+    <h1 class="text-center"><%= @survey.question %></h1>
+    <div class="mb-2 mt-2 d-flex align-items-center">
+      <% if @survey.user.avatar.attached? %>
+        <div class="image"> <%= cl_image_tag @survey.user.avatar.key, class: "round", width: "60", height: "60" %> </div>
       <% end %>
-    </ul>
+      <h5>By <%= link_to @survey.user.username, user_path(@survey.user) %>, about <%= link_to @survey.city.title, user_path(@survey.city) %>, posted at <%= @survey.created_at %></h5>
+    </div>
   </div>
-  <div class="response-form mt-15 p-2">
-    <span>Post a response</span>
-    <%= simple_form_for [@survey, @response] do |f| %>
-      <div class="form-inputs">
-        <%= f.input :content,
-                    as: :text,
-                    label: false %>
-          <%= f.submit %>
+  <div class="d-flex">
+    <!-- responses -->
+    <div class="col-6">
+      <ul class="list-group">
+        <% @survey.responses.each do |response| %>
+          <div class="response mb-2 mt-2">
+            <li class="list-group-item list-group-item-nonflex">
+              <div class="response-text mb-2 mt-2">
+                <h4><%= response.content %></h4>
+              </div>
+              <div class="mb-2 mt-2 align-items-center d-flex">
+                <% if response.user.avatar.attached? %>
+                  <div class="image"> <%= cl_image_tag response.user.avatar.key, class: "round", width: "50", height: "50" %> </div>
+                <% end %>
+                <h6>By <%= link_to response.user.username, user_path(response.user) %>, at <%= response.created_at %></h6>
+              </div>
+            </li>
+          </div>
         <% end %>
-      </div>
+      </ul>    
+    </div>
+    <!-- response form container -->
+    <div class="col-6">
+      <div class="response-form mt-15 p-2">
+        <h3 class="text-center">Post a response</h3>
+        <%= simple_form_for [@survey, @response] do |f| %>
+          <div class="form-inputs" id="rev-city">
+            <%= f.input :content,
+                        as: :text,
+                        label: false %>
+              <%= f.submit 'Send a response', class: 'btn btn-warning btn-block', id: "user-btn"%>
+            <% end %>
+          </div>
+      </div>    
+    </div>
   </div>
 </div>
