@@ -79,7 +79,7 @@
         <div class="ks-cboxtags">
           <h2 id="interests">I like</h2>
           <% @user.user_interests.each do |interest|%>
-            <label> interest </label>
+            <label> <%= interest.title %> </label>
           <% end %>
         </div>
       </div>
@@ -87,18 +87,31 @@
 
 
 
-      <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-6">
+      <div class="rating-form mt-15 p-2">
           <% if @user == current_user %>
+            <h3>Where did you live before?</h3>
             <%= simple_form_for [@user_city] do |f| %>
-              <%= f.input :title, label: "My Cities:", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
-              <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
+            <div class="form-inputs">
+              <%= f.input :title,
+              label: false,
+              required: false,
+              :collection => %w[Amsterdam Istanbul Berlin Paris], :input_html => { :class => 'select2'} %>
+              <%= f.submit 'Add', class: 'btn btn-warning btn-block', id: "user-btn"%>
+            </div>
             <% end %>
           <% end %>
-        </div>
+
       </div>
 
+
+      <div class="profile-container">
+        <div class="ks-cboxtags">
+          <h2 id="interests">I lived in</h2>
+          <% @user.user_cities.each do |city|%>
+            <label> <%= city.title  %>  </label>
+          <% end %>
+        </div>
+      </div>
 
 
 

@@ -1,6 +1,6 @@
 <%= content_for(:navbar_class, "navbar-home") %>
 <div style="height: 80vh">
-<%= simple_form_for @user_city, remote: true, html: { class: "wizard js-wizard"} do |f| %>
+<%= simple_form_for @user_city, remote: true, html: { class: "wizard js-wizard "} do |f| %>
   <div class="wizard-steps-container js-wizard-steps is--step-0">
     <img src="<%= asset_path "bigworld.svg" %>" alt="background" class="wizard-background-img"/>
     <div class="wizard-steps-step wizard-steps-step-0 js-intro-step">
@@ -22,10 +22,10 @@
         <p class="wizard-title">1 / 3</p>
         <p class="wizard-title">Where would you like to go?</p>
       </div>
-      <div class="sentence-checkboxes">
-      <%= f.input :title, :input_html => { :class => 'sentence-checkboxes-input' },
-                  :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
-                  label: false, :input_html => {:class => 'sentence-checkboxes-label' }%>
+      <div class="sentence-checkboxes ">
+      <%= f.input :title, :input_html => { :class => 'sentence-checkboxes-input '},
+                  :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt], :input_html => { :class => 'select2'},
+                  label: false, :input_html => {:class => 'sentence-checkboxes-label ' }%>
       </div>
       <div class="wizard-actions">
         <button class="js-wizard-previous btn-main-yellow small text-size" type="button">Previous</button>
