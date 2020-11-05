@@ -49,7 +49,6 @@ document.addEventListener('turbolinks:load', () => {
   $('.scroller').slick();
   initSlideshow();
   initChatroomCable();
-  // $('#city-input').select2();
 });
 
 

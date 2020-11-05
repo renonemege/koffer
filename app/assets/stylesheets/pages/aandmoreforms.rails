@@ -1,0 +1,60 @@
+    <!-- friends -->
+    <% @users.each do |user| %>
+      <div class="col-6">
+        <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.current_city == current_user.current_city%>
+          <%= link_to user do %>
+            <%= user.username %>
+            <%= user.user_interests.first %><%= @city.title %>
+            <% if user.avatar.attached? %>
+              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% @users.each do |user| %>
+      <div class="col-6">
+        <% if user != current_user && user.current_city == current_user.current_city%>
+          <%= link_to user do %>
+            <%= user.username %>
+            <%= user.occupation %><%= @city.title %>
+            <% if user.avatar.attached? %>
+              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+
+
+
+
+
+        <% @users.each do |user| %>
+        <% if !(user.user_interests & current_user.user_interests).empty? && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title%>
+          <%= link_to user do %>
+            <p><%= user.first_name %> <%= user.last_name %></p>
+            <p><%= user.user_interests.first %><%= @city.title %></p>
+            <% if user.avatar.attached? %>
+              <%= cl_image_tag user.avatar.key, crop: :fit, class: "avatar dropdown-toggle" %>
+            <% end %>
+          <% end %>
+        <% end %>
+    <% end %>
+
+
+
+
+
+    <!-- map -->
+  <div class="card" id="sticky-card">
+    <h2><span>Project #1</span>Title of the Project</h2>
+    <div id="map"
+        style="width: 50%; height: 700px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+<!-- map -->
