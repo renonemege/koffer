@@ -81,7 +81,7 @@ Interest.create!(
 )
 # San\ Fransisco Berlin Frankfurt Amsterdam Stockholm Paris Madrid
 # --------cities--------------
-cities = %w[Istanbul Berlin Frankfurt Amsterdam Stockholm Paris Madrid]
+cities = %w[Istanbul Berlin Frankfurt Amsterdam Stockholm Paris Madrid Glasgow Rome Vienna Rotterdam Prague London Lisbon Budapest Barcelona Copenhagen Warsaw Dublin]
 
 # Gets all cities
 teleport_api_cities = open('https://api.teleport.org/api/urban_areas/').read
@@ -254,8 +254,91 @@ City.find_by(title: 'Madrid').photo.attach(
   filename: 'madrid.jpg',
   content_type: 'image/jpg'
 )
+# Glasgow Rome Vienna Rotterdam Prague London Lisbon Budapest Barcelona Copenhagen Warsaw Dublin]
+puts 'adding photo to Glasgow'
+City.find_by(title: 'Glasgow').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1531152369337-1d0b0b9ef20d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'glasgow.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Rome'
+City.find_by(title: 'Rome').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1525874684015-58379d421a52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'rome.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Vienna'
+City.find_by(title: 'Vienna').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1533192051774-c77ea3802005?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=664&q=80'),
+  filename: 'vienna.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Rotterdam'
+City.find_by(title: 'Rotterdam').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1542989364-953d211f4b6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1347&q=80'),
+  filename: 'rotterdam.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Prague'
+City.find_by(title: 'Prague').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1541849546-216549ae216d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'prague.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to London'
+City.find_by(title: 'London').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'),
+  filename: 'london.jpg',
+  content_type: 'image/jpg'
+)
 
 
+puts 'adding photo to Lisbon'
+City.find_by(title: 'Lisbon').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1542475393-3859feead00d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'lisbon.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Budapest'
+City.find_by(title: 'Budapest').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1549877452-9c387954fbc2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'budapest.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Barcelona'
+City.find_by(title: 'Barcelona').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1587043211963-0352f1528f6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'barcelona.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Copenhagen'
+City.find_by(title: 'Copenhagen').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1521240104483-b3e91583366c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80'),
+  filename: 'copenhagen.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Warsaw'
+City.find_by(title: 'Warsaw').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1506549209434-33eff06262cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1856&q=80'),
+  filename: 'warsaw.jpg',
+  content_type: 'image/jpg'
+)
+
+puts 'adding photo to Dublin'
+City.find_by(title: 'Dublin').photo.attach(
+  io: URI.open('https://images.unsplash.com/photo-1549918864-48ac978761a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'),
+  filename: 'dublin.jpg',
+  content_type: 'image/jpg'
+)
 # ---------users----------
 
 puts 'finding users living in Istanbul'
@@ -455,7 +538,7 @@ puts 'finding users living in Madrid'
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
-    occupation: Occupation.where(city: City.find_by(title: 'Istanbul')).order("RANDOM()").first,
+    occupation: Occupation.where(city: City.find_by(title: 'Madrid')).order("RANDOM()").first,
     description: Faker::JapaneseMedia::StudioGhibli.quote,
     current_city: 'Madrid',
   )
@@ -475,5 +558,381 @@ puts 'finding users living in Madrid'
     city: City.find_by(title: 'Madrid'),
     user: User.last,
     occupation: Occupation.where(city: City.find_by(title: 'Madrid')).order("RANDOM()").first
+  )
+end
+
+
+
+puts 'finding users living in Glasgow'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Glasgow')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Glasgow',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Glasgow',
+    user: User.last,
+    city: City.find_by(title: 'Glasgow')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Glasgow'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Glasgow')).order("RANDOM()").first
+  )
+end
+
+
+puts 'finding users living in Vienna'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Vienna')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Vienna',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Vienna',
+    user: User.last,
+    city: City.find_by(title: 'Vienna')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Vienna'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Vienna')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Rome'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Rome')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Rome',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Rome',
+    user: User.last,
+    city: City.find_by(title: 'Rome')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Rome'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Rome')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Rotterdam'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Rotterdam')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Rotterdam',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Rotterdam',
+    user: User.last,
+    city: City.find_by(title: 'Rotterdam')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Rotterdam'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Rotterdam')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Prague'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Prague')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Prague',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Prague',
+    user: User.last,
+    city: City.find_by(title: 'Prague')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Prague'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Prague')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in London'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'London')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'London',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'London',
+    user: User.last,
+    city: City.find_by(title: 'London')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'London'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'London')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Lisbon'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Lisbon')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Lisbon',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Lisbon',
+    user: User.last,
+    city: City.find_by(title: 'Lisbon')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Lisbon'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Lisbon')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Budapest'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Budapest')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Budapest',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Budapest',
+    user: User.last,
+    city: City.find_by(title: 'Budapest')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Budapest'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Madrid')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Barcelona'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Barcelona')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Barcelona',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Barcelona',
+    user: User.last,
+    city: City.find_by(title: 'Barcelona')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Barcelona'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Barcelona')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Copenhagen'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Copenhagen')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Copenhagen',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Copenhagen',
+    user: User.last,
+    city: City.find_by(title: 'Copenhagen')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Copenhagen'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Copenhagen')).order("RANDOM()").first
+  )
+end
+# -----cities = %w[ Budapest Barcelona Copenhagen Warsaw Dublin]
+
+puts 'finding users living in Warsaw'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Warsaw')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Warsaw',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Warsaw',
+    user: User.last,
+    city: City.find_by(title: 'Warsaw')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Warsaw'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Warsaw')).order("RANDOM()").first
+  )
+end
+
+puts 'finding users living in Dublin'
+2.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    occupation: Occupation.where(city: City.find_by(title: 'Dublin')).order("RANDOM()").first,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Dublin',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://source.unsplash.com/random'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+
+  UserCity.create!(
+    title: 'Dublin',
+    user: User.last,
+    city: City.find_by(title: 'Dublin')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Dublin'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Dublin')).order("RANDOM()").first
   )
 end

@@ -14,9 +14,11 @@
 
 }
 
+
 .main-title {
-  background-color: rgba(242, 201, 76, .2);
-  color: rgba(0, 0, 0, 0.7);
+  background-color: #F0EDE4;
+  color: rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 html,
@@ -40,7 +42,7 @@ body {
   width : 100vw;
   top: 70px;
   position: sticky;
-  border: 3px solid rgba(0, 0, 0, .8);
+  border: 3px solid rgba(0, 0, 0, .7);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   background-color: white;
   color: #333;

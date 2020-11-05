@@ -14,11 +14,11 @@
 
   <div class="card" id="sticky-card">
     <div class=' main-title'>
-      <h3 class='ml-3'>About <%= @city.title %></h3>
+      <h3 class='ml-3 above-title'>About <%= @city.title %></h3>
     </div>
     <div class="row">
       <div id="map"
-          style="width: 50%; height: 700px;"
+          style="width: 50%; height: 700px; margin-top: 1px;"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
@@ -44,12 +44,50 @@
           </div>
 
           <div class=" text-inline mt-2" id="today">
-            <h3 class="mr-5">Country:</h3> <h3><%= @city.country %></h3>
+            <h3 class="mr-5">Country:</h3> <h3><%= @city.country %>
+            <% case @city.title %>
+            <% when 'Berlin'  %>
+              <img src="https://www.countryflags.io/DE/shiny/64.png"></h3>
+            <% when 'Frankfurt' %>
+              <img src="https://www.countryflags.io/DE/shiny/64.png"></h3>
+            <% when 'Amsterdam' %>
+              <img src="https://www.countryflags.io/NL/shiny/64.png"></h3>
+            <% when 'Rotterdam' %>
+              <img src="https://www.countryflags.io/DE/shiny/64.png"></h3>
+            <% when 'Istanbul' %>
+              <img src="https://www.countryflags.io/tr/shiny/64.png"></h3>
+            <% when 'Stockholm' %>
+              <img src="https://www.countryflags.io/se/shiny/64.png"></h3>
+            <% when 'Paris' %>
+              <img src="https://www.countryflags.io/fr/shiny/64.png"></h3>
+            <% when 'Madrid' %>
+              <img src="https://www.countryflags.io/es/shiny/64.png"></h3>
+            <% when 'Glasgow' %>
+              <img src="https://www.countryflags.io/gb/shiny/64.png"></h3>
+            <% when 'London'%>
+              <img src="https://www.countryflags.io/gb/shiny/64.png"></h3>
+            <% when 'Rome' %>
+              <img src="https://www.countryflags.io/it/shiny/64.png"></h3>
+            <% when 'Vienna' %>
+              <img src="https://www.countryflags.io/at/shiny/64.png"></h3>
+            <% when 'Prague' %>
+              <img src="https://www.countryflags.io/cz/shiny/64.png"></h3>
+            <% when 'Lisbon' %>
+              <img src="https://www.countryflags.io/pt/shiny/64.png"></h3>
+            <% when 'Budapest' %>
+              <img src="https://www.countryflags.io/hu/shiny/64.png"></h3>
+            <% when 'Copenhagen' %>
+              <img src="https://www.countryflags.io/dk/shiny/64.png"></h3>
+            <% when 'Warsaw' %>
+              <img src="https://www.countryflags.io/pl/shiny/64.png"></h3>
+            <% when 'Dublin' %>
+              <img src="https://www.countryflags.io/ie/shiny/64.png"></h3>
+            <% end %>
             <hr/>
 
           </div>
           <div class=" text-inline mt-2" id="today">
-            <h3 class="mr-5">Currency:</h3> <h3><%= @city.currency %></h3>
+            <h3 class="mr-5">Currency:</h3> <h3><%= @city.currency %> <i class="fas fa-euro-sign"></i></h3>
             <hr/>
           </div>
 
@@ -63,7 +101,7 @@
 <!-- friends -->
     <div class="card" id="sticky-card">
       <div class=' main-title'>
-        <h3 class='ml-3'>Meet the Community in <%= @city.title %></h3>
+        <h3 class='ml-3 above-title'>Meet the Community in <%= @city.title %></h3>
       </div>
 
 
@@ -172,8 +210,8 @@
     </div>
 <!-- friends end -->
   <div class="card" id="sticky-card">
-    <div class=' main-title'>
-      <h3 class='ml-3'><%= @city.title %> in Numbers</h3>
+    <div class=' main-title '>
+      <h3 class='ml-3 above-title'><%= @city.title %> in Numbers</h3>
     </div>
     <div class="row">
       <div class="col-4 card ">
@@ -215,8 +253,8 @@
 
 <!-- animation -->
   <div class="card" id="sticky-card">
-    <div class=' main-title'>
-      <h3 class='ml-3'>What people think about <%= @city.title %></h3>
+    <div class=' main-title '>
+      <h3 class='ml-3 above-title'>What people think about <%= @city.title %></h3>
     </div>
     <div class="wrappers" id='show-wrap'>
         <span class="cloud-1"></span>
@@ -301,7 +339,7 @@
 
   <div class="card" id="sticky-card">
     <div class=' main-title'>
-      <h3 class='ml-3'>Photos from <%= @city.title %></h3>
+      <h3 class='ml-3 above-title'>Photos from <%= @city.title %></h3>
     </div>
     <div class='main-container'>
       <div class='grid-container'>
