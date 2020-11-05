@@ -127,19 +127,19 @@
             <% end %>
           <% else %>
             <div id="slideshow">
-            <% @user.reviews.reverse.each do |review| %>
-              <div class="review mb-5 mt-3 speech-bubble">
-                <li class="list-group-item speech">
-                  <% review.stars.times do  %>
-                    <span class="fas fa-star"></span>
-                  <% end %>
-                  <% (5 - review.stars).times do  %>
-                    <span class="far fa-star"></span>
-                  <% end %>
-                </li>
-                  <p class="ml-4 mb-2"><%= review.content%></p>
-              </div>
-            <% end %>
+              <% @user.reviews.reverse.each do |review| %>
+                <div class="review mb-5 mt-3 speech-bubble">
+                  <li class="list-group-item speech">
+                    <% review.stars.times do  %>
+                      <span class="fas fa-star"></span>
+                    <% end %>
+                    <% (5 - review.stars).times do  %>
+                      <span class="far fa-star"></span>
+                    <% end %>
+                  </li>
+                    <p class="ml-4 mb-2"><%= review.content%></p>
+                </div>
+              <% end %>
             </div>
           <% end %>
       </ul>
