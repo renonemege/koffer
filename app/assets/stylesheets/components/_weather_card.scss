@@ -1,9 +1,21 @@
 #weather{
   #city{
-    font-size: 61px;
+    font-size: 51px;
   }
   #today{
-    font-size: 28px;
+    font-size: 24px;
+    opacity: 0.8;
+  }
+
+  .d-flex {
+    h4 {
+      font-size: 24px;
+      opacity: 0.8;
+    }
+  }
+
+  #date {
+    font-size: 24px;
     opacity: 0.8;
   }
 
@@ -12,12 +24,16 @@
   }
 
   #celcius{
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 
-#date {
-  margin-left: 5px;
+.todaydate {
+  display: flex;
+  h4 {
+    font-size: 24px;
+    opacity: 0.8;
+  }
 }
 
 #condition {
@@ -26,22 +42,6 @@
 
 #celcius {
   margin-left: 5px;
-}
-
-.todaydate {
-  display: flex;
-  h3{
-    font-size: 28px;
-    opacity: 0.8;
-  }
-}
-
-.todayweather {
-  display: flex;
-  h3{
-    font-size: 28px;
-    opacity: 0.8;
-  }
 }
 
 .text-inline {
@@ -55,7 +55,7 @@
 
 .row {
   p {
-    line-height: 36px;
+    line-height: 30px;
   }
 }
 
