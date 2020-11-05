@@ -37,8 +37,18 @@
               <article class="text-left">
                   <h2><%= city.title %></h2>
                   <h4><%= city.country%></h4>
-                  <% 5.times do  %>
-                    <span class="fa fa-star"></span>
+                  <% n = rand(3..5) %>
+                  <% if city.title == 'Berlin' %>
+                    <% 5.times do  %>
+                      <span class="fas fa-star"></span>
+                    <% end %>
+                  <% else %>
+                    <% n.times do  %>
+                      <span class="fas fa-star"></span>
+                    <% end %>
+                    <% (5 - n).times do  %>
+                      <span class="far fa-star"></span>
+                    <% end %>
                   <% end %>
               </article>
               <%= cl_image_tag city.photo.key, crop: :fit %>
