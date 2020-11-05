@@ -3,7 +3,7 @@
     font-size: 61px;
   }
   #today{
-    font-size: 31px;
+    font-size: 28px;
     opacity: 0.8;
   }
 
@@ -12,11 +12,52 @@
   }
 
   #celcius{
-    font-size: 31px;
+    font-size: 28px;
   }
 }
 
+#date {
+  margin-left: 5px;
+}
 
+#condition {
+  margin-left: 5px;
+}
+
+#celcius {
+  margin-left: 5px;
+}
+
+.todaydate {
+  display: flex;
+  h3{
+    font-size: 28px;
+    opacity: 0.8;
+  }
+}
+
+.todayweather {
+  display: flex;
+  h3{
+    font-size: 28px;
+    opacity: 0.8;
+  }
+}
+
+.text-inline {
+  display: flex;
+  justify-content: space-between;
+  h3{
+    font-size: 28px;
+    opacity: 0.8;
+  }
+}
+
+.row {
+  p {
+    line-height: 36px;
+  }
+}
 
 #slideshow {
   margin: 10px auto;
