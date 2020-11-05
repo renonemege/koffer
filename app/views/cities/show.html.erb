@@ -174,7 +174,7 @@
 <!-- friends end -->
   <div class="card" id="sticky-card">
     <div class=' main-title'>
-      <h3 class='ml-3'><%= @city.title %> in numbers</h3>
+      <h3 class='ml-3'><%= @city.title %> in Numbers</h3>
     </div>
     <div class="row">
       <div class="col-4 card ">
@@ -194,9 +194,14 @@
             <p><%= t.title %></p> <p><%= t.price %>$</p>
           </div>
         <% end %>
+        <h3>Average salary for Your Occupation in  <%= @city.title %></h3>
+        <div class="d-flex justify-content-between">
+          <p><%= current_user.occupation.title %> </p>
+          <p> <%= @city.occupations.find_by(title: current_user.occupation.title).salary %> $</p>
+        </div>
       </div>
       <div class="col-4 card">
-          <h2 class="align-self-center">Other</h2>
+          <h2 class="align-self-center">Scores</h2>
           <hr/>
         <% @city_details.each do |detail| %>
           <div class="d-flex justify-content-between">
@@ -295,6 +300,9 @@
 <!-- City survey viewer (with links to the survey page) / create new survey on the city %> -->
 
   <div class="card" id="sticky-card">
+    <div class=' main-title'>
+      <h3 class='ml-3'>Most Recent Surveys about <%= @city.title %></h3>
+    </div>
 
     <ul class="list-group">
       <% @city.surveys.each do |survey| %>
