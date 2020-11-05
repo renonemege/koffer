@@ -13,6 +13,9 @@
 
 
   <div class="card" id="sticky-card">
+    <div class=' main-title'>
+      <h3 class='ml-3'>About <%= @city.title %></h3>
+    </div>
     <div class="row">
       <div id="map"
           style="width: 50%; height: 700px;"
@@ -20,34 +23,37 @@
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
       <div class="col-6 ">
-        <div class="row mt-5 ml-1">
-          <div class="card " id="weather">
+          <div  id="weather">
             <div>
                 <h3 id = "city"> <%= @city.title %> </h3>
                 <hr/>
             </div>
             <div>
+              <h4 id="today">Todays Weather</h4>
+            </div>
+            <div>
               <h3 id = "date">date</h3>
             </div>
-            <div>
+            <div class="d-flex">
+              <h4>Feels like</h4>
+              <h3 id="celcius">celcius <i class="fas fa-bolt"></i></h3>
               <p id="condition">condition</p>
+              <p id='icon-weather'></p>
             </div>
-            <div>
-              <p id="celcius">celcius <i class="fas fa-bolt"></i></p>
-            </div>
+
+
           </div>
 
-          <div class="card col-3 text-center" id="city-main">
-            <h4>Country </h4>
+          <div class=" text-inline" id="today">
+            <h4>Country <%= @city.country %></h4>
             <hr/>
-            <p><%= @city.country %></p>
+
           </div>
-          <div class="card col-3 text-center" id="city-main">
-            <h4>Currency </h4>
+          <div class=" text-inline" id="today">
+            <h4>Currency <%= @city.currency %></h4>
             <hr/>
-            <p><%= @city.currency %></p>
           </div>
-        </div>
+
         <div class="row p-3" id='city-description'>
           <p><%= @city.description.split('   ')[0...-1].join.html_safe %></p>
         </div>
@@ -57,6 +63,10 @@
 
 <!-- friends -->
     <div class="card" id="sticky-card">
+      <div class=' main-title'>
+        <h3 class='ml-3'>Meet the Community in <%= @city.title %></h3>
+      </div>
+
 
       <div class="scroller">
           <% @users.each do |user| %>
@@ -163,6 +173,9 @@
     </div>
 <!-- friends end -->
   <div class="card" id="sticky-card">
+    <div class=' main-title'>
+      <h3 class='ml-3'><%= @city.title %> in numbers</h3>
+    </div>
     <div class="row">
       <div class="col-4 card ">
         <h2 class="align-self-center">Cost Of Living</h2>
@@ -198,18 +211,19 @@
 
 <!-- animation -->
   <div class="card" id="sticky-card">
-
-    <div class="wrappers">
+    <div class=' main-title'>
+      <h3 class='ml-3'>What people think about <%= @city.title %></h3>
+    </div>
+    <div class="wrappers" id='show-wrap'>
         <span class="cloud-1"></span>
         <span class="cloud-2"></span>
         <span class="cloud-3"></span>
         <span class="cloud-4"></span>
         <span class="cloud-5"></span>
         <span class="cloud-6"></span>
-        <span class="cloud-7"></span>
+
         <span class="cloud-8"></span>
         <span class="cloud-9"></span>
-        <span class="cloud-10"></span>
         <span class="cloud-11"></span>
         <span class="cloud-12"></span>
         <span class="car"></span>
@@ -221,25 +235,7 @@
     <!-- review -->
     <div class="row">
 
-      <div class="rating-form col-6 mt-15 p-2">
-        <h4>What do you think about <%= @city.title %>  ?</h4>
-        <%= simple_form_for [@city, @review] do |f| %>
-        <div class="form-inputs">
-          <%= f.input :content,
-                      as: :text,
-                      label: false %>
-          <fieldset class="rating">
-            <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
-            <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
-            <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
-            <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
-            <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
-          </fieldset>
-            <%= f.submit 'Add a review', class: 'btn btn-warning', id: "user-btn" %>
-          <% end %>
-        </div>
-      </div>
-      <!-- review end -->
+
 
 
       <div class="reviews col-6">
@@ -249,22 +245,44 @@
                 <span class="far fa-star"></span>
             <% end %>
           <% else %>
+            <div id="slideshow">
             <% @city.reviews.reverse.each do |review| %>
-              <div class="review mb-5 mt-3">
-                <li class="list-group-item">
+              <div class="review mb-5 mt-3 speech-bubble">
+                <li class="list-group-item speech">
                   <% review.stars.times do  %>
                     <span class="fas fa-star"></span>
                   <% end %>
                   <% (5 - review.stars).times do  %>
                     <span class="far fa-star"></span>
                   <% end %>
-                  <p><%= review.content%></p>
                 </li>
+                  <p class="ml-4 mb-2"><%= review.content%></p>
               </div>
             <% end %>
+            </div>
           <% end %>
         </ul>
       </div>
+
+      <div class="rating-form col-6 mt-2 ">
+        <h3>What do you love most about <%= @city.title %>  ?</h3>
+        <%= simple_form_for [@city, @review] do |f| %>
+        <div class="form-inputs" id='rev-city'>
+          <fieldset class="rating">
+            <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+            <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+            <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+            <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+            <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+          </fieldset>
+          <%= f.input :content,
+                      as: :text,
+                      label: false %>
+            <%= f.submit 'Add a review', class: 'btn btn-warning btn-block', id: "user-btn" %>
+          <% end %>
+        </div>
+      </div>
+      <!-- review end -->
     </div>
 
   </div>
@@ -307,6 +325,9 @@
 
 
   <div class="card" id="sticky-card">
+    <div class=' main-title'>
+      <h3 class='ml-3'>Photos from <%= @city.title %></h3>
+    </div>
     <div class='main-container'>
       <div class='grid-container'>
         <div class='card card--2x'>
