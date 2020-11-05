@@ -1,5 +1,5 @@
 .wrappers {
-  height: 279px;
+  height: 175px;
   width: 1400px;
   position: relative;
   overflow: hidden;
@@ -36,23 +36,23 @@
   animation-delay: 28s;
   top: 50px;
 }
-.wrappers .cloud-7 {
-  animation-delay: 33s;
-  top: 90px;
-}
+// .wrappers .cloud-7 {
+//   animation-delay: 33s;
+//   top: 90px;
+// }
 .wrappers .cloud-8 {
   background-image: url("https://firebasestorage.googleapis.com/v0/b/public-71dae.appspot.com/o/cloud-shadow.svg?alt=media&token=e72a904d-39ff-4666-afe5-840292c34119g");
   animation-delay: 38s;
-  top: 65px;
+  top: 35px;
 }
 .wrappers .cloud-9 {
   animation-delay: 44s;
   top: 35px;
 }
-.wrappers .cloud-10 {
-  animation-delay: 50s;
-  top: 70px;
-}
+// .wrappers .cloud-10 {
+//   animation-delay: 50s;
+//   top: 70px;
+// }
 .wrappers .cloud-11 {
   background-image: url("https://firebasestorage.googleapis.com/v0/b/public-71dae.appspot.com/o/cloud-shadow.svg?alt=media&token=e72a904d-39ff-4666-afe5-840292c34119");
   animation-delay: 56s;
@@ -64,8 +64,8 @@
 }
 .wrappers::before {
   content: "";
-  background: url("https://firebasestorage.googleapis.com/v0/b/public-71dae.appspot.com/o/city.svg?alt=media&token=109c948c-1bcb-4e6c-9096-0066976197f1") repeat-x 0 70px;
-  height: 279px;
+  background: url("https://firebasestorage.googleapis.com/v0/b/public-71dae.appspot.com/o/city.svg?alt=media&token=109c948c-1bcb-4e6c-9096-0066976197f1") repeat-x 0 5px;
+  height: 75px;
   width: 1400px;
   position: absolute;
   z-index: 2;
@@ -78,7 +78,7 @@
   width: 30px;
   position: absolute;
   z-index: 1;
-  top: 30px;
+  top: 10px;
   left: -35px;
   animation: sunAnimation 120s linear 10s infinite none running;
 }
@@ -87,22 +87,22 @@
   height: 23px;
   width: 35px;
   position: absolute;
-  top: 215px;
+  top: 90px;
   right: -50px;
   animation: carAnimation 20s linear 0s infinite none running;
 }
 .wrappers .car-2 {
   animation-delay: 5s;
-  top: 255px;
+  top: 80px;
 }
 .wrappers .car-3 {
   animation-delay: 10s;
-  top: 255px;
+  top: 80px;
 }
 .wrappers .car-4 {
   animation-delay: 15s;
   animation-duration: 15s;
-  top: 230px;
+  top: 100px;
 }
 
 @keyframes carAnimation {

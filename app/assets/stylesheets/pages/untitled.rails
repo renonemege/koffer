@@ -2,7 +2,7 @@
 <div style="height: 80vh">
 <%= simple_form_for @user_city, remote: true, html: { class: "wizard js-wizard"} do |f| %>
   <div class="wizard-steps-container js-wizard-steps is--step-0">
-    <img src="<%= asset_path "bigworld.svg" %>" alt="background" class="wizard-background-img"/>
+    <img src="<%= asset_path "germanyHigh.svg" %>" alt="background" class="wizard-background-img"/>
     <div class="wizard-steps-step wizard-steps-step-0 js-intro-step">
       <div class="d-flex align-items-center justify-content-between">
         <div class="onboard-left">
@@ -38,13 +38,10 @@
     <p class="wizard-title">2 / 3</p>
     <p class="wizard-title">What do you like doing?</p>
     <div class="month-checkboxes">
-      <div class="ks-cboxtags">
         <%= simple_fields_for @user_interest, remote: true do |f| %>
           <%= f.association :interest,
-                            as: :check_boxes,
                             input_html: { multiple: true },
-                            label: "my interests"%>
-      </div>
+                            label: false%>
     </div>
 
     <div class="wizard-actions">
@@ -58,23 +55,28 @@
       <p class="wizard-title">3 / 3</p>
       <p class="wizard-title">What do you do for a living?</p>
       <div class="temp-checkboxes">
-
+        <div class="temp-checkboxes-thermometer">
+          <div class="temp-checkboxes-options">
             <%= simple_fields_for @user_occupation, remote: true, html: {class: 'temp-checkboxes-input'} do |f| %>
               <p>Occupation</p><%= f.association :occupation,
                                 input_html: { multiple: false },
                                 label: false, :input_html => {:class => 'temp-checkboxes-label temp-checkboxes-label-top'} %>
             <% end %>
-
+            <div class="temp-checkboxes-thermometer-inner"></div>
+          </div>
+        </div>
       </div>
+
       <% end %>
-      <div class="wizard-actions ">
+      <div class="wizard-actions wizard-actions-thermometer">
         <button class="js-wizard-previous btn-main-yellow small" type="button">Previous</button>
-        <%= f.submit 'Submit', name: 'create_and_add', class: 'btn-main-yellow small ml-2'%>
       </div>
     </div>
-
   </div>
+        <%= f.submit 'Submit', name: 'create_and_add'%>
 <% end %>
+
+
 
 
 
