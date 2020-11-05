@@ -1,14 +1,14 @@
     <%= render 'shared/navbar' %>
 
-<h1 class= "mt-5">Your messages</h1>
+<h1 class= "mt-5 ml-5">Your messages</h1>
 
 <div class="row">
   <div class="col-12 col-md-3">
 
     <% if @chatrooms.present? %>
-      <nav class="nav flex-column">
+      <nav class="btn btn-warning btn-block">
         <% @chatrooms.each do |room| %>
-          <%= link_to room.title, chatroom_path(room), class: "nav-link room-nav-link" %>
+          <%= link_to room.title, chatroom_path(room), class: "chat-button-index" %>
         <% end %>
       </nav>
     <% else %>

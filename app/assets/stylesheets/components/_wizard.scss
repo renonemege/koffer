@@ -40,7 +40,7 @@
 
   .btn-main-yellow:hover {
     background-color: rgba(242, 201, 76, 0.9);
-    color: white;
+    color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
   }
 
@@ -83,6 +83,7 @@
     top: -500px;
     left: 2035px;
     display: flex;
+    background-color: rgba(255,255,255,0.8);
     .onboard-left {
       text-align: left;
       width: 50%;
@@ -135,8 +136,8 @@
   }
 
   .wizard-steps-step-2 {
-    top: 300px;
-    left: 1350px;
+    top: 330px;
+    left: 1400px;
     transform: rotate(-10deg);
   }
 
@@ -264,7 +265,7 @@
 //     .month-checkboxes-input:checked + .month-checkboxes-label {
 //       opacity: 1;
 //       background: rgba(255,255,255,0.8);
-//       color: #003F5C;
+//       color: rgba(255,255,255,0.8);
 //       font-weight: bold;
 //     }
 
@@ -375,7 +376,7 @@
 //     width: 748px;
 //     height: 396px;
 //     position: relative;
-//     background-color: #003F5C;
+//     background-color: rgba(255,255,255,0.8);
 
 //     .continent-checkboxes-input {
 //       opacity: 0;

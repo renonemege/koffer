@@ -59,6 +59,26 @@ Interest.create!(
 Interest.create!(
   title: 'Photography'
 )
+
+Interest.create!(
+  title: 'Gardening'
+)
+
+Interest.create!(
+  title: 'Cooking'
+)
+
+Interest.create!(
+  title: 'Dancing'
+)
+
+Interest.create!(
+  title: 'Camping'
+)
+
+Interest.create!(
+  title: 'Board Games'
+)
 # San\ Fransisco Berlin Frankfurt Amsterdam Stockholm Paris Madrid
 # --------cities--------------
 cities = %w[Istanbul Berlin Frankfurt Amsterdam Stockholm Paris Madrid]

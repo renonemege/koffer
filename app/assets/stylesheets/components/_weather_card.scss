@@ -1,9 +1,21 @@
 #weather{
   #city{
-    font-size: 61px;
+    font-size: 51px;
   }
   #today{
-    font-size: 31px;
+    font-size: 34px;
+    opacity: 0.8;
+  }
+
+  .d-flex {
+    h4 {
+      font-size: 24px;
+      opacity: 0.8;
+    }
+  }
+
+  #date {
+    font-size: 24px;
     opacity: 0.8;
   }
 
@@ -12,19 +24,51 @@
   }
 
   #celcius{
-    font-size: 31px;
+    font-size: 24px;
   }
 }
 
+.todaydate {
+  display: flex;
+  margin-bottom: 10px;
+  h4 {
+    font-size: 24px;
+    opacity: 0.8;
+  }
+}
+
+#condition {
+  margin-left: 5px;
+}
+
+#celcius {
+  margin-left: 5px;
+}
+
+.text-inline {
+  display: flex;
+  h3{
+    font-size: 20px;
+    opacity: 0.8;
+  }
+}
+
+.row {
+  p {
+    font-size: 16px;
+    line-height: 32px;
+  }
+}
 
 
 #slideshow {
   margin: 10px auto;
   position: relative;
   width: 400px;
-  height: 150px;
+  height: 180px;
   padding: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
 }
 
 #slideshow > div {
@@ -54,7 +98,7 @@
   border-bottom: 0;
   border-left: 0;
   margin-left: -10px;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
 }
 
 

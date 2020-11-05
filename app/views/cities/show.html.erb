@@ -3,7 +3,7 @@
 <div class="wrapper" id="sticky">
   <div class="card" id="sticky-card">
     <!-- city banner -->
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
+    <div class="banner" id="citybanner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
         <div class="centered row">
           <h1><%= @city.title %></h1>
         </div>
@@ -28,29 +28,30 @@
                 <h3 id = "city"> <%= @city.title %> </h3>
                 <hr/>
             </div>
+            <div class="todaydate">
+             <h4>Today is &nbsp</h4><h4 id = "date">date</h4>
+            </div>
             <div>
               <h4 id="today">Todays Weather</h4>
             </div>
-            <div>
-              <h3 id = "date">date</h3>
-            </div>
-            <div class="d-flex">
+            <div class="d-flex align-items-center">
               <h4>Feels like</h4>
-              <h3 id="celcius">celcius <i class="fas fa-bolt"></i></h3>
-              <p id="condition">condition</p>
+              <h4 id="celcius">celcius</h4>
+              <h4>&nbsp with </h4>
+              <h4 id="condition">condition</h4>
               <p id='icon-weather'></p>
             </div>
 
 
           </div>
 
-          <div class=" text-inline" id="today">
-            <h4>Country <%= @city.country %></h4>
+          <div class=" text-inline mt-2" id="today">
+            <h3 class="mr-5">Country:</h3> <h3><%= @city.country %></h3>
             <hr/>
 
           </div>
-          <div class=" text-inline" id="today">
-            <h4>Currency <%= @city.currency %></h4>
+          <div class=" text-inline mt-2" id="today">
+            <h3 class="mr-5">Currency:</h3> <h3><%= @city.currency %></h3>
             <hr/>
           </div>
 
@@ -174,11 +175,11 @@
 <!-- friends end -->
   <div class="card" id="sticky-card">
     <div class=' main-title'>
-      <h3 class='ml-3'><%= @city.title %> in numbers</h3>
+      <h3 class='ml-3'><%= @city.title %> in Numbers</h3>
     </div>
     <div class="row">
       <div class="col-4 card ">
-        <h2 class="align-self-center">Cost Of Living</h2>
+        <h2 class="align-self-center mt-3">Cost Of Living</h2>
         <hr/>
         <% @city.cost_of_livings.first(10).each do |t|%>
          <div class="d-flex justify-content-between">
@@ -187,16 +188,21 @@
         <% end %>
       </div>
       <div class="col-4 card">
-        <h2 class="align-self-center">Housing</h2>
+        <h2 class="align-self-center mt-3">Housing</h2>
         <hr/>
         <% @city.cost_of_livings.last(3).each do |t|%>
           <div class="d-flex justify-content-between">
             <p><%= t.title %></p> <p><%= t.price %>$</p>
           </div>
         <% end %>
+        <h3>Average salary for Your Occupation in  <%= @city.title %></h3>
+        <div class="d-flex justify-content-between">
+          <p><%= current_user.occupation.title %> </p>
+          <p> <%= @city.occupations.find_by(title: current_user.occupation.title).salary %> $ /month</p>
+        </div>
       </div>
       <div class="col-4 card">
-          <h2 class="align-self-center">Other</h2>
+          <h2 class="align-self-center mt-3">Scores</h2>
           <hr/>
         <% @city_details.each do |detail| %>
           <div class="d-flex justify-content-between">
@@ -234,6 +240,10 @@
       </div>
     <!-- review -->
     <div class="row">
+
+
+
+
       <div class="reviews col-6">
         <ul class="list-group">
           <% if @city.reviews.nil? %>
@@ -331,36 +341,36 @@
       <div class='grid-container'>
         <div class='card card--2x'>
           <div class='card__image big-script '>
-            <%= image_tag("https://source.unsplash.com/collection/#{@city.title}/1600x900") %>
+            <%= image_tag("https://images.unsplash.com/photo-1538685634737-24b83e3fa2f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80") %>
 
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://loremflickr.com/g/320/240/#{@city.title}") %>
+            <%= image_tag("https://images.unsplash.com/photo-1560930950-5cc20e80e392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") %>
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=1") %>
+            <%= image_tag("https://images.unsplash.com/photo-1546726747-421c6d69c929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80") %>
 
-          </div>
-        </div>
-
-        <div class='card'>
-          <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=2") %>
-          </div>
-        </div>
-        <div class='card'>
-          <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=3") %>
           </div>
         </div>
 
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=4") %>
+            <%= image_tag("https://images.unsplash.com/photo-1572844980501-10a1fcb2587f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80") %>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='card__image'>
+            <%= image_tag("https://images.unsplash.com/photo-1490684120840-1459ffb779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80") %>
+          </div>
+        </div>
+
+        <div class='card'>
+          <div class='card__image'>
+            <%= image_tag("https://images.unsplash.com/photo-1526321391769-26f7321e469d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80") %>
 
           </div>
         </div>
@@ -368,7 +378,7 @@
 
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=5") %>
+            <%= image_tag("https://images.unsplash.com/photo-1522312668209-c0554a912517?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=830&q=80") %>
           </div>
         </div>
       </div>
