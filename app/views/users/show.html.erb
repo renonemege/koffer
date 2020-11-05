@@ -76,10 +76,10 @@
 
 
       <div class="profile-container">
-        <div class="ks-cboxtags">
-          <h2 id="interests">I like</h2>
+        <div class="ks-cboxtags d-flex align-items-center">
+          <h2 class="mr-3" id="interests">I like</h2>
           <% @user.user_interests.each do |interest|%>
-            <label> <%= interest.title %> </label>
+            <label class="mr-2 mb-3"> <%= interest.title %> </label>
           <% end %>
         </div>
       </div>
@@ -104,17 +104,17 @@
 
 
       <div class="profile-container">
-        <div class="ks-cboxtags">
-          <h2 id="interests">I lived in</h2>
+        <div class="ks-cboxtags d-flex align-items-center">
+          <h2 class="mr-3" id="interests">I lived in</h2>
           <% @user.user_cities.each do |city|%>
-            <label> <%= city.title  %>  </label>
+            <label class="mr-2 mb-3"> <%= city.title  %>  </label>
           <% end %>
         </div>
       </div>
 
 
   <% if @user != current_user %>
-  <h2 class="d-flex mt-5 justify-content-center">Reviews</h2>
+  <h2 class="marginleft d-flex mt-5">Reviews</h2>
   <% end %>
 
 <div class="allreviews">
@@ -147,7 +147,7 @@
   <% end %>
   <% if @user != current_user %>
     <!-- user review -->
-      <div class="rating-form mt-15 p-2">
+      <div class="rating-form ml-5 p-2">
         <span>What do you think about <%= @user.first_name %>  ?</span>
         <%= simple_form_for [@user, @review] do |f| %>
         <div class="form-inputs">
