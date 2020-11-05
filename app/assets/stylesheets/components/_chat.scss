@@ -1,3 +1,11 @@
+.chat-button-index{
+  color: rgba(0,0,0,0.9);
+}
+
+.chat-button-index:hover{
+  text-decoration: none;
+  color: rgba(0,0,0,0.9);
+}
 .chat {
   border: 1px solid lighten($secondary, 40%);
   background: lighten($secondary, 50%);
