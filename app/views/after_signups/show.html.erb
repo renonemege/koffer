@@ -42,7 +42,7 @@
         <%= simple_fields_for @user_interest, remote: true do |f| %>
           <%= f.association :interest,
                             as: :check_boxes,
-                            input_html: { multiple: true },
+                            input_html: { multiple: true},
                             label: false%>
       </div>
     </div>
@@ -61,8 +61,8 @@
 
             <%= simple_fields_for @user_occupation, remote: true, html: {class: 'temp-checkboxes-input'} do |f| %>
               <p>Occupation</p><%= f.association :occupation,
-                                input_html: { multiple: false },
-                                label: false, :input_html => {:class => 'temp-checkboxes-label temp-checkboxes-label-top'} %>
+                                input_html: { multiple: false, :class => 'sentence-checkboxes-input select2 '},
+                                label: false %>
             <% end %>
 
       </div>

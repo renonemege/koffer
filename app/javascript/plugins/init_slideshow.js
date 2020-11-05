@@ -8,7 +8,7 @@ const initSlideshow = () => {
       .fadeIn(1000)
       .end()
       .appendTo('#slideshow');
-  }, 4000);
+  }, 5000);
 };
 
 export { initSlideshow };

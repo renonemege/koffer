@@ -195,7 +195,7 @@
         <h3>Average salary for Your Occupation in  <%= @city.title %></h3>
         <div class="d-flex justify-content-between">
           <p><%= current_user.occupation.title %> </p>
-          <p> <%= @city.occupations.find_by(title: current_user.occupation.title).salary %> $</p>
+          <p> <%= @city.occupations.find_by(title: current_user.occupation.title).salary %> $ /month</p>
         </div>
       </div>
       <div class="col-4 card">
@@ -338,36 +338,36 @@
       <div class='grid-container'>
         <div class='card card--2x'>
           <div class='card__image big-script '>
-            <%= image_tag("https://source.unsplash.com/collection/#{@city.title}/1600x900") %>
+            <%= image_tag("https://images.unsplash.com/photo-1538685634737-24b83e3fa2f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80") %>
 
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://loremflickr.com/g/320/240/#{@city.title}") %>
+            <%= image_tag("https://images.unsplash.com/photo-1560930950-5cc20e80e392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") %>
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=1") %>
+            <%= image_tag("https://images.unsplash.com/photo-1546726747-421c6d69c929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80") %>
 
-          </div>
-        </div>
-
-        <div class='card'>
-          <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=2") %>
-          </div>
-        </div>
-        <div class='card'>
-          <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=3") %>
           </div>
         </div>
 
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=4") %>
+            <%= image_tag("https://images.unsplash.com/photo-1572844980501-10a1fcb2587f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80") %>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='card__image'>
+            <%= image_tag("https://images.unsplash.com/photo-1490684120840-1459ffb779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80") %>
+          </div>
+        </div>
+
+        <div class='card'>
+          <div class='card__image'>
+            <%= image_tag("https://images.unsplash.com/photo-1526321391769-26f7321e469d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80") %>
 
           </div>
         </div>
@@ -375,7 +375,7 @@
 
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=5") %>
+            <%= image_tag("https://images.unsplash.com/photo-1522312668209-c0554a912517?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=830&q=80") %>
           </div>
         </div>
       </div>
