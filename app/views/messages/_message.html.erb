@@ -5,22 +5,48 @@
     <div class="col-auto text-center">
       <%= cl_image_tag message.user.avatar.key, crop: :fit, class: "avatar dropdown-toggle ml-2 mt-1" %>
     </div>
-    <div class="col">
-      <div class="message-container" id="message-<%= message.id %>">
-        <p class="mb-1 ml-2">
-          <i class="author">
-            <span> <strong><%= message.user.username %></strong> </span>
-            <p class = "ml-2"><%= message.content %></p>
-          </i>
-        </p>
+    <div class="col ">
+      <% if message.user == current_user%>
 
-        <div class="text-right">
-          <small>
+        <div class="message-container speech-bubble " id="message-<%= message.id %>">
+          <p class="mb-1 ml-2 ">
+            <div class="text-left message-date">
+              <small>
+                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+              </small>
+            </div>
+            <i class="author">
+              <span> <strong><%= message.user.username %></strong> </span>
+              <p class = "ml-2 speech " ><%= message.content %></p>
+            </i>
+          </p>
 
-            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-          </small>
+
         </div>
-      </div>
+      <% else %>
+
+         <div class="message-container speech-bubble" id="message-<%= message.id %>">
+          <p class="mb-1 ml-2">
+            <div class="text-right message-date">
+              <small>
+                <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+              </small>
+            </div>
+            <i class="author">
+              <span> <strong><%= message.user.username %></strong> </span>
+              <p class = "ml-2"><%= message.content %></p>
+            </i>
+          </p>
+
+          <div class="text-right">
+            <small>
+
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </small>
+          </div>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>

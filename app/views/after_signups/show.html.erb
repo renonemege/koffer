@@ -23,9 +23,9 @@
         <p class="wizard-title">Where would you like to go?</p>
       </div>
       <div class="sentence-checkboxes ">
-      <%= f.input :title, :input_html => { :class => 'sentence-checkboxes-input '},
-                  :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt], :input_html => { :class => 'select2'},
-                  label: false, :input_html => {:class => 'sentence-checkboxes-label ' }%>
+      <%= f.input :title, :input_html => { :class => 'sentence-checkboxes-input select2 '},
+                  :collection => %w[Amsterdam Istanbul Berlin Paris Stockholm Madrid Frankfurt],
+                  label: false%>
       </div>
       <div class="wizard-actions">
         <button class="js-wizard-previous btn-main-yellow small text-size" type="button">Previous</button>
@@ -43,7 +43,7 @@
           <%= f.association :interest,
                             as: :check_boxes,
                             input_html: { multiple: true },
-                            label: "my interests"%>
+                            label: false%>
       </div>
     </div>
 

@@ -1,12 +1,9 @@
     <%= render 'shared/navbar' %>
 
-<h1>
-  <%= cl_image_tag current_user.avatar.key, crop: :fit, class: "avatar dropdown-toggle ml-5" %>
-</h1>
-<%= link_to 'Back', chatrooms_path, class: "btn btn-dark ml-3" %>
+
 <div class="row">
   <div class="col">
-    <div class="chat" id="messages" data-chatroom-id="<%= @chatroom.id %>">
+    <div class="chat scroll" id="messages" data-chatroom-id="<%= @chatroom.id %>">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
       <% end %>
