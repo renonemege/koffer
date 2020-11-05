@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+
 .wizard {
   background: #white;
   position: relative;
   color: black;
   text-align: center;
-  min-height: 80vh;
+  min-height: 100vh;
   height: 100%;
   overflow: hidden;
 
@@ -19,7 +22,7 @@
       color: rgba(0, 0, 0, 0.8);
       padding: 12px 40px;
       transition: background 0.3s ease;
-      background-color: #F8B400;
+      background-color: #F2C94C;
       box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.13);
       border-radius: 5px;
       text-align: left;
@@ -36,7 +39,8 @@
   }
 
   .btn-main-yellow:hover {
-    color: white;
+    background-color: rgba(242, 201, 76, 0.9);
+    color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
   }
 
@@ -51,8 +55,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 700px;
-    width: 1000px;
+    height: 3000px;
+    width: 4000px;
   }
 
 
@@ -79,6 +83,7 @@
     top: -500px;
     left: 2035px;
     display: flex;
+    background-color: rgba(255,255,255,0.8);
     .onboard-left {
       text-align: left;
       width: 50%;
@@ -88,14 +93,14 @@
       margin-bottom: 37px;
       }
       .onboard-title {
-      font-family: Montserrat;
+      font-family: 'Inter', sans-serif;
       font-style: normal;
       font-weight: 1000;
       font-size: 50px;
       line-height: 61px;
       }
       .onboard-subtitle {
-      font-family: Montserrat;
+      font-family: 'Inter', sans-serif;
       font-style: normal;
       font-weight: normal;
       font-size: 25px;
@@ -131,14 +136,14 @@
   }
 
   .wizard-steps-step-2 {
-    top: 300px;
-    left: 1350px;
+    top: 330px;
+    left: 1400px;
     transform: rotate(-10deg);
   }
 
     .wizard-steps-step-3 {
-    top: 300px;
-    left: 2050px;
+    top: 320px;
+    left: 2350px;
   }
 
   //   .wizard-steps-step-4 {
@@ -162,7 +167,7 @@
     transform: translate3d(-1258px, -700px, 0) rotate(10deg);
   }
   .wizard-steps-container.is--step-3 {
-    transform: translate3d(-1984px, -320px, 0);
+    transform: translate3d(-2300px, -520px, 0);
   }
   // .wizard-steps-container.is--step-4 {
   //   transform: translate3d(-1950px, -2052px, 0) rotate(10deg);
@@ -195,268 +200,268 @@
   }
 
 
-  .sentence-checkboxes {
-    font-size: 25px;
-    display: inline-block;
+//   .sentence-checkboxes {
+//     font-size: 25px;
+//     display: inline-block;
 
-    > * {
-      display: inline-block;
-    }
+//     > * {
+//       display: inline-block;
+//     }
 
-    .sentence-checkboxes-input {
-      opacity: 0;
-      position: absolute;
-      height: 0;
-      width: 0;
-    }
-    .sentence-checkboxes-label {
-      opacity: 0.5;
-      transition: opacity 0.3s;
-      position: relative;
+//     .sentence-checkboxes-input {
+//       opacity: 0;
+//       position: absolute;
+//       height: 0;
+//       width: 0;
+//     }
+//     .sentence-checkboxes-label {
+//       opacity: 0.5;
+//       transition: opacity 0.3s;
+//       position: relative;
 
-      &:after {
-        content: '';
-        position: absolute;
-        top: calc(100% - 5px);
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: white;
-        transition: width 0.3s;
-      }
-    }
-    .sentence-checkboxes-input:checked + .sentence-checkboxes-label {
-      opacity: 1;
+//       &:after {
+//         content: '';
+//         position: absolute;
+//         top: calc(100% - 5px);
+//         left: 0;
+//         width: 0;
+//         height: 2px;
+//         background: white;
+//         transition: width 0.3s;
+//       }
+//     }
+//     .sentence-checkboxes-input:checked + .sentence-checkboxes-label {
+//       opacity: 1;
 
-      &:after {
-        width: calc(100% - 8px);
-      }
-    }
-  }
-  .month-checkboxes {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    flex-wrap: wrap;
-    justify-content: center;
+//       &:after {
+//         width: calc(100% - 8px);
+//       }
+//     }
+//   }
+//   .month-checkboxes {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr 1fr;
+//     flex-wrap: wrap;
+//     justify-content: center;
 
 
-    .month-checkboxes-input {
-      opacity: 0;
-      position: absolute;
-      height: 0;
-      width: 0;
-    }
-    .month-checkboxes-label {
-      opacity: 0.5;
-      transition: opacity 0.3s;
-      color: white;
-      border-radius: 8px;
-      border: 1px solid white;
-      display: block;
-      line-height: 120px;
-      width: 140px;
-      padding: 0 20px;
-    }
-    .month-checkboxes-input:checked + .month-checkboxes-label {
-      opacity: 1;
-      background: rgba(255,255,255,0.8);
-      color: #003F5C;
-      font-weight: bold;
-    }
+//     .month-checkboxes-input {
+//       opacity: 0;
+//       position: absolute;
+//       height: 0;
+//       width: 0;
+//     }
+//     .month-checkboxes-label {
+//       opacity: 0.5;
+//       transition: opacity 0.3s;
+//       color: white;
+//       border-radius: 8px;
+//       border: 1px solid white;
+//       display: block;
+//       line-height: 120px;
+//       width: 140px;
+//       padding: 0 20px;
+//     }
+//     .month-checkboxes-input:checked + .month-checkboxes-label {
+//       opacity: 1;
+//       background: rgba(255,255,255,0.8);
+//       color: rgba(255,255,255,0.8);
+//       font-weight: bold;
+//     }
 
-    .month-checkboxes button {
-      padding-top: 20px;
-    }
-  }
+//     .month-checkboxes button {
+//       padding-top: 20px;
+//     }
+//   }
 
-  $themometer_bulb_size: 110px;
+//   $themometer_bulb_size: 110px;
 
-  .temp-checkboxes {
-    .temp-checkboxes-options {
-      position: relative;
-      z-index: 1;
-      height: 100%
-    }
-    .temp-checkboxes-thermometer {
-      width: 50px;
-      background: white;
-      border-radius: 25px;
-      height: 400px;
-      position: relative;
+//   .temp-checkboxes {
+//     .temp-checkboxes-options {
+//       position: relative;
+//       z-index: 1;
+//       height: 100%
+//     }
+//     .temp-checkboxes-thermometer {
+//       width: 50px;
+//       background: white;
+//       border-radius: 25px;
+//       height: 400px;
+//       position: relative;
 
-      &:before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: -($themometer_bulb_size - 80px);
-        width: $themometer_bulb_size;
-        height: $themometer_bulb_size;
-        border-radius: 100%;
-        background: white;
-      }
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 10px;
-        left: -($themometer_bulb_size - 90px);
-        width: $themometer_bulb_size - 20px;
-        height: $themometer_bulb_size - 20px;
-        border-radius: 100%;
-        background: red;
-      }
-    }
+//       &:before {
+//         content: '';
+//         position: absolute;
+//         bottom: 0;
+//         left: -($themometer_bulb_size - 80px);
+//         width: $themometer_bulb_size;
+//         height: $themometer_bulb_size;
+//         border-radius: 100%;
+//         background: white;
+//       }
+//       &:after {
+//         content: '';
+//         position: absolute;
+//         bottom: 10px;
+//         left: -($themometer_bulb_size - 90px);
+//         width: $themometer_bulb_size - 20px;
+//         height: $themometer_bulb_size - 20px;
+//         border-radius: 100%;
+//         background: red;
+//       }
+//     }
 
-    .temp-checkboxes-input {
-      opacity: 0;
-      position: absolute;
-      height: 0;
-      width: 0;
-    }
-    .temp-checkboxes-label {
-      opacity: 0.5;
-      transition: opacity 0.3s;
-      color: white;
-      border-radius: 2px;
-      line-height: 30px;
-      width: 170px;
-      height: 20%;
-      padding-left: 60px;
-      position: relative;
-    }
-    .temp-checkboxes-thermometer-inner {
-      width: 30px;
-      background: red;
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 20px;
-      min-height: 30px;
-      transition: top 0.3s;
-    }
-    .temp-checkboxes-input:nth-of-type(1):checked ~ .temp-checkboxes-thermometer-inner {
-      top: 10px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
-    .temp-checkboxes-input:nth-of-type(2):checked ~ .temp-checkboxes-thermometer-inner {
-      top: 25%;
-    }
-    .temp-checkboxes-input:nth-of-type(3):checked ~ .temp-checkboxes-thermometer-inner {
-      top: 50%;
-    }
-    .temp-checkboxes-input:nth-of-type(4):checked ~ .temp-checkboxes-thermometer-inner {
-      top: 65%;
-    }
-    .temp-checkboxes-input:checked + .temp-checkboxes-label {
-      opacity: 1;
+//     .temp-checkboxes-input {
+//       opacity: 0;
+//       position: absolute;
+//       height: 0;
+//       width: 0;
+//     }
+//     .temp-checkboxes-label {
+//       opacity: 0.5;
+//       transition: opacity 0.3s;
+//       color: white;
+//       border-radius: 2px;
+//       line-height: 30px;
+//       width: 170px;
+//       height: 20%;
+//       padding-left: 60px;
+//       position: relative;
+//     }
+//     .temp-checkboxes-thermometer-inner {
+//       width: 30px;
+//       background: red;
+//       position: absolute;
+//       left: 10px;
+//       right: 10px;
+//       bottom: 20px;
+//       min-height: 30px;
+//       transition: top 0.3s;
+//     }
+//     .temp-checkboxes-input:nth-of-type(1):checked ~ .temp-checkboxes-thermometer-inner {
+//       top: 10px;
+//       border-top-left-radius: 20px;
+//       border-top-right-radius: 20px;
+//     }
+//     .temp-checkboxes-input:nth-of-type(2):checked ~ .temp-checkboxes-thermometer-inner {
+//       top: 25%;
+//     }
+//     .temp-checkboxes-input:nth-of-type(3):checked ~ .temp-checkboxes-thermometer-inner {
+//       top: 50%;
+//     }
+//     .temp-checkboxes-input:nth-of-type(4):checked ~ .temp-checkboxes-thermometer-inner {
+//       top: 65%;
+//     }
+//     .temp-checkboxes-input:checked + .temp-checkboxes-label {
+//       opacity: 1;
 
-      &:after {
-        content: '';
-        position: absolute;
-        left: 10px;
-        top: 0;
-        width: 30px;
-        height: 2000px;
-        // background-color: red;
-      }
+//       &:after {
+//         content: '';
+//         position: absolute;
+//         left: 10px;
+//         top: 0;
+//         width: 30px;
+//         height: 2000px;
+//         // background-color: red;
+//       }
 
-      &.temp-checkboxes-label-top:after {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        top: 10px;
-      }
-    }
-  }
-  .continent-checkboxes {
-    width: 748px;
-    height: 396px;
-    position: relative;
-    background-color: #003F5C;
+//       &.temp-checkboxes-label-top:after {
+//         border-top-left-radius: 20px;
+//         border-top-right-radius: 20px;
+//         top: 10px;
+//       }
+//     }
+//   }
+//   .continent-checkboxes {
+//     width: 748px;
+//     height: 396px;
+//     position: relative;
+//     background-color: rgba(255,255,255,0.8);
 
-    .continent-checkboxes-input {
-      opacity: 0;
-      position: absolute;
-      height: 0;
-      width: 0;
-    }
-    .continent-checkboxes-label {
-      opacity: 0.5;
-      transition: opacity 0.3s;
-      color: white;
-      border-radius: 8px;
-      display: block;
-      position: absolute;
-      span {
-        position: absolute;
-      }
-      img {
-        height: 100%;
-        width: 100%;
-      }
-    }
-    .continent-checkboxes-input:checked + .continent-checkboxes-label {
-      opacity: 1;
-    }
-    .continent-checkboxes-label-north-america {
-      width: 46.25%;
-      height: 53.03%;
-      left: 0%;
-      top: 0%;
-            span {
-      top: -10%;
-      left: 5%;
-      }
+//     .continent-checkboxes-input {
+//       opacity: 0;
+//       position: absolute;
+//       height: 0;
+//       width: 0;
+//     }
+//     .continent-checkboxes-label {
+//       opacity: 0.5;
+//       transition: opacity 0.3s;
+//       color: white;
+//       border-radius: 8px;
+//       display: block;
+//       position: absolute;
+//       span {
+//         position: absolute;
+//       }
+//       img {
+//         height: 100%;
+//         width: 100%;
+//       }
+//     }
+//     .continent-checkboxes-input:checked + .continent-checkboxes-label {
+//       opacity: 1;
+//     }
+//     .continent-checkboxes-label-north-america {
+//       width: 46.25%;
+//       height: 53.03%;
+//       left: 0%;
+//       top: 0%;
+//             span {
+//       top: -10%;
+//       left: 5%;
+//       }
 
-    }
-    .continent-checkboxes-label-south-america {
-      width: 16.17%;
-      height: 50.25%;
-      left: 19.44%;
-      top: 49.36%;
-            span {
-      left: -90%;
-      top: 70%;
-      }
-    }
-    .continent-checkboxes-label-africa {
-      width: 23.74%;
-      height: 53.5%;
-      top: 30.87%;
-      left: 41.61%;
-            span {
-      left: 0%;
-      top: 60%;
-      }
-    }
-    .continent-checkboxes-label-asia {
-      width: 42.2%;
-      height: 64.64%;
-      top: 1.88%;
-      left: 56.08%;
-            span {
-      left: 96%;
-      top: 40%;
-      }
-    }
-    .continent-checkboxes-label-europe {
-      width: 24.5%;
-      height: 31.21%;
-      top: 1.99%;
-      left: 42.31%;
-      span {
-      top: -20%;
-      left: 50%;
-      }
-    }
-    .continent-checkboxes-label-oceania {
-      width: 14.3%;
-      height: 32.07%;
-      top: 58.81%;
-      left: 85.47%;
-      span {
-      top: 90%;
-      left: 78%;
-      }
-    }
-  }
+//     }
+//     .continent-checkboxes-label-south-america {
+//       width: 16.17%;
+//       height: 50.25%;
+//       left: 19.44%;
+//       top: 49.36%;
+//             span {
+//       left: -90%;
+//       top: 70%;
+//       }
+//     }
+//     .continent-checkboxes-label-africa {
+//       width: 23.74%;
+//       height: 53.5%;
+//       top: 30.87%;
+//       left: 41.61%;
+//             span {
+//       left: 0%;
+//       top: 60%;
+//       }
+//     }
+//     .continent-checkboxes-label-asia {
+//       width: 42.2%;
+//       height: 64.64%;
+//       top: 1.88%;
+//       left: 56.08%;
+//             span {
+//       left: 96%;
+//       top: 40%;
+//       }
+//     }
+//     .continent-checkboxes-label-europe {
+//       width: 24.5%;
+//       height: 31.21%;
+//       top: 1.99%;
+//       left: 42.31%;
+//       span {
+//       top: -20%;
+//       left: 50%;
+//       }
+//     }
+//     .continent-checkboxes-label-oceania {
+//       width: 14.3%;
+//       height: 32.07%;
+//       top: 58.81%;
+//       left: 85.47%;
+//       span {
+//       top: 90%;
+//       left: 78%;
+//       }
+//     }
+  // }
 }

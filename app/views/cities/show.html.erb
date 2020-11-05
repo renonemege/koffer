@@ -3,7 +3,7 @@
 <div class="wrapper" id="sticky">
   <div class="card" id="sticky-card">
     <!-- city banner -->
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
+    <div class="banner" id="citybanner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @city.photo.key, crop: :fit %>');">
         <div class="centered row">
           <h1><%= @city.title %></h1>
         </div>
@@ -13,6 +13,9 @@
 
 
   <div class="card" id="sticky-card">
+    <div class=' main-title'>
+      <h3 class='ml-3'>About <%= @city.title %></h3>
+    </div>
     <div class="row">
       <div id="map"
           style="width: 50%; height: 700px;"
@@ -20,34 +23,36 @@
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
       <div class="col-6 ">
-        <div class="row mt-5 ml-1">
-          <div class="card " id="weather">
+          <div  id="weather">
             <div>
                 <h3 id = "city"> <%= @city.title %> </h3>
                 <hr/>
             </div>
-            <div>
-              <h3 id = "date">date</h3>
+            <div class="todaydate">
+             <h4>Today is &nbsp</h4><h4 id = "date">date</h4>
             </div>
             <div>
-              <p id="condition">condition</p>
+              <h4 id="today">Todays Weather</h4>
             </div>
-            <div>
-              <p id="celcius">celcius <i class="fas fa-bolt"></i></p>
+            <div class="d-flex align-items-center">
+              <h4>Feels like</h4>
+              <h4 id="celcius">celcius</h4>
+              <h4>&nbsp with </h4>
+              <h4 id="condition">condition</h4>
+              <p id='icon-weather'></p>
             </div>
           </div>
 
-          <div class="card col-3 text-center" id="city-main">
-            <h4>Country </h4>
+          <div class=" text-inline mt-2" id="today">
+            <h3 class="mr-5">Country:</h3> <h3><%= @city.country %></h3>
             <hr/>
-            <p><%= @city.country %></p>
+
           </div>
-          <div class="card col-3 text-center" id="city-main">
-            <h4>Currency </h4>
+          <div class=" text-inline mt-2" id="today">
+            <h3 class="mr-5">Currency:</h3> <h3><%= @city.currency %></h3>
             <hr/>
-            <p><%= @city.currency %></p>
           </div>
-        </div>
+
         <div class="row p-3" id='city-description'>
           <p><%= @city.description.split('   ')[0...-1].join.html_safe %></p>
         </div>
@@ -57,6 +62,10 @@
 
 <!-- friends -->
     <div class="card" id="sticky-card">
+      <div class=' main-title'>
+        <h3 class='ml-3'>Meet the Community in <%= @city.title %></h3>
+      </div>
+
 
       <div class="scroller">
           <% @users.each do |user| %>
@@ -163,9 +172,12 @@
     </div>
 <!-- friends end -->
   <div class="card" id="sticky-card">
+    <div class=' main-title'>
+      <h3 class='ml-3'><%= @city.title %> in Numbers</h3>
+    </div>
     <div class="row">
       <div class="col-4 card ">
-        <h2 class="align-self-center">Cost Of Living</h2>
+        <h2 class="align-self-center mt-3">Cost Of Living</h2>
         <hr/>
         <% @city.cost_of_livings.first(10).each do |t|%>
          <div class="d-flex justify-content-between">
@@ -174,16 +186,21 @@
         <% end %>
       </div>
       <div class="col-4 card">
-        <h2 class="align-self-center">Housing</h2>
+        <h2 class="align-self-center mt-3">Housing</h2>
         <hr/>
         <% @city.cost_of_livings.last(3).each do |t|%>
           <div class="d-flex justify-content-between">
             <p><%= t.title %></p> <p><%= t.price %>$</p>
           </div>
         <% end %>
+        <h3>Average salary for Your Occupation in  <%= @city.title %></h3>
+        <div class="d-flex justify-content-between">
+          <p><%= current_user.occupation.title %> </p>
+          <p> <%= @city.occupations.find_by(title: current_user.occupation.title).salary %> $ /month</p>
+        </div>
       </div>
       <div class="col-4 card">
-          <h2 class="align-self-center">Other</h2>
+          <h2 class="align-self-center mt-3">Scores</h2>
           <hr/>
         <% @city_details.each do |detail| %>
           <div class="d-flex justify-content-between">
@@ -198,18 +215,19 @@
 
 <!-- animation -->
   <div class="card" id="sticky-card">
-
-    <div class="wrappers">
+    <div class=' main-title'>
+      <h3 class='ml-3'>What people think about <%= @city.title %></h3>
+    </div>
+    <div class="wrappers" id='show-wrap'>
         <span class="cloud-1"></span>
         <span class="cloud-2"></span>
         <span class="cloud-3"></span>
         <span class="cloud-4"></span>
         <span class="cloud-5"></span>
         <span class="cloud-6"></span>
-        <span class="cloud-7"></span>
+
         <span class="cloud-8"></span>
         <span class="cloud-9"></span>
-        <span class="cloud-10"></span>
         <span class="cloud-11"></span>
         <span class="cloud-12"></span>
         <span class="car"></span>
@@ -221,25 +239,7 @@
     <!-- review -->
     <div class="row">
 
-      <div class="rating-form col-6 mt-15 p-2">
-        <h4>What do you think about <%= @city.title %>  ?</h4>
-        <%= simple_form_for [@city, @review] do |f| %>
-        <div class="form-inputs">
-          <%= f.input :content,
-                      as: :text,
-                      label: false %>
-          <fieldset class="rating">
-            <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
-            <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
-            <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
-            <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
-            <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
-          </fieldset>
-            <%= f.submit 'Add a review', class: 'btn btn-warning', id: "user-btn" %>
-          <% end %>
-        </div>
-      </div>
-      <!-- review end -->
+
 
 
       <div class="reviews col-6">
@@ -249,22 +249,44 @@
                 <span class="far fa-star"></span>
             <% end %>
           <% else %>
+            <div id="slideshow">
             <% @city.reviews.reverse.each do |review| %>
-              <div class="review mb-5 mt-3">
-                <li class="list-group-item">
+              <div class="review mb-5 mt-3 speech-bubble">
+                <li class="list-group-item speech">
                   <% review.stars.times do  %>
                     <span class="fas fa-star"></span>
                   <% end %>
                   <% (5 - review.stars).times do  %>
                     <span class="far fa-star"></span>
                   <% end %>
-                  <p><%= review.content%></p>
                 </li>
+                  <p class="ml-4 mb-2"><%= review.content%></p>
               </div>
             <% end %>
+            </div>
           <% end %>
         </ul>
       </div>
+
+      <div class="rating-form col-6 mt-2 ">
+        <h3>What do you love most about <%= @city.title %>  ?</h3>
+        <%= simple_form_for [@city, @review] do |f| %>
+        <div class="form-inputs" id='rev-city'>
+          <fieldset class="rating">
+            <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+            <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+            <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+            <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+            <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+          </fieldset>
+          <%= f.input :content,
+                      as: :text,
+                      label: false %>
+            <%= f.submit 'Add a review', class: 'btn btn-warning btn-block', id: "user-btn" %>
+          <% end %>
+        </div>
+      </div>
+      <!-- review end -->
     </div>
 
   </div>
@@ -274,73 +296,47 @@
 
 
 
-<!-- City survey viewer (with links to the survey page) / create new survey on the city %> -->
+
+
 
   <div class="card" id="sticky-card">
-
-    <ul class="list-group">
-      <% @city.surveys.each do |survey| %>
-        <div class="survey mb-5 mt-3">
-          <li class="list-group-item">
-            <%= link_to survey.question, survey_path(survey) %>
-          </li>
-        </div>
-      <% end %>
-    </ul>
-
-    <div class="survey-form mt-15 p-2">
-      <span>Create a new survey about <%= @city.title %></span>
-      <%= simple_form_for [@city, @survey] do |f| %>
-      <div class="form-inputs">
-        <%= f.input :question,
-                    as: :text,
-                    label: false %>
-          <%= f.submit %>
-        <% end %>
-      </div>
+    <div class=' main-title'>
+      <h3 class='ml-3'>Photos from <%= @city.title %></h3>
     </div>
-
-  </div>
-
-<%# end of survey %>
-
-
-
-  <div class="card" id="sticky-card">
     <div class='main-container'>
       <div class='grid-container'>
         <div class='card card--2x'>
           <div class='card__image big-script '>
-            <%= image_tag("https://source.unsplash.com/collection/#{@city.title}/1600x900") %>
+            <%= image_tag("https://images.unsplash.com/photo-1538685634737-24b83e3fa2f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80") %>
 
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://loremflickr.com/g/320/240/#{@city.title}") %>
+            <%= image_tag("https://images.unsplash.com/photo-1560930950-5cc20e80e392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") %>
           </div>
         </div>
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=1") %>
+            <%= image_tag("https://images.unsplash.com/photo-1546726747-421c6d69c929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80") %>
 
-          </div>
-        </div>
-
-        <div class='card'>
-          <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=2") %>
-          </div>
-        </div>
-        <div class='card'>
-          <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=3") %>
           </div>
         </div>
 
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=4") %>
+            <%= image_tag("https://images.unsplash.com/photo-1572844980501-10a1fcb2587f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80") %>
+          </div>
+        </div>
+        <div class='card'>
+          <div class='card__image'>
+            <%= image_tag("https://images.unsplash.com/photo-1490684120840-1459ffb779c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80") %>
+          </div>
+        </div>
+
+        <div class='card'>
+          <div class='card__image'>
+            <%= image_tag("https://images.unsplash.com/photo-1526321391769-26f7321e469d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80") %>
 
           </div>
         </div>
@@ -348,7 +344,7 @@
 
         <div class='card'>
           <div class='card__image'>
-            <%= image_tag("https://picsum.photos/200/300?random=5") %>
+            <%= image_tag("https://images.unsplash.com/photo-1522312668209-c0554a912517?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=830&q=80") %>
           </div>
         </div>
       </div>

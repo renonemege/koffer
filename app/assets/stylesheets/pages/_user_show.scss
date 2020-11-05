@@ -46,6 +46,10 @@
     display: block;
   }
 }
+#interests {
+  display: flex;
+  margin-left: 50px;
+}
 
 .cities {
   h1 {
@@ -569,4 +573,16 @@ border: 2px solid #F2C94C;
     justify-content: center;
     width: 100%;
     flex-wrap: wrap;
-} 
+}
+
+.allreviews {
+  display: flex; 
+}
+
+.interest-btn {
+  width: 136px;
+}
+
+.marginleft {
+  margin-left: 70px;
+}

@@ -1,12 +1,61 @@
+.chat-button-index{
+  color: rgba(0,0,0,0.9);
+}
+
+.chat-button-index:hover{
+  text-decoration: none;
+  color: rgba(0,0,0,0.9);
+}
 .chat {
   border: 1px solid lighten($secondary, 40%);
   background: lighten($secondary, 50%);
-  height: 50vh;
+  height: 80vh;
   border-radius: 5px 5px 0 0;
   overflow-y: auto;
+  margin-top: 50px;
 }
 
 .chat-input {
   border-top: 0 none;
   border-radius: 0 0 5px 5px;
+
+}
+
+.no-gutters {
+  margin-top: 5px;
+}
+
+
+
+.message-date {
+  font-size: 20px;
+}
+
+.chat-message-container {
+  .speech-bubble {
+    position: relative;
+    background: rgb(240, 237, 228);
+    border-radius: .4em;
+  }
+
+  .speech-bubble:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-right-color: rgb(240, 237, 228);
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -10px;
+    margin-left: -20px;
+  }
+
+}
+
+
+#new_message {
+  display: inline;
 }

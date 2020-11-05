@@ -12,6 +12,8 @@ UserCity.destroy_all
 Message.destroy_all
 UserOccupation.destroy_all
 UserInterest.destroy_all
+Response.destroy_all
+Survey.destroy_all
 User.destroy_all
 Occupation.destroy_all
 Interest.destroy_all
@@ -19,7 +21,7 @@ CostOfLiving.destroy_all
 CityDetail.destroy_all
 City.destroy_all
 
-Survey.destroy_all
+
 
 
 Chatroom.destroy_all
@@ -45,6 +47,37 @@ Interest.create!(
 )
 Interest.create!(
   title: 'Reading'
+)
+
+Interest.create!(
+  title: 'Sports'
+)
+Interest.create!(
+  title: 'Technology'
+)
+
+Interest.create!(
+  title: 'Photography'
+)
+
+Interest.create!(
+  title: 'Gardening'
+)
+
+Interest.create!(
+  title: 'Cooking'
+)
+
+Interest.create!(
+  title: 'Dancing'
+)
+
+Interest.create!(
+  title: 'Camping'
+)
+
+Interest.create!(
+  title: 'Board Games'
 )
 # San\ Fransisco Berlin Frankfurt Amsterdam Stockholm Paris Madrid
 # --------cities--------------

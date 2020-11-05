@@ -1,0 +1,114 @@
+#weather{
+  #city{
+    font-size: 51px;
+  }
+  #today{
+    font-size: 34px;
+    opacity: 0.8;
+  }
+
+  .d-flex {
+    h4 {
+      font-size: 24px;
+      opacity: 0.8;
+    }
+  }
+
+  #date {
+    font-size: 24px;
+    opacity: 0.8;
+  }
+
+  .weather-cond{
+    font-size: 20px;
+  }
+
+  #celcius{
+    font-size: 24px;
+  }
+}
+
+.todaydate {
+  display: flex;
+  margin-bottom: 10px;
+  h4 {
+    font-size: 24px;
+    opacity: 0.8;
+  }
+}
+
+#condition {
+  margin-left: 5px;
+}
+
+#celcius {
+  margin-left: 5px;
+}
+
+.text-inline {
+  display: flex;
+  h3{
+    font-size: 20px;
+    opacity: 0.8;
+  }
+}
+
+.row {
+  p {
+    font-size: 16px;
+    line-height: 32px;
+  }
+}
+
+
+#slideshow {
+  margin: 10px auto;
+  position: relative;
+  width: 400px;
+  height: 180px;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+}
+
+#slideshow > div {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+}
+
+
+.speech-bubble {
+  position: relative;
+  background: rgb(240, 237, 228);
+  border-radius: .4em;
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-top-color: rgb(240, 237, 228);
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -10px;
+}
+
+
+.speech{
+  background: rgb(240, 237, 228);
+  border-style: none;
+
+}
+
+#rev-city{
+  width: 500px;
+}
+

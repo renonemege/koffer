@@ -1,9 +1,14 @@
 
     <% if current_user %>
-      <%= link_to 'Join the Community', after_signup_path, class: "homepagebtn btn btn-warning" %>
+      <%= link_to 'Join the Community', after_signup_path, class: "button-home" %>
     <% else %>
-      <%= link_to 'Join the Community', new_registration_path(:user), class: "btn btn-warning" %>
+      <%= link_to 'Join the Community', new_registration_path(:user), class: "button-home" %>
     <% end %>
+
+
+
+
+
 
 <div class="banner-home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1513604341524-7c6b9bb0b13c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1936&q=80);">
   <div class="containersvg col-12 mt-5">

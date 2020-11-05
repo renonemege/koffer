@@ -66,8 +66,8 @@
           <% if @user == current_user %>
 
             <%= simple_form_for @user_interest, url: user_interests_path do |f| %>
-              <%= f.association :interest, label: "User Interest:", as: :check_boxes, required: false, input_html: { multiple: true } %>
-              <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
+              <%= f.association :interest, label: "My Interests:", as: :check_boxes, required: false, input_html: { multiple: true } %>
+              <%= f.submit 'Add', class: 'interest-btn btn btn-warning', id: "user-btn"%>
             <% end %>
           <% end %>
 
@@ -75,81 +75,113 @@
       </div>
 
 
-      <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-6">
+      <div class="profile-container">
+        <div class="ks-cboxtags d-flex align-items-center">
+          <h2 class="mr-3" id="interests">I like</h2>
+          <% @user.user_interests.each do |interest|%>
+            <label class="mr-2 mb-3"> <%= interest.title %> </label>
+          <% end %>
+        </div>
+      </div>
+
+
+
+
+      <div class="rating-form mt-15 p-2">
           <% if @user == current_user %>
+            <h3>Where did you live before?</h3>
             <%= simple_form_for [@user_city] do |f| %>
-              <%= f.input :title, label: "User City:", required: false, :collection => %w[Amsterdam Istanbul Berlin Paris] %>
-              <%= f.submit 'Add', class: 'btn btn-warning', id: "user-btn"%>
+            <div class="form-inputs">
+              <%= f.input :title,
+              label: false,
+              required: false,
+              :collection => %w[Amsterdam Istanbul Berlin Paris], :input_html => { :class => 'select2'} %>
+              <%= f.submit 'Add', class: 'btn btn-warning btn-block', id: "user-btn"%>
+            </div>
             <% end %>
+          <% end %>
+      </div>
+
+
+      <div class="profile-container">
+        <div class="ks-cboxtags d-flex align-items-center">
+          <h2 class="mr-3" id="interests">I lived in</h2>
+          <% @user.user_cities.each do |city|%>
+            <label class="mr-2 mb-3"> <%= city.title  %>  </label>
           <% end %>
         </div>
       </div>
 
 
-    <div class="col-md-6 mx-auto">
-        <div class="py-4 px-4">
-          <div class="d-flex align-items-center justify-content-between mb-3">
-            <h5 class="mb-0">City photos</h5><a href="#" class="btn btn-link text-muted">Show all</a>
-          </div>
+  <% if @user != current_user %>
+  <h2 class="marginleft d-flex mt-5">Reviews</h2>
+  <% end %>
 
-          <div class="row">
-            <div class="col-lg-6 mb-2 pr-lg-1"><img src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-            <div class="col-lg-6 mb-2 pl-lg-1"><img src="https://images.unsplash.com/photo-1493571716545-b559a19edd14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-            <div class="col-lg-6 pr-lg-1 mb-2"><img src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-            <div class="col-lg-6 pl-lg-1"><img src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
-          </div>
+<div class="allreviews">
+  <% if @user != current_user %>
+    <div class="reviews col-6 mt-4">
+      <ul class="list-group">
+          <% if @user.reviews.nil? %>
+            <% 5.times do  %>
+                <span class="far fa-star"></span>
+            <% end %>
+          <% else %>
+            <div id="slideshow">
+              <% @user.reviews.reverse.each do |review| %>
+                <div class="review mb-5 mt-3 speech-bubble">
+                  <li class="list-group-item speech">
+                    <% review.stars.times do  %>
+                      <span class="fas fa-star"></span>
+                    <% end %>
+                    <% (5 - review.stars).times do  %>
+                      <span class="far fa-star"></span>
+                    <% end %>
+                  </li>
+                    <p class="ml-4 mb-2"><%= review.content%></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if @user != current_user %>
+    <!-- user review -->
+      <div class="rating-form ml-5 p-2">
+        <span>What do you think about <%= @user.first_name %>  ?</span>
+        <%= simple_form_for [@user, @review] do |f| %>
+        <div class="form-inputs">
+          <fieldset class="rating">
+            <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
+            <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
+            <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
+            <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
+            <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
+          </fieldset>
+          <%= f.input :content,
+                      as: :text,
+                      label: false %>
+            <%= f.submit 'Add a review', class: 'btn btn-warning btn-lg btn-block', id: "user-btn" %>
+          <% end %>
         </div>
       </div>
+    <!-- user review end -->
+  <% end %>
 
-    <% if @user != current_user %>
-<!-- user review -->
-  <div class="rating-form mt-15 p-2">
-    <span>What do you think about <%= @user.first_name %>  ?</span>
-    <%= simple_form_for [@user, @review] do |f| %>
-    <div class="form-inputs">
-      <%= f.input :content,
-                  as: :text,
-                  label: false %>
-      <fieldset class="rating">
-        <%=f.radio_button :stars, 5, :id => "star5" %><label for="star5" title="Excellent!"></label>
-        <%=f.radio_button :stars, 4, :id => "star4" %> <label for="star4" title="Good!"></label>
-        <%=f.radio_button :stars, 3, :id => "star3" %> <label for="star3" title="Average!"></label>
-        <%=f.radio_button :stars, 2, :id => "star2" %> <label for="star2" title="Poor!"></label>
-        <%=f.radio_button :stars, 1, :id => "star1" %> <label for="star1" title="Very Poor!"></label>
-      </fieldset>
-        <%= f.submit 'Add a review', class: 'btn btn-warning btn-lg btn-block', id: "user-btn" %>
-      <% end %>
+</div>
+
+
+<div class="col-md-6 mx-auto">
+  <div class="py-4 px-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h5 class="mb-0">City photos</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 mb-2 pr-lg-1"><img src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
+      <div class="col-lg-6 mb-2 pl-lg-1"><img src="https://images.unsplash.com/photo-1493571716545-b559a19edd14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
+      <div class="col-lg-6 pr-lg-1 mb-2"><img src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
+      <div class="col-lg-6 pl-lg-1"><img src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm"></div>
     </div>
   </div>
-<!-- user review end -->
-<% end %>
-
-  <div class="reviews">
-    <ul class="list-group">
-      <% if @user.reviews.nil? %>
-        <% 5.times do  %>
-            <span class="far fa-star"></span>
-        <% end %>
-      <% else %>
-        <% @user.reviews.reverse.each do |review| %>
-          <div class="review mb-5 mt-3">
-            <li class="list-group-item">
-              <% review.stars.times do  %>
-                <span class="fas fa-star"></span>
-              <% end %>
-              <% (5 - review.stars).times do  %>
-                <span class="far fa-star"></span>
-              <% end %>
-              <p><%= review.content%></p>
-            </li>
-          </div>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
-
-    </div>
-  </div>
-
+</div>
