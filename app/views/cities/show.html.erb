@@ -296,38 +296,7 @@
 
 
 
-<!-- City survey viewer (with links to the survey page) / create new survey on the city %> -->
 
-  <div class="card" id="sticky-card">
-    <div class=' main-title'>
-      <h3 class='ml-3'>Most Recent Surveys about <%= @city.title %></h3>
-    </div>
-
-    <ul class="list-group">
-      <% @city.surveys.each do |survey| %>
-        <div class="survey mb-5 mt-3">
-          <li class="list-group-item">
-            <%= link_to survey.question, survey_path(survey) %>
-          </li>
-        </div>
-      <% end %>
-    </ul>
-
-    <div class="survey-form mt-15 p-2">
-      <span>Create a new survey about <%= @city.title %></span>
-      <%= simple_form_for [@city, @survey] do |f| %>
-      <div class="form-inputs">
-        <%= f.input :question,
-                    as: :text,
-                    label: false %>
-          <%= f.submit %>
-        <% end %>
-      </div>
-    </div>
-
-  </div>
-
-<%# end of survey %>
 
 
 
