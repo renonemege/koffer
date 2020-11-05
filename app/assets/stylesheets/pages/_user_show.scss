@@ -136,10 +136,14 @@ body {
   justify-content: center;
   padding-top: 60px;
   position: absolute;
-  margin-top: 200px;
+  margin-top: 125px;
   margin-left: 350px;
 }
 
+.from {
+  font-size:2rem;
+  color: white;
+}
 .profile-nav-info h3 {
   font-variant: small-caps;
   font-size: 5rem;
@@ -576,7 +580,7 @@ border: 2px solid #F2C94C;
 }
 
 .allreviews {
-  display: flex; 
+  display: flex;
 }
 
 .interest-btn {

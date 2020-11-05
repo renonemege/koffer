@@ -8,8 +8,9 @@
        <%= cl_image_tag @user.avatar.key, class: "avatar-large", alt: "avatar-large" %>
       <% end %>
     </div>
-    <div class="profile-nav-info">
+    <div class="profile-nav-info mb-5">
       <h3 class="user-name"><%= @user.first_name %> <%= @user.last_name %></h3>
+      <h4 class='from'> <i class="fas fa-map-marker-alt"></i> <%= @user.current_city %></h4>
     </div>
     <div class="profile-option">
       <div class="notification">
@@ -22,7 +23,7 @@
   <div class="main-bd">
     <div class="left-side">
       <div class="profile-side">
-      <p>Relocation to <%= @user.user_cities.first[:title] %> from <%= @user.current_city %></p>
+      <p><%= @user.user_cities.first[:title] %>  <i class="fas fa-arrow-right"></i> <%= @user.current_city %></p>
         <div class="user-rating">
           <h3 class="rating">4.1</h3>
           <div class="rate">

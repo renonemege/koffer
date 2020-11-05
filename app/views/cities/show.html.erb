@@ -114,6 +114,7 @@
                     <% if user.avatar.attached? %>
                       <div class="image"> <%= cl_image_tag user.avatar.key, class: "round", width: "155", height: "155" %> </div>
                     <% end %>
+
                     <div class="ml-3 w-100">
                       <h4 class="mb-0 mt-0"><%= user.first_name %> <%= user.last_name %></h4>
                       <span><%= user.occupation.title %> living in <%= user.current_city %></span>
@@ -148,6 +149,7 @@
             <div class="container mt-5 mr-5 d-flex justify-content-center" >
               <div class="card-profile p-3 col-4">
                 <div class="d-flex align-items-center">
+
                   <% if user.avatar.attached? %>
                     <div class="image"> <%= cl_image_tag user.avatar.key, class: "round", width: "155", height: "155" %> </div>
                   <% end %>
@@ -186,7 +188,8 @@
                   <% end %>
                   <div class="ml-3 w-100">
                     <h4 class="mb-0 mt-0"><%= user.first_name %> <%= user.last_name %></h4>
-                    <span><p><%= user.user_interests.first %><%= @city.title %></p></span>
+                    <span><p><%= user.user_interests.first.title %><%= @city.title %></p></span>
+
                     <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                       <div class="d-flex flex-column"> <span class="ratings d-inline-block">Rating</span> <span class="number3">4.9</span> </div>
                     </div>
