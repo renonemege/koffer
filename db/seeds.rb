@@ -431,7 +431,7 @@ puts 'adding Sy'
   UserOccupation.create!(
     city: City.find_by(title: 'Berlin'),
     user: User.last,
-    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer' ).first
   )
 
 puts 'adding Edvar'
@@ -459,10 +459,10 @@ puts 'adding Edvar'
   UserOccupation.create!(
     city: City.find_by(title: 'Berlin'),
     user: User.last,
-    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer').first
   )
 
-puts adding 'Nico'
+puts 'adding Nico'
 
 User.create!(
     first_name: 'Nico',
@@ -487,11 +487,11 @@ User.create!(
   UserOccupation.create!(
     city: City.find_by(title: 'Berlin'),
     user: User.last,
-    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer').first
   )
 
 
-puts adding 'Yair'
+puts 'adding Yair'
 
 User.create!(
     first_name: 'Yair',
@@ -516,7 +516,7 @@ User.create!(
   UserOccupation.create!(
     city: City.find_by(title: 'Berlin'),
     user: User.last,
-    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer').first
   )
 
 

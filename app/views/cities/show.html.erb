@@ -178,36 +178,7 @@
 
 
 
-        <% @users.each do |user| %>
-          <% if user.occupation.title == current_user.occupation.title && user != current_user && user.user_cities.last.title == current_user.user_cities.last.title  && user.current_city == @city.title%>
-            <div class="container mt-5 d-flex justify-content-center">
-              <div class="card-profile p-3 col-4">
-                <div class="d-flex align-items-center">
-                  <% if user.avatar.attached? %>
-                    <div class="image"> <%= cl_image_tag user.avatar.key, class: "round", width: "155", height: "155" %> </div>
-                  <% end %>
-                  <div class="ml-3 w-100">
-                    <h4 class="mb-0 mt-0"><%= user.first_name %> <%= user.last_name %></h4>
-                    <span><p><%= user.user_interests.first.title %><%= @city.title %></p></span>
 
-                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
-                      <div class="d-flex flex-column"> <span class="ratings d-inline-block">Rating</span> <span class="number3">4.9</span> </div>
-                    </div>
-                    <div class="button mt-2 d-flex flex-row align-items-center">
-                      <%= simple_form_for @chatroom do |f| %>
-                        <%= f.input :title, :as => :hidden, :input_html => { :value => "#{current_user.username}" } %>
-                        <%= f.button :submit, "Message", class: "btn btn-warning w-100 " %>
-                      <% end %>
-                      <%= link_to user do %>
-                        <button class="btn btn-warning w-100 ml-2 mt-2">Profile</button>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
       </div>
 
     </div>
