@@ -378,10 +378,39 @@ end
 
 puts 'finding users living in Berlin'
 
-2.times do
+# 2.times do
+#   User.create!(
+#     first_name: Faker::Name.first_name,
+#     last_name: Faker::Name.last_name,
+#     email: Faker::Internet.email ,
+#     password: Faker::Internet.password(min_length: 8),
+#     username: Faker::Internet.username,
+#     description: Faker::JapaneseMedia::StudioGhibli.quote,
+#     current_city: 'Berlin',
+#   )
+#   User.last.avatar.attach(
+#     io: URI.open('https://source.unsplash.com/random'),
+#     filename: 'user.jpg',
+#     content_type: 'image/jpg'
+#   )
+#   UserCity.create!(
+#     title: 'Berlin',
+#     user: User.last,
+#     city: City.find_by(title: 'Berlin')
+#   )
+
+#   UserOccupation.create!(
+#     city: City.find_by(title: 'Berlin'),
+#     user: User.last,
+#     occupation: Occupation.where(city: City.find_by(title: 'Berlin')).order("RANDOM()").first
+#   )
+# end
+
+puts 'adding Sy'
+
   User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
+    first_name: 'Sy',
+    last_name: 'Rashid',
     email: Faker::Internet.email ,
     password: Faker::Internet.password(min_length: 8),
     username: Faker::Internet.username,
@@ -389,7 +418,7 @@ puts 'finding users living in Berlin'
     current_city: 'Berlin',
   )
   User.last.avatar.attach(
-    io: URI.open('https://source.unsplash.com/random'),
+    io: URI.open('https://ca.slack-edge.com/T02NE0241-UKUNBJ7DX-9126197b4f3d-512'),
     filename: 'user.jpg',
     content_type: 'image/jpg'
   )
@@ -402,9 +431,95 @@ puts 'finding users living in Berlin'
   UserOccupation.create!(
     city: City.find_by(title: 'Berlin'),
     user: User.last,
-    occupation: Occupation.where(city: City.find_by(title: 'Berlin')).order("RANDOM()").first
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
   )
-end
+
+puts 'adding Edvar'
+
+  User.create!(
+    first_name: 'Edvar',
+    last_name: 'ter Haar',
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Berlin',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://ca.slack-edge.com/T02NE0241-UHGH1JLQ1-a045e6d83f92-512'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+  UserCity.create!(
+    title: 'Berlin',
+    user: User.last,
+    city: City.find_by(title: 'Berlin')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Berlin'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
+  )
+
+puts adding 'Nico'
+
+User.create!(
+    first_name: 'Nico',
+    last_name: 'Proto',
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Berlin',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://ca.slack-edge.com/T02NE0241-UKPKXKN3V-93cd441dc801-512'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+  UserCity.create!(
+    title: 'Berlin',
+    user: User.last,
+    city: City.find_by(title: 'Berlin')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Berlin'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
+  )
+
+
+puts adding 'Yair'
+
+User.create!(
+    first_name: 'Yair',
+    last_name: 'Gordon',
+    email: Faker::Internet.email ,
+    password: Faker::Internet.password(min_length: 8),
+    username: Faker::Internet.username,
+    description: Faker::JapaneseMedia::StudioGhibli.quote,
+    current_city: 'Berlin',
+  )
+  User.last.avatar.attach(
+    io: URI.open('https://ca.slack-edge.com/T02NE0241-ULMJDQKHP-92839c14cc51-512'),
+    filename: 'user.jpg',
+    content_type: 'image/jpg'
+  )
+  UserCity.create!(
+    title: 'Berlin',
+    user: User.last,
+    city: City.find_by(title: 'Berlin')
+  )
+
+  UserOccupation.create!(
+    city: City.find_by(title: 'Berlin'),
+    user: User.last,
+    occupation: Occupation.where(city: City.find_by(title: 'Berlin'), title: 'Web Developer')
+  )
+
+
 
 puts 'finding users living in Amsterdam'
 
