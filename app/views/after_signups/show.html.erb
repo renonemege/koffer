@@ -7,9 +7,9 @@
       <div class="d-flex align-items-center justify-content-between">
         <div class="onboard-left">
           <p class="onboard-title">Tell us where you would like to go</p>
-          <p class="onboard-subtitle">Find your city, meet people who are similar to you</p>
+          <p class="onboard-subtitle">Find your city, find your tribe</p>
           <div class="onboard-btn">
-            <button class="js-wizard-next btn-main-yellow large" type="button">Find people to help you out.</button>
+            <button class="js-wizard-next btn-main-yellow large" type="button">Let's go!</button>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@
       <div class="temp-checkboxes">
 
             <%= simple_fields_for @user_occupation, remote: true, html: {class: 'temp-checkboxes-input'} do |f| %>
-              <p>Occupation</p><%= f.association :occupation,
+              <%= f.association :occupation,
                                 input_html: { multiple: false, :class => 'sentence-checkboxes-input select2 '},
                                 label: false %>
             <% end %>

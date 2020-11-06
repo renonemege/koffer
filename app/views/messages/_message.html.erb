@@ -1,8 +1,8 @@
 <%= render 'shared/navbar' %>
 
 <div class="chat-message-container">
-  <div class="row no-gutters">
-    <div class="col-auto text-center">
+  <div class="row no-gutters align-items-center">
+    <div class="col-auto text-center mr-4">
       <%= cl_image_tag message.user.avatar.key, crop: :fit, class: "avatar dropdown-toggle ml-2 mt-1" %>
     </div>
     <div class="col ">

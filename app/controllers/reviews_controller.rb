@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
       @city = City.find(params[:city_id])
 
       if @review.save
-        redirect_to city_path(@city)
+        redirect_to city_path(@city), notice: 'Your review was posted!'
       else
         render 'cities/show'
       end
