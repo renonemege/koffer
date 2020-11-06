@@ -130,7 +130,7 @@
             <div id="slideshow">
               <% @user.reviews.reverse.each do |review| %>
                 <div class="review mb-5 mt-3 speech-bubble">
-                  <li class="list-group-item speech">
+                  <li class="list-group-item speech" id='stars-back'>
                     <% review.stars.times do  %>
                       <span class="fas fa-star"></span>
                     <% end %>

@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
     else
       @user = User.find(params[:user_id])
       if @review.save
-        redirect_to user_path(@user)
+        redirect_to user_path(@user), notice: 'Your review was posted!'
       else
         render 'users/show'
       end
