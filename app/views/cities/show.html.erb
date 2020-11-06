@@ -41,6 +41,8 @@
               <h4 id="condition">condition</h4>
               <p id='icon-weather'></p>
             </div>
+
+
           </div>
 
           <div class=" text-inline mt-2" id="today">
@@ -292,10 +294,42 @@
   </div>
 <!-- animation end -->
 
+<!-- City survey viewer (with links to the survey page) / create new survey on the city %> -->
 
+  <div class="card" id="sticky-card">
+    <div class=' main-title'>
+      <h3 class='ml-3'>Surveys about <%= @city.title %> created by our users</h3>
+    </div>    
+    <div class="d-flex">
+      <div class="reviews col-6">
+        <ul class="list-group">
+          <div class="city-survey-container">
+            <% @city.surveys.reverse.first(3).each do |survey| %>
+              <div class="mb-3 mt-3 speech-bubble">
+                <div class="rounded">
+                  <h5 class="m-2 p-1"><%= link_to survey.question, survey_path(survey), :class => 'link-text' %></h5>
+                </div>
+              </div>
+            <% end %>
+          </div>  
+        </ul>
+      </div>
 
+      <div class="rating-form col-6 mt-2">
+        <h3>Do you have another question about <%= @city.title %>?</h3>
+        <%= simple_form_for [@city, @survey] do |f| %>
+        <div class="form-inputs" id="rev-city">
+          <%= f.input :question,
+                      as: :text,
+                      label: false %>
+            <%= f.submit 'Post a survey', class: 'btn btn-warning btn-block', id: "user-btn"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
+<%# end of survey %>
 
 
 

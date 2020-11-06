@@ -1,3 +1,88 @@
 .mt-navbar-height {
   margin-top: 100px;
 }
+
+
+.survey-response-container {
+
+  .speech-bubble {
+    position: relative;
+    background: rgb(240, 237, 228);
+    border-radius: .4em;
+    z-index: 1;
+  }
+  
+  .speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: rgb(240, 237, 228);
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -10px;
+    margin-bottom: -10px;
+    z-index: 0;
+  }
+  
+  
+  .speech{
+    background: rgb(240, 237, 228);
+    border-style: none;
+  
+  }
+  
+}
+
+.city-survey-container {
+  .speech-bubble {
+    position: relative;
+    background: #f0ede4;
+    border-radius: .4em;
+  }
+  
+  .speech-bubble:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 0.292em solid transparent;
+    border-left-color: #f0ede4;
+    border-right: 0;
+    margin-top: -0.292em;
+    margin-right: -0.292em;
+  }
+  
+  
+  .speech{
+    background: rgb(240, 237, 228);
+    border-style: none;
+  
+  }
+}
+
+.link-text {
+  transition: color 0.3s ease;
+  color: #F2C94C;
+}
+
+.link-text:hover {
+  color: #6c6550e1;
+  text-decoration: none;
+}
+
+.scrollable-container {
+  height: 50vh;
+  margin: 0em;
+}
+
+.scrollable {
+  height: 100%;
+  margin: 0em;
+  overflow-y: auto;
+}
